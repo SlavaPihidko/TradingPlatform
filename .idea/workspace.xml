@@ -2,36 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_beust_jcommander_1_72.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_1_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_25_0_jre.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_11_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_8_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_exec_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_extras_beanshell_bsh_2_0b6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_compat_qual_2_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_api_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_chrome_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_edge_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_firefox_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_ie_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_java_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_opera_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_remote_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_safari_driver_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_seleniumhq_selenium_selenium_support_3_141_59.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_testng_testng_6_14_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/Square.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/SquareTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/TestBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/Login.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/TradingPlatform1/.gradle/" />
     <ignored path="$PROJECT_DIR$/TradingPlatform1/build/" />
@@ -56,13 +33,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/Login.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/Users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="31" column="75" lean-forward="true" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+            <state relative-caret-position="204">
+              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/TestBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1001#1002#0" expanded="true" />
+                <element signature="e#1066#1067#0" expanded="true" />
+                <element signature="e#1109#1110#0" expanded="true" />
+                <element signature="e#1128#1129#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,15 +85,15 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/build.gradle" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/Square.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/SquareTest.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/TestBase.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/Login.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/Users.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1366" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -162,11 +152,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544386974013" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Devel/Lunchpoint" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544479054322" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="F:/javaQuickAppium" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -185,22 +177,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.Login.Login">
+  <component name="RunManager">
     <configuration name="Hello" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Hello" />
       <module name="TradingPlatform1.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Login.Login" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="TradingPlatform1.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Login" />
-      <option name="METHOD_NAME" value="Login" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -217,9 +197,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Users.Login" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TradingPlatform1.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Users" />
+      <option name="METHOD_NAME" value="Login" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Users.checkUsers" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TradingPlatform1.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Users" />
+      <option name="METHOD_NAME" value="checkUsers" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.Login.Login" />
+        <item itemvalue="TestNG.Users.checkUsers" />
+        <item itemvalue="TestNG.Users.Login" />
         <item itemvalue="TestNG.SquareTest.testArea" />
         <item itemvalue="Application.Hello" />
       </list>
@@ -239,42 +244,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Login_Login - 2018.12.09 at 21h 03m 51s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 03m 40s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 04m 43s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 04m 50s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 05m 16s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 05m 28s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 30m 49s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 06m 43s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 38m 17s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 07m 29s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 48m 39s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 07m 46s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 51m 09s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 12m 16s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 52m 23s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 13m 03s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 55m 01s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Login_testLogin - 2018.12.10 at 23h 36m 52s.xml">
+      <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Login_Login - 2018.12.09 at 21h 55m 57s.xml">
-      <configuration name="Login.Login" configurationId="TestNG" />
+    <history-entry file="Users_checkUsers - 2018.12.10 at 23h 57m 28s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25037822" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -375,12 +380,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/Login.java">
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/Users.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="31" column="75" lean-forward="true" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+        <state relative-caret-position="204">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/TestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1001#1002#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1128#1129#0" expanded="true" />
           </folding>
         </state>
       </provider>
