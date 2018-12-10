@@ -1,22 +1,25 @@
+package appmanager;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
+  private UserHelper userHelper;
+  private NavigationHelper navigationHelper;
   FirefoxDriver wd;
 
-  @BeforeMethod
-  public void setUp() throws Exception {
+  public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://209.182.216.247/admin");
+    userHelper = new UserHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
     loginToAdminPanel("tel.0931513382@gmail.com", "Coin4Coin12345");
   }
 
-  private void loginToAdminPanel(String adminEmail, String adminPassword) {
+  public void loginToAdminPanel(String adminEmail, String adminPassword) {
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
     wd.findElement(By.name("email")).sendKeys(adminEmail);
@@ -26,12 +29,15 @@ public class TestBase {
     wd.findElement(By.className("blue_btn")).click();
   }
 
-  protected void goToUsers() {
-    wd.findElement(By.cssSelector("a[name=users]")).click();
+  public void stop() {
+    wd.quit();
   }
 
-  @AfterMethod
-  public void teardown() {
-    wd.quit();
+  public UserHelper getUserHelper() {
+    return userHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
