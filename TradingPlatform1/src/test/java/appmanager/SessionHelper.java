@@ -11,12 +11,18 @@ public class SessionHelper {
   }
 
   public void loginToAdminPanel(String adminEmail, String adminPassword) {
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(adminEmail);
-    wd.findElement(By.name("password")).click();
-    wd.findElement(By.name("password")).clear();
-    wd.findElement(By.name("password")).sendKeys(adminPassword);
-    wd.findElement(By.className("blue_btn")).click();
+    type(adminEmail, By.name("email"));
+    type(adminPassword, By.name("password"));
+    click(By.className("blue_btn"));
+  }
+
+  private void click(By locator) {
+    wd.findElement(locator).click();
+  }
+
+  private void type(String text, By locator) {
+    click(locator);
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
   }
 }

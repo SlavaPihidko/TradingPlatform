@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/TestBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/TradingPlatform1/.gradle/" />
     <ignored path="$PROJECT_DIR$/TradingPlatform1/build/" />
@@ -52,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            <state relative-caret-position="187">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#985#986#0" expanded="true" />
@@ -72,15 +73,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+            <state relative-caret-position="136">
+              <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#193#194#0" expanded="true" />
                 <element signature="e#214#215#0" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#486#487#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,8 +151,8 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/NavigationHelper.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" />
       </list>
     </option>
   </component>
@@ -230,7 +233,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544482854457" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544544689853" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="F:/javaQuickAppium" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -323,12 +326,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 03m 40s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 04m 50s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="Login_testLogin - 2018.12.10 at 23h 05m 28s.xml">
       <configuration name="Login.testLogin" configurationId="TestNG" />
     </history-entry>
@@ -353,6 +350,12 @@
     <history-entry file="Users_checkUsers - 2018.12.10 at 23h 57m 28s.xml">
       <configuration name="Users.checkUsers" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.11 at 18h 08m 58s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.11 at 18h 11m 36s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -367,7 +370,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36764705" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36764705" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -483,25 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#193#194#0" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -514,10 +498,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        <state relative-caret-position="187">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#985#986#0" expanded="true" />
@@ -528,6 +519,20 @@
             <element signature="e#1311#1312#0" expanded="true" />
             <element signature="e#946#947#0" expanded="true" />
             <element signature="e#976#977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
           </folding>
         </state>
       </provider>
