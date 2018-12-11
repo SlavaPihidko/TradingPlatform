@@ -3,11 +3,10 @@ package appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SessionHelper {
+public class SessionHelper extends HelperBase {
 
-  private FirefoxDriver wd;
   public SessionHelper(FirefoxDriver wd){
-    this.wd = wd;
+    super(wd);
   }
 
   public void loginToAdminPanel(String adminEmail, String adminPassword) {
@@ -16,13 +15,4 @@ public class SessionHelper {
     click(By.className("blue_btn"));
   }
 
-  private void click(By locator) {
-    wd.findElement(locator).click();
-  }
-
-  private void type(String text, By locator) {
-    click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-  }
 }
