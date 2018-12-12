@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/TradingPlatform1/.gradle/" />
     <ignored path="$PROJECT_DIR$/TradingPlatform1/build/" />
@@ -28,11 +30,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="97">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+              <folding>
+                <element signature="e#633#634#0" expanded="true" />
+                <element signature="e#652#653#0" expanded="true" />
+                <element signature="e#686#687#0" expanded="true" />
+                <element signature="e#708#709#0" expanded="true" />
+                <element signature="e#742#743#0" expanded="true" />
+                <element signature="e#768#769#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
+                <element signature="e#852#853#0" expanded="true" />
+                <element signature="e#885#886#0" expanded="true" />
+                <element signature="e#910#911#0" expanded="true" />
+                <element signature="e#956#957#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#1020#1021#0" expanded="true" />
+                <element signature="e#1042#1043#0" expanded="true" />
+                <element signature="e#1082#1083#0" expanded="true" />
+                <element signature="e#1110#1111#0" expanded="true" />
+                <element signature="e#1144#1145#0" expanded="true" />
+                <element signature="e#1170#1171#0" expanded="true" />
+                <element signature="e#1218#1219#0" expanded="true" />
+                <element signature="e#1254#1255#0" expanded="true" />
+                <element signature="e#1286#1287#0" expanded="true" />
+                <element signature="e#1310#1311#0" expanded="true" />
+                <element signature="e#1354#1355#0" expanded="true" />
+                <element signature="e#1386#1387#0" expanded="true" />
+                <element signature="e#1414#1415#0" expanded="true" />
+                <element signature="e#1434#1435#0" expanded="true" />
+                <element signature="e#1470#1471#0" expanded="true" />
+                <element signature="e#1494#1495#0" expanded="true" />
+                <element signature="e#1525#1526#0" expanded="true" />
+                <element signature="e#1548#1549#0" expanded="true" />
+                <element signature="e#1590#1591#0" expanded="true" />
+                <element signature="e#1620#1621#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1109#1110#0" expanded="true" />
@@ -54,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="244">
+              <caret line="19" column="79" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#985#986#0" expanded="true" />
@@ -74,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            <state relative-caret-position="136">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#192#193#0" expanded="true" />
@@ -85,10 +133,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="85">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -104,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/NavigationHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="85">
+              <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#156#157#0" expanded="true" />
@@ -120,8 +168,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="97">
+              <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,12 +208,13 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/Users.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/TestBase.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/ApplicationManager.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/NavigationHelper.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/NavigationHelper.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" />
       </list>
     </option>
   </component>
@@ -231,6 +280,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -246,7 +303,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544545125666" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544653178742" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="F:/javaQuickAppium" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -339,34 +396,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 05m 28s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 06m 43s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 07m 29s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 07m 46s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 12m 16s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 13m 03s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Login_testLogin - 2018.12.10 at 23h 36m 52s.xml">
-      <configuration name="Login.testLogin" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Users_checkUsers - 2018.12.10 at 23h 57m 28s.xml">
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 05m 28s.xml">
       <configuration name="Users.checkUsers" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkUsers - 2018.12.11 at 18h 08m 58s.xml">
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 05m 52s.xml">
       <configuration name="Users.checkUsers" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkUsers - 2018.12.11 at 18h 11m 36s.xml">
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 07m 43s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 09m 29s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 10m 17s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 12m 06s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 12m 56s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 13m 43s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 16m 41s.xml">
+      <configuration name="Users.checkUsers" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkUsers - 2018.12.13 at 00h 17m 41s.xml">
       <configuration name="Users.checkUsers" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -383,7 +440,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36764705" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4003268" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -420,17 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.141.59/8e9423038552821844ba5f7713cc4c1e6d9835b7/selenium-api-3.141.59-sources.jar!/org/openqa/selenium/By.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="187" selection-start-line="187" selection-end-line="187" />
-          <folding>
-            <element signature="e#2059#2060#0" expanded="true" />
-            <element signature="e#2088#2089#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -475,10 +521,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#198#199#0" expanded="true" />
+            <element signature="e#220#221#0" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#192#193#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/NavigationHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="85">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#156#157#0" expanded="true" />
@@ -489,20 +561,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1109#1110#0" expanded="true" />
@@ -511,17 +573,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        <state relative-caret-position="244">
+          <caret line="19" column="79" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#985#986#0" expanded="true" />
@@ -536,28 +591,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        <state relative-caret-position="136">
+          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#192#193#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#708#709#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#768#769#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1082#1083#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
+            <element signature="e#1144#1145#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1254#1255#0" expanded="true" />
+            <element signature="e#1286#1287#0" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
+            <element signature="e#1414#1415#0" expanded="true" />
+            <element signature="e#1434#1435#0" expanded="true" />
+            <element signature="e#1470#1471#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1525#1526#0" expanded="true" />
+            <element signature="e#1548#1549#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+            <element signature="e#1620#1621#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.141.59/8e9423038552821844ba5f7713cc4c1e6d9835b7/selenium-api-3.141.59-sources.jar!/org/openqa/selenium/By.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="106">
+          <caret line="419" selection-start-line="419" selection-end-line="419" />
+          <folding>
+            <element signature="e#2059#2060#0" expanded="true" />
+            <element signature="e#2088#2089#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4186#4187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#198#199#0" expanded="true" />
-            <element signature="e#220#221#0" expanded="true" />
-            <element signature="e#258#259#0" expanded="true" />
-            <element signature="e#299#300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
