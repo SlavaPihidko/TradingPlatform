@@ -13,7 +13,7 @@ public class Users extends TestBase {
     //wd.wait(10);
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
-    UserData oneUser = app.getUserHelper().getUserList();
+    UserData oneUser = app.getUserHelper().getOneUserFromWeb();
     System.out.println(
                     " ID of first user: " + oneUser.getId() + "\n" +
                     " FirstName of first user: " + oneUser.getFirstName() + "\n" +
@@ -23,6 +23,8 @@ public class Users extends TestBase {
                     " Created of first user: " + oneUser.getCreated() + "\n" +
                     " KYC of first user: " + oneUser.getKyc() + "\n" +
                     " Status of first user: " + oneUser.getStatus() + "\n" );
+
+    UserData users = app.getUserHelper().getUsersFromWeb();
   }
 
 }
