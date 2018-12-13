@@ -28,7 +28,15 @@ public class UserHelper extends HelperBase {
   public UserData getUserList(){
     //locator for le po tr.table_row > th:nth-child(2)
     String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
-    UserData user = new UserData(userId);
+    String userFirstName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
+    String userLastName  = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();;
+    String userEmail = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(3)")).getText();
+    String userLastLogin  = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(4)")).getText();;
+    String created  = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(5)")).getText();;
+    String kyc  = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(6)")).getText();;
+    String status  = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();;
+
+    UserData user = new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status );
     return user;
   }
 

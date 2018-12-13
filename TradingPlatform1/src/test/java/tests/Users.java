@@ -14,7 +14,15 @@ public class Users extends TestBase {
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
     UserData oneUser = app.getUserHelper().getUserList();
-    System.out.println("ID of first user: " + oneUser.getId());
+    System.out.println(
+                    " ID of first user: " + oneUser.getId() + "\n" +
+                    " FirstName of first user: " + oneUser.getFirstName() + "\n" +
+                    " LastName of first user: " + oneUser.getLastName() + "\n" +
+                    " Email of first user: " +oneUser.getEmail() + "\n" +
+                    " LastLogin of first user: " + oneUser.getLastLogin() + "\n" +
+                    " Created of first user: " + oneUser.getCreated() + "\n" +
+                    " KYC of first user: " + oneUser.getKyc() + "\n" +
+                    " Status of first user: " + oneUser.getStatus() + "\n" );
   }
 
 }

@@ -4,25 +4,24 @@ public class UserData {
 
   private String id;
   private String firstName;
-
-  //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
-  public UserData(String id) {
-    this.id = id;
-   /* this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.lastLogin = lastLogin;
-    this.created = created;
-    this.kyc = kyc;
-    this.status = status;*/
-  }
-
   private String lastName;
   private String email;
   private String lastLogin;
   private String created;
   private String kyc;
   private String status;
+
+  //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
+  public UserData(String id, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.lastLogin = lastLogin;
+    this.created = created;
+    this.kyc = kyc;
+    this.status = status;
+  }
 
   public String getId() {
     return id;
