@@ -39,7 +39,7 @@ public class UserHelper extends HelperBase {
     return user;
   }
 
-  public UserData getUsersFromWeb() {
+  public List<UserData> getUsersFromWeb() {
     List<UserData> users = new ArrayList<UserData>();
     List<WebElement> elements = wd.findElements(By.className("table_row"));
 
@@ -58,4 +58,5 @@ public class UserHelper extends HelperBase {
     }
     return users;
   }
+
 }

@@ -24,7 +24,8 @@ public class Users extends TestBase {
                     " KYC of first user: " + oneUser.getKyc() + "\n" +
                     " Status of first user: " + oneUser.getStatus() + "\n" );
 
-    UserData users = app.getUserHelper().getUsersFromWeb();
+    List<UserData> users = app.getUserHelper().getUsersFromWeb();
+    System.out.println(users);
   }
 
 }

@@ -1,5 +1,8 @@
 package model;
 
+import java.util.List;
+import java.util.Objects;
+
 public class UserData {
 
   private String id;
@@ -10,6 +13,12 @@ public class UserData {
   private String created;
   private String kyc;
   private String status;
+
+  List<UserData> userData ;
+
+  public List<UserData> getUsersData() {
+    return userData;
+  }
 
   //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
   public UserData(String id, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status) {
@@ -88,4 +97,37 @@ public class UserData {
   }
 
 
+  @Override
+  public String toString() {
+    return "UserData{" +
+            "id='" + id + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", lastLogin='" + lastLogin + '\'' +
+            ", created='" + created + '\'' +
+            ", kyc='" + kyc + '\'' +
+            ", status='" + status + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof UserData)) return false;
+    UserData userData = (UserData) o;
+    return getId().equals(userData.getId()) &&
+            getFirstName().equals(userData.getFirstName()) &&
+            getLastName().equals(userData.getLastName()) &&
+            getEmail().equals(userData.getEmail()) &&
+            getLastLogin().equals(userData.getLastLogin()) &&
+            getCreated().equals(userData.getCreated()) &&
+            Objects.equals(getKyc(), userData.getKyc()) &&
+            Objects.equals(getStatus(), userData.getStatus());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getLastLogin(), getCreated(), getKyc(), getStatus());
+  }
 }
