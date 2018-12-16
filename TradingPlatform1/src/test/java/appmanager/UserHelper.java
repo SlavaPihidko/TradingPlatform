@@ -57,6 +57,10 @@ public class UserHelper extends HelperBase {
 
         users.add(new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status));
     }
+
+    String lastPage = wd.findElement(By.cssSelector("ul.pagination li:nth-last-child(2)")).getText();
+    System.out.println("last page of User page " +lastPage);
+
     return users;
   }
 
