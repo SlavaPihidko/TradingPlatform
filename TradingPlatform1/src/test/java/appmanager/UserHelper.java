@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserHelper extends HelperBase {
 
@@ -39,8 +41,8 @@ public class UserHelper extends HelperBase {
     return user;
   }
 
-  public List<UserData> getUsersFromWeb() throws InterruptedException {
-    List<UserData> users = new ArrayList<UserData>();
+  public Set<UserData> getUsersFromWeb() throws InterruptedException {
+    Set<UserData> users = new HashSet<>();
     String baseLocatorUser = "table_row";
     List<WebElement> elements = wd.findElements(By.className(baseLocatorUser));
 

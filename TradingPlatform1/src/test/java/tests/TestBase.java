@@ -1,21 +1,24 @@
 package tests;
 
 import appmanager.ApplicationManager;
+import model.UserData;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager();
 
-  @BeforeMethod
+  //@BeforeMethod
   public void setUp() throws Exception {
     app.init();
   }
 
-  @AfterMethod
+  //@AfterMethod
   public void teardown() {
     app.stop();
   }
@@ -32,13 +35,26 @@ public class TestBase {
     password = "qwerty";
     dbURL = "jdbc:mysql://146.71.78.211:3306?autoReconnect=true&useSSL=false";
 
+    Set<UserData> userFromDB = null;
+
     try {
       conn = DriverManager.getConnection(dbURL, userName, password);
 
       Statement st = conn.createStatement();
-      ResultSet rs = st.executeQuery("SELECT id FROM puredex.users where id=10;");
+      ResultSet rs = st.executeQuery("SELECT id FROM puredex.users where id=262;");
 
       System.out.println(rs);
+
+      userFromDB = new HashSet<>();
+      while (rs.next()) {
+        UserData userData = new UserData(rs.getString("id"));
+       userFromDB.add(userData);
+
+        System.out.println();
+      }
+      for (UserData n : userFromDB) {
+        System.out.println("User from DB equal : " + n);
+      }
 
 
       rs.close();

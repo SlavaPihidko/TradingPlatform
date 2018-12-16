@@ -2,6 +2,7 @@ package model;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class UserData {
 
@@ -14,9 +15,9 @@ public class UserData {
   private String kyc;
   private String status;
 
-  List<UserData> userData ;
+  Set<UserData> userData ;
 
-  public List<UserData> getUsersData() {
+  public Set<UserData> getUsersData() {
     return userData;
   }
 
@@ -30,6 +31,10 @@ public class UserData {
     this.created = created;
     this.kyc = kyc;
     this.status = status;
+  }
+
+  public UserData(String id) {
+    this.id = id;
   }
 
   public String getId() {

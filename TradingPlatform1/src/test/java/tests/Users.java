@@ -4,6 +4,7 @@ import model.UserData;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Set;
 
 public class Users extends TestBase {
 
@@ -24,12 +25,12 @@ public class Users extends TestBase {
                     " KYC of first user: " + oneUser.getKyc() + "\n" +
                     " Status of first user: " + oneUser.getStatus() + "\n" );
 
-    List<UserData> users = app.getUserHelper().getUsersFromWeb();
+    Set<UserData> users = app.getUserHelper().getUsersFromWeb();
     System.out.println(users);
 
   }
 
-  @Test
+ @Test
   public void checkConnToDB(){
     connToDB();
   }
