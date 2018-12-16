@@ -39,7 +39,7 @@ public class UserHelper extends HelperBase {
     return user;
   }
 
-  public List<UserData> getUsersFromWeb() {
+  public List<UserData> getUsersFromWeb() throws InterruptedException {
     List<UserData> users = new ArrayList<UserData>();
     String baseLocatorUser = "table_row";
     List<WebElement> elements = wd.findElements(By.className(baseLocatorUser));
@@ -57,9 +57,25 @@ public class UserHelper extends HelperBase {
 
         users.add(new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status));
     }
+    // последнее число пагинации
+    String lastPageOfPagination = wd.findElement(By.cssSelector("ul.pagination li:nth-last-child(2)")).getText();
+    int lp = Integer.parseInt(lastPageOfPagination); //приведение типов
+    System.out.println("last page of User page " +lastPageOfPagination);
+    //Пагинация. Ходим по страницам.
+    if(lp > 1 ) {
+      for (int i = 3; i <= 6; i++) {
+        click(By.cssSelector("ul.pagination li:nth-child(" + i + ")"));
+        System.out.println("Текущая страница " + wd.findElement(By.cssSelector("ul.pagination li.active")).getText());
+        Thread.sleep(2000);
+      }
+    }
+    if(lp > 7) {
+      for (int i = 0; i <=  lp - 6; i++) {
+        click(By.cssSelector("ul.pagination li:nth-child(6)"));
+      System.out.println(" второй цикл Текущая страница " + wd.findElement(By.cssSelector("ul.pagination li.active")).getText());
+      Thread.sleep(2000);}
+    }
 
-    String lastPage = wd.findElement(By.cssSelector("ul.pagination li:nth-last-child(2)")).getText();
-    System.out.println("last page of User page " +lastPage);
 
     return users;
   }
