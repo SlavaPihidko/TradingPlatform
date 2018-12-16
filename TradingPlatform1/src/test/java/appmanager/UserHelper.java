@@ -41,20 +41,21 @@ public class UserHelper extends HelperBase {
 
   public List<UserData> getUsersFromWeb() {
     List<UserData> users = new ArrayList<UserData>();
-    List<WebElement> elements = wd.findElements(By.className("table_row"));
+    String baseLocatorUser = "table_row";
+    List<WebElement> elements = wd.findElements(By.className(baseLocatorUser));
 
     for (WebElement element : elements) {
 
-      String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
-      String userFirstName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
-      String userLastName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
-      String userEmail = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(3)")).getText();
-      String userLastLogin = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(4)")).getText();
-      String created = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(5)")).getText();
-      String kyc = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(6)")).getText();
-      String status = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();
+        String userId = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+        String userFirstName = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+        String userLastName = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+        String userEmail = element.findElement(By.cssSelector("th:nth-child(3)")).getText();
+        String userLastLogin = element.findElement(By.cssSelector("th:nth-child(4)")).getText();
+        String created = element.findElement(By.cssSelector("th:nth-child(5)")).getText();
+        String kyc = element.findElement(By.cssSelector("th:nth-child(6)")).getText();
+        String status = element.findElement(By.cssSelector("th:nth-child(7)")).getText();
 
-      users.add(new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status));
+        users.add(new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status));
     }
     return users;
   }
