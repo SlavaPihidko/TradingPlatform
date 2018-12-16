@@ -10,7 +10,7 @@ public class Users extends TestBase {
 
   @Test
   public void checkUsers() throws InterruptedException {
-    //wd.wait(10);
+
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
     UserData oneUser = app.getUserHelper().getOneUserFromWeb();
@@ -26,6 +26,12 @@ public class Users extends TestBase {
 
     List<UserData> users = app.getUserHelper().getUsersFromWeb();
     System.out.println(users);
+
+  }
+
+  @Test
+  public void checkConnToDB(){
+    connToDB();
   }
 
 }

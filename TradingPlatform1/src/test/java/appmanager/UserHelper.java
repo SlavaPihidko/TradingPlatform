@@ -57,6 +57,7 @@ public class UserHelper extends HelperBase {
 
         users.add(new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status));
     }
+    /*
     // последнее число пагинации
     String lastPageOfPagination = wd.findElement(By.cssSelector("ul.pagination li:nth-last-child(2)")).getText();
     int lp = Integer.parseInt(lastPageOfPagination); //приведение типов
@@ -75,6 +76,7 @@ public class UserHelper extends HelperBase {
       System.out.println(" второй цикл Текущая страница " + wd.findElement(By.cssSelector("ul.pagination li.active")).getText());
       Thread.sleep(2000);}
     }
+    */
 
 
     return users;
