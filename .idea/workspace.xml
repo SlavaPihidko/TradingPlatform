@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jcraft_jsch_0_1_55.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" afterDir="false" />
     </list>
@@ -30,25 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1121#1122#0" expanded="true" />
-                <element signature="e#1141#1142#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="43" column="23" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="23" />
+            <state relative-caret-position="92">
+              <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="289">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -68,12 +58,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+            <state relative-caret-position="272">
+              <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#375#376#0" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+                <element signature="e#470#471#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/ConnectionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,7 +100,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
+            <state relative-caret-position="374">
               <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -134,11 +136,12 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/NavigationHelper.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/build.gradle" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/build.gradle" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/ConnectionManager.java" />
       </list>
     </option>
   </component>
@@ -227,7 +230,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544991839877" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545173962566" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="F:/javaQuickAppium" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -339,34 +342,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 20h 52m 51s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.18 at 23h 54m 13s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 20h 58m 26s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.18 at 23h 57m 20s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkUsers - 2018.12.16 at 21h 26m 53s.xml">
-      <configuration name="Users.checkUsers" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 02m 07s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.18 at 23h 59m 30s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 04m 37s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 03m 38s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 08m 19s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 11m 12s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 08m 51s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 12m 18s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 10m 14s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 19m 30s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 14m 12s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 26m 59s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="Users_checkConnToDB - 2018.12.16 at 22h 17m 06s.xml">
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 55m 29s.xml">
+      <configuration name="Users.checkConnToDB" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users_checkConnToDB - 2018.12.19 at 00h 58m 32s.xml">
       <configuration name="Users.checkConnToDB" configurationId="TestNG" />
     </history-entry>
   </component>
@@ -392,7 +395,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.06535948" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42647058" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -517,13 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -548,9 +544,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.sql/java/sql/DriverManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="216" column="29" selection-start-line="216" selection-start-column="29" selection-end-line="216" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
+        <state relative-caret-position="374">
           <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -562,24 +572,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        <state relative-caret-position="272">
+          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch/0.1.55/1ed25a5ba2c0bbe14bae93817b76a246e622efd7/jsch-0.1.55-sources.jar!/com/jcraft/jsch/JSch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="272" selection-start-line="272" selection-end-line="272" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch/0.1.55/1ed25a5ba2c0bbe14bae93817b76a246e622efd7/jsch-0.1.55-sources.jar!/com/jcraft/jsch/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="2384" selection-start-line="2384" selection-end-line="2384" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jcraft/jsch/0.1.55/1ed25a5ba2c0bbe14bae93817b76a246e622efd7/jsch-0.1.55-sources.jar!/com/jcraft/jsch/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="408" selection-start-line="408" selection-end-line="408" />
+          <folding>
+            <element signature="e#11064#11065#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+        <state relative-caret-position="92">
+          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1141#1142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

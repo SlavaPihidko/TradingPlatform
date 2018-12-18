@@ -1,17 +1,20 @@
 package tests;
 
 import appmanager.ApplicationManager;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
 import model.UserData;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TestBase {
+public class TestBase extends ConnectionManager {
 
   protected final ApplicationManager app = new ApplicationManager();
+
+  protected final ConnectionManager cam =new ConnectionManager();
 
   //@BeforeMethod
   public void setUp() throws Exception {
@@ -37,18 +40,19 @@ public class TestBase {
 
     Set<UserData> userFromDB = null;
 
+
     try {
       conn = DriverManager.getConnection(dbURL, userName, password);
 
       Statement st = conn.createStatement();
-      ResultSet rs = st.executeQuery("SELECT id FROM puredex.users where id=262;");
+      ResultSet rs = st.executeQuery("SELECT id FROM puredex.users where id=2;");
 
       System.out.println(rs);
 
       userFromDB = new HashSet<>();
       while (rs.next()) {
         UserData userData = new UserData(rs.getString("id"));
-       userFromDB.add(userData);
+        userFromDB.add(userData);
 
         System.out.println();
       }
@@ -69,5 +73,6 @@ public class TestBase {
       System.out.println("VendorError: " + ex.getErrorCode());
     }
   }
-
 }
+
+

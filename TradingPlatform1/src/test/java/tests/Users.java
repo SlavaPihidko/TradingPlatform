@@ -32,7 +32,8 @@ public class Users extends TestBase {
 
  @Test
   public void checkConnToDB(){
-    connToDB();
+   cam.getConnection();
+   cam.close();
   }
 
 
