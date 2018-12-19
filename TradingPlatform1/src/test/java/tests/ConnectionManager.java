@@ -3,9 +3,12 @@ package tests;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import model.UserData;
 
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ConnectionManager {
 
@@ -44,12 +47,30 @@ public class ConnectionManager {
     var user = "root";
     var password = "qwerty";
 
+    Set<UserData> userFromDB = null;
+
     try {
       Class.forName("com.mysql.jdbc.Driver");
       con = DriverManager.getConnection(connectionString, user, password);
 
       Statement st = con.createStatement();
       ResultSet rs = st.executeQuery("SELECT id FROM coin4coin_db.users where id=262;");
+
+      userFromDB = new HashSet<>();
+      while (rs.next()) {
+        UserData userData = new UserData(rs.getString("id"));
+        userFromDB.add(userData);
+
+        System.out.println();
+      }
+      for (UserData n : userFromDB) {
+        System.out.println("User from DB equal : " + n);
+      }
+
+
+      rs.close();
+      st.close();
+      con.close();
 
       System.out.println(rs);
 
