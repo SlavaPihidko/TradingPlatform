@@ -3,7 +3,6 @@ package tests;
 import model.UserData;
 import org.testng.annotations.Test;
 
-import java.util.List;
 import java.util.Set;
 
 public class Users extends TestBase {
@@ -32,8 +31,8 @@ public class Users extends TestBase {
 
  @Test
   public void checkConnToDB(){
-   cam.getConnection();
-   cam.close();
+   cm.getConnection();
+   cm.close();
   }
 
 

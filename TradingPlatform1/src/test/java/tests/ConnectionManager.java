@@ -4,8 +4,6 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import model.UserData;
-
-
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,22 +14,26 @@ public class ConnectionManager {
   private Session session = null;
 
   public Connection getConnection() {
-    Connection con = null;
+    Connection conn = null;
 
 
 
     boolean useSSH = true;
+    String host = "209.182.216.247";
     int sshPort = 22;
+    String sshPasword = "pxKL37ZA=n3A";
     String sqlIp = "127.0.0.1";
     int sqlPort = 3306;
     int lPort = 4321;
+    var user = "root";
+    var password = "qwerty";
 
 
     if (useSSH) {
       JSch jSch = new JSch();
       try {
-        this.session = jSch.getSession("root", "209.182.216.247", 22);
-        this.session.setPassword("pxKL37ZA=n3A");
+        this.session = jSch.getSession(user, host, sshPort);
+        this.session.setPassword(sshPasword);
         this.session.setConfig("StrictHostKeyChecking", "no");
         System.out.println("Establishing Connection...");
         this.session.connect();
@@ -44,16 +46,13 @@ public class ConnectionManager {
 
     var connectionString = String.format("jdbc:mysql://localhost:4321?autoReconnect=true&useSSL=false");
 
-    var user = "root";
-    var password = "qwerty";
-
     Set<UserData> userFromDB = null;
 
     try {
       Class.forName("com.mysql.jdbc.Driver");
-      con = DriverManager.getConnection(connectionString, user, password);
+      conn = DriverManager.getConnection(connectionString, user, password);
 
-      Statement st = con.createStatement();
+      Statement st = conn.createStatement();
       ResultSet rs = st.executeQuery("SELECT id FROM coin4coin_db.users where id=262;");
 
       userFromDB = new HashSet<>();
@@ -70,18 +69,67 @@ public class ConnectionManager {
 
       rs.close();
       st.close();
-      con.close();
+      conn.close();
 
       System.out.println(rs);
-
-    } catch (SQLException e) {
+    }
+    catch (SQLException e) {
       e.printStackTrace();
-    } catch (ClassNotFoundException e) {
+    }
+    catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
 
-    return con;
+    return conn;
   }
+
+  //Подключение к БД без SSH
+  /*public void connToDB() {
+
+    String userName;
+    String password;
+    String dbURL;
+    Connection conn;
+
+    userName = "root";
+    password = "qwerty";
+    dbURL = "jdbc:mysql://146.71.78.211:3306?autoReconnect=true&useSSL=false";
+
+    Set<UserData> userFromDB = null;
+
+
+    try {
+      conn = DriverManager.getConnection(dbURL, userName, password);
+
+      Statement st = conn.createStatement();
+      ResultSet rs = st.executeQuery("SELECT id FROM puredex.users where id=2;");
+
+      System.out.println(rs);
+
+      userFromDB = new HashSet<>();
+      while (rs.next()) {
+        UserData userData = new UserData(rs.getString("id"));
+        userFromDB.add(userData);
+
+        System.out.println();
+      }
+      for (UserData n : userFromDB) {
+        System.out.println("User from DB equal : " + n);
+      }
+
+
+      rs.close();
+      st.close();
+      conn.close();
+      // Do something with the Connection
+    } catch (SQLException ex) {
+
+      // handle any errors
+      System.out.println("SQLException: " + ex.getMessage());
+      System.out.println("SQLState: " + ex.getSQLState());
+      System.out.println("VendorError: " + ex.getErrorCode());
+    }
+  } */
 
   public void close() {
     if (this.con != null) {
