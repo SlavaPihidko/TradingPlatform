@@ -14,9 +14,6 @@ public class ConnectionManager {
   private Session session = null;
 
   public Connection getConnection() {
-    Connection conn = null;
-
-
 
     boolean useSSH = true;
     String host = "209.182.216.247";
@@ -50,9 +47,9 @@ public class ConnectionManager {
 
     try {
       Class.forName("com.mysql.jdbc.Driver");
-      conn = DriverManager.getConnection(connectionString, user, password);
+      con = DriverManager.getConnection(connectionString, user, password);
 
-      Statement st = conn.createStatement();
+      Statement st = con.createStatement();
       ResultSet rs = st.executeQuery("SELECT id FROM coin4coin_db.users where id=262;");
 
       userFromDB = new HashSet<>();
@@ -69,7 +66,7 @@ public class ConnectionManager {
 
       rs.close();
       st.close();
-      conn.close();
+      con.close();
 
       System.out.println(rs);
     }
@@ -80,7 +77,7 @@ public class ConnectionManager {
       e.printStackTrace();
     }
 
-    return conn;
+    return con;
   }
 
   //Подключение к БД без SSH
