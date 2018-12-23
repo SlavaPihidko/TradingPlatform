@@ -7,6 +7,7 @@ import java.util.Set;
 public class UserData {
 
   private String id;
+  private String fullName;
   private String firstName;
   private String lastName;
   private String email;
@@ -22,10 +23,9 @@ public class UserData {
   }
 
   //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
-  public UserData(String id, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status) {
+  public UserData(String id, String fullName, String email, String lastLogin, String created, String kyc, String status) {
     this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.fullName = fullName;
     this.email = email;
     this.lastLogin = lastLogin;
     this.created = created;
@@ -43,6 +43,14 @@ public class UserData {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public String getFullName() {
+    return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   public String getFirstName() {
@@ -101,11 +109,11 @@ public class UserData {
     this.status = status;
   }
 
-
   @Override
   public String toString() {
     return "UserData{" +
             "id='" + id + '\'' +
+            ", fullName='" + fullName + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", email='" + email + '\'' +
@@ -113,6 +121,7 @@ public class UserData {
             ", created='" + created + '\'' +
             ", kyc='" + kyc + '\'' +
             ", status='" + status + '\'' +
+            ", userData=" + userData +
             '}';
   }
 
@@ -121,18 +130,17 @@ public class UserData {
     if (this == o) return true;
     if (!(o instanceof UserData)) return false;
     UserData userData = (UserData) o;
-    return getId().equals(userData.getId()) &&
-            getFirstName().equals(userData.getFirstName()) &&
-            getLastName().equals(userData.getLastName()) &&
-            getEmail().equals(userData.getEmail()) &&
-            getLastLogin().equals(userData.getLastLogin()) &&
-            getCreated().equals(userData.getCreated()) &&
+    return Objects.equals(getId(), userData.getId()) &&
+            Objects.equals(getFullName(), userData.getFullName()) &&
+            Objects.equals(getEmail(), userData.getEmail()) &&
+            Objects.equals(getLastLogin(), userData.getLastLogin()) &&
+            Objects.equals(getCreated(), userData.getCreated()) &&
             Objects.equals(getKyc(), userData.getKyc()) &&
             Objects.equals(getStatus(), userData.getStatus());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getLastLogin(), getCreated(), getKyc(), getStatus());
+    return Objects.hash(getId(), getFullName(), getEmail(), getLastLogin(), getCreated(), getKyc(), getStatus());
   }
 }

@@ -28,15 +28,14 @@ public class UserHelper extends HelperBase {
   }*/
   public UserData getOneUserFromWeb() {
     String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
-    String userFirstName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
-    String userLastName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
+    String userFullName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
     String userEmail = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(3)")).getText();
     String userLastLogin = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(4)")).getText();
     String created = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(5)")).getText();
     String kyc = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(6)")).getText();
     String status = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();
 
-    UserData user = new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status);
+    UserData user = new UserData(userId, userFullName,  userEmail, userLastLogin, created, kyc, status);
     return user;
   }
 
@@ -48,15 +47,15 @@ public class UserHelper extends HelperBase {
     for (WebElement element : elements) {
 
         String userId = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
-        String userFirstName = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
-        String userLastName = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+        String userFullName = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+
         String userEmail = element.findElement(By.cssSelector("th:nth-child(3)")).getText();
         String userLastLogin = element.findElement(By.cssSelector("th:nth-child(4)")).getText();
         String created = element.findElement(By.cssSelector("th:nth-child(5)")).getText();
         String kyc = element.findElement(By.cssSelector("th:nth-child(6)")).getText();
         String status = element.findElement(By.cssSelector("th:nth-child(7)")).getText();
 
-        users.add(new UserData(userId, userFirstName, userLastName, userEmail, userLastLogin, created, kyc, status));
+        users.add(new UserData(userId, userFullName, userEmail, userLastLogin, created, kyc, status));
     }
     /*
     // последнее число пагинации

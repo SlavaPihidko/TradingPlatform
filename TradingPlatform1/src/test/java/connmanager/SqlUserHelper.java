@@ -28,8 +28,7 @@ public class SqlUserHelper {
     while (rs.next()) {
       UserData userData = new UserData(
               rs.getString("U.id"),
-              rs.getString("UD.first_name"),
-              rs.getString("UD.last_name"),
+              rs.getString("fullName"),
               rs.getString("U.email"),
               rs.getString("U.last_login"),
               rs.getString("U.created_at"),
