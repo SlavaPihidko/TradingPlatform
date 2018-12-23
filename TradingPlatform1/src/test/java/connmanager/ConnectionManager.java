@@ -10,10 +10,10 @@ import java.util.Set;
 
 public class ConnectionManager {
 
-  protected final SqlUserHelper sqlUserHelper = new SqlUserHelper();
+  protected  SqlUserHelper sqlUserHelper ;
 
-  private Connection con = null;
-  private Session session = null;
+  private Connection con;
+  private Session session;
 
   public Connection getConnection() {
 
@@ -47,6 +47,8 @@ public class ConnectionManager {
     try {
       Class.forName("com.mysql.jdbc.Driver");
       con = DriverManager.getConnection(connectionString, user, password);
+
+      sqlUserHelper = new SqlUserHelper(con);
     }
     catch (SQLException e) {
       e.printStackTrace();

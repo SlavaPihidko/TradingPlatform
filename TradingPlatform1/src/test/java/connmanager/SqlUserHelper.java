@@ -2,14 +2,23 @@ package connmanager;
 
 import model.UserData;
 
+import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SqlUserHelper  {
-  public void makeDbQueryForUsers(Statement st, String query ) throws SQLException {
+public class SqlUserHelper   {
+
+private Connection con;
+
+  public SqlUserHelper(Connection con) {
+    this.con = con;
+  }
+
+  public void makeDbQueryForUsers( String query ) throws SQLException {
+    Statement st = con.createStatement();
 
     ResultSet rs = st.executeQuery(query);
     Set<UserData> userFromDB = null;
@@ -25,5 +34,6 @@ public class SqlUserHelper  {
     }
 
     rs.close();
+    st.close();
   }
 }
