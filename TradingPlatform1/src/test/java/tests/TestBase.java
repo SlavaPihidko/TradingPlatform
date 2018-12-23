@@ -18,12 +18,12 @@ public class TestBase extends ConnectionManager {
 
   protected final ConnectionManager cm = new ConnectionManager();
 
-  @BeforeMethod
+ // @BeforeMethod
   public void setUp() throws Exception {
     app.init();
   }
 
-  @AfterMethod
+ // @AfterMethod
   public void teardown() {
     app.stop();
   }

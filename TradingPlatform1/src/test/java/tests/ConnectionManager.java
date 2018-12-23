@@ -26,7 +26,7 @@ public class ConnectionManager {
     var password = "qwerty";
 
 
-    if (useSSH) {
+
       JSch jSch = new JSch();
       try {
         this.session = jSch.getSession(user, host, sshPort);
@@ -34,41 +34,17 @@ public class ConnectionManager {
         this.session.setConfig("StrictHostKeyChecking", "no");
         System.out.println("Establishing Connection...");
         this.session.connect();
-        int assinged_port = this.session.setPortForwardingL(lPort, sqlIp, sqlPort);
-        System.out.println(sqlIp+":"+assinged_port+" -> "+sqlIp+":"+sqlPort);
+        int assigned_port = this.session.setPortForwardingL(lPort, sqlIp, sqlPort);
+        System.out.println(sqlIp + ":" + assigned_port + " -> " + sqlIp + ":" + sqlPort);
       } catch (JSchException e) {
         e.printStackTrace();
       }
-    }
 
     var connectionString = String.format("jdbc:mysql://localhost:4321?autoReconnect=true&useSSL=false");
-
-    Set<UserData> userFromDB = null;
 
     try {
       Class.forName("com.mysql.jdbc.Driver");
       con = DriverManager.getConnection(connectionString, user, password);
-
-      Statement st = con.createStatement();
-      ResultSet rs = st.executeQuery("SELECT id FROM coin4coin_db.users where id=262;");
-
-      userFromDB = new HashSet<>();
-      while (rs.next()) {
-        UserData userData = new UserData(rs.getString("id"));
-        userFromDB.add(userData);
-
-        System.out.println();
-      }
-      for (UserData n : userFromDB) {
-        System.out.println("User from DB equal : " + n);
-      }
-
-
-      rs.close();
-      st.close();
-      con.close();
-
-      System.out.println(rs);
     }
     catch (SQLException e) {
       e.printStackTrace();
