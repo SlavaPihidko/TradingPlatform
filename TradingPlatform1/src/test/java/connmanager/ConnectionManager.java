@@ -1,4 +1,4 @@
-package tests;
+package connmanager;
 
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ConnectionManager {
+
+  protected final SqlUserHelper sqlUserHelper = new SqlUserHelper();
 
   private Connection con = null;
   private Session session = null;
@@ -115,5 +117,9 @@ public class ConnectionManager {
     if (this.session != null) {
       this.session.disconnect();
     }
+  }
+
+  public SqlUserHelper getSqlUserHelper() {
+    return sqlUserHelper;
   }
 }

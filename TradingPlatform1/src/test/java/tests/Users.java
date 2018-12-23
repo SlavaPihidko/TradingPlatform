@@ -3,10 +3,8 @@ package tests;
 import model.UserData;
 import org.testng.annotations.Test;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
 import java.util.Set;
 
 public class Users extends TestBase {
@@ -37,26 +35,10 @@ public class Users extends TestBase {
   public void checkConnToDB() throws SQLException {
 
    Statement st = cm.getConnection().createStatement();
-   makeDbQuery(st,"SELECT id FROM coin4coin_db.users where id=262");
+   sqlUserHelper.makeDbQueryForUsers(st,"SELECT id FROM coin4coin_db.users where id=262");
    st.close();
    //cm.getConnection().close();
   }
 
-  private void makeDbQuery(Statement st, String query ) throws SQLException {
-    ResultSet rs = st.executeQuery(query);
 
-    Set<UserData> userFromDB = null;
-    userFromDB = new HashSet<>();
-    while (rs.next()) {
-      UserData userData = new UserData(rs.getString("id"));
-      userFromDB.add(userData);
-
-      System.out.println();
-    }
-    for (UserData n : userFromDB) {
-      System.out.println("User from DB equal : " + n);
-    }
-
-    rs.close();
-  }
 }

@@ -1,16 +1,7 @@
 package tests;
 
 import appmanager.ApplicationManager;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
-import model.UserData;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import connmanager.ConnectionManager;
 
 public class TestBase extends ConnectionManager {
 
