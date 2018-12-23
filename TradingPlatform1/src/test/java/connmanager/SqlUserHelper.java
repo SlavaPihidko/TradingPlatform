@@ -33,7 +33,7 @@ public class SqlUserHelper {
               rs.getString("U.email"),
               rs.getString("U.last_login"),
               rs.getString("U.created_at"),
-              rs.getString("verifyStatus"),
+              rs.getString("kyc"),
               rs.getString("status"));
        userFromDB.add(userData);
 

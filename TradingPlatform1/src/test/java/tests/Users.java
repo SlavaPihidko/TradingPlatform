@@ -38,12 +38,13 @@ public class Users extends TestBase {
     UserData oneUserFromWeb = app.getUserHelper().getOneUserFromWeb();
 
     cm.getConnection();
-    Set<UserData> oneUserFromDB = cm.getSqlUserHelper().makeDbQueryForUsers("SELECT U.id, UD.first_name, UD.last_name, U.email," +
-            " U.last_login, U.created_at, VS.name as verifyStatus, US.name as status\n" +
+    Set<UserData> oneUserFromDB = cm.getSqlUserHelper().makeDbQueryForUsers("" +
+            "SELECT U.id, UD.first_name, UD.last_name, U.email, U.last_login, U.created_at," +
+            " US.name as kyc, UAS.name as status\n" +
             "FROM coin4coin_db.users U  \n" +
             "join coin4coin_db.user_datas UD on U.id = UD.user_id \n" +
             "join coin4coin_db.user_statuses US on U.status_id = US.id\n" +
-            "join coin4coin_db.verifications_statuses VS on U.account_status_id=VS.id\n" +
+            "join coin4coin_db.user_account_statuses UAS on U.account_status_id = UAS.id\n" +
             "where U.id=262;");
 
 
