@@ -31,14 +31,14 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void checkConnToDB() throws SQLException, InterruptedException {
+  public void checkUserFromWebAndDB() throws SQLException, InterruptedException {
 
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
-    UserData oneUser = app.getUserHelper().getOneUserFromWeb();
+    UserData oneUserFromWeb = app.getUserHelper().getOneUserFromWeb();
 
     cm.getConnection();
-    cm.getSqlUserHelper().makeDbQueryForUsers("SELECT U.id, UD.first_name, UD.last_name, U.email," +
+    Set<UserData> oneUserFromDB = cm.getSqlUserHelper().makeDbQueryForUsers("SELECT U.id, UD.first_name, UD.last_name, U.email," +
             " U.last_login, U.created_at, VS.name as verifyStatus, US.name as status\n" +
             "FROM coin4coin_db.users U  \n" +
             "join coin4coin_db.user_datas UD on U.id = UD.user_id \n" +
@@ -46,7 +46,8 @@ public class Users extends TestBase {
             "join coin4coin_db.verifications_statuses VS on U.account_status_id=VS.id\n" +
             "where U.id=262;");
 
-  assertEquals(oneUser, userFromDB);
+
+  assertEquals(oneUserFromWeb,oneUserFromDB);
 
   }
 }

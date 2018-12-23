@@ -9,18 +9,20 @@ import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SqlUserHelper   {
+public class SqlUserHelper {
 
-private Connection con;
+  private Connection con;
 
   public SqlUserHelper(Connection con) {
     this.con = con;
   }
 
-  public void makeDbQueryForUsers( String query ) throws SQLException {
-    Statement st = con.createStatement();
+  public Set<UserData> makeDbQueryForUsers(String query) throws SQLException {
 
+    Statement st = con.createStatement();
     ResultSet rs = st.executeQuery(query);
+
+
     Set<UserData> userFromDB = null;
     userFromDB = new HashSet<>();
     while (rs.next()) {
@@ -33,7 +35,7 @@ private Connection con;
               rs.getString("U.created_at"),
               rs.getString("verifyStatus"),
               rs.getString("status"));
-      userFromDB.add(userData);
+       userFromDB.add(userData);
 
       System.out.println();
     }
@@ -41,7 +43,10 @@ private Connection con;
       System.out.println("User from DB equal : " + n);
     }
 
-    rs.close();
-    st.close();
+      rs.close();
+      st.close();
+
+      return userFromDB;
+    }
+
   }
-}
