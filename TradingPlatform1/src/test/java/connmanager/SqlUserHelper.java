@@ -24,7 +24,15 @@ private Connection con;
     Set<UserData> userFromDB = null;
     userFromDB = new HashSet<>();
     while (rs.next()) {
-      UserData userData = new UserData(rs.getString("id"));
+      UserData userData = new UserData(
+              rs.getString("U.id"),
+              rs.getString("UD.first_name"),
+              rs.getString("UD.last_name"),
+              rs.getString("U.email"),
+              rs.getString("U.last_login"),
+              rs.getString("U.created_at"),
+              rs.getString("verifyStatus"),
+              rs.getString("status"));
       userFromDB.add(userData);
 
       System.out.println();

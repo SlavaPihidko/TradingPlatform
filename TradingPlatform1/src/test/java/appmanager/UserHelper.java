@@ -4,7 +4,6 @@ import model.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
