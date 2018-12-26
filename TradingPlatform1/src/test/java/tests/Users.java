@@ -3,6 +3,7 @@ package tests;
 import model.UserData;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
@@ -10,7 +11,7 @@ public class Users extends TestBase {
 
 
   @Test
-  public void checkUsers() throws InterruptedException {
+  public void checkUsers() throws InterruptedException, ParseException {
 
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
@@ -31,7 +32,7 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void checkUserFromWebAndDB() throws SQLException, InterruptedException {
+  public void checkUserFromWebAndDB() throws SQLException, InterruptedException, ParseException {
 
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
