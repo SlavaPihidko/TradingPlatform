@@ -26,7 +26,8 @@ public class UserHelper extends HelperBase {
     }
     return users;
   }*/
-  public UserData getOneUserFromWeb() throws ParseException {
+  public Set<UserData> getOneUserFromWeb() throws ParseException {
+    Set<UserData> users = new HashSet<>();
     String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
     String userFullName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
     String userEmail = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(3)")).getText();
@@ -45,7 +46,9 @@ public class UserHelper extends HelperBase {
     String status = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();
 
     UserData user = new UserData(userId, userFullName,  userEmail, userLastLoginFormatted, createdFormatted, kyc, status);
-    return user;
+    System.out.println("User from WEB equal : " + user);
+    users.add(user);
+    return users;
   }
 
   public Set<UserData> getUsersFromWeb() throws InterruptedException {
