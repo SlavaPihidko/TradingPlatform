@@ -47,7 +47,7 @@ public class Users extends TestBase {
             "join coin4coin_db.user_statuses US on U.status_id = US.id\n" +
             "join coin4coin_db.user_account_statuses UAS on U.account_status_id = UAS.id\n" +
             "where U.id=262;");
-    
+
   assertEquals(oneUserFromWeb,oneUserFromDB);
 
   }
