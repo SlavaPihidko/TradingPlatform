@@ -16,11 +16,6 @@ public class UserData {
   private String kyc;
   private String status;
 
-  Set<UserData> userData ;
-
-  public Set<UserData> getUsersData() {
-    return userData;
-  }
 
   //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
   public UserData(String id, String fullName, String email, String lastLogin, String created, String kyc, String status) {
@@ -121,7 +116,6 @@ public class UserData {
             ", created='" + created + '\'' +
             ", kyc='" + kyc + '\'' +
             ", status='" + status + '\'' +
-            ", userData=" + userData +
             '}';
   }
 
@@ -129,18 +123,36 @@ public class UserData {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (!(o instanceof UserData)) return false;
+
     UserData userData = (UserData) o;
-    return Objects.equals(getId(), userData.getId()) &&
-            Objects.equals(getFullName(), userData.getFullName()) &&
-            Objects.equals(getEmail(), userData.getEmail()) &&
-            Objects.equals(getLastLogin(), userData.getLastLogin()) &&
-            Objects.equals(getCreated(), userData.getCreated()) &&
-            Objects.equals(getKyc(), userData.getKyc()) &&
-            Objects.equals(getStatus(), userData.getStatus());
+
+    if (getId() != null ? !getId().equals(userData.getId()) : userData.getId() != null) return false;
+    if (getFullName() != null ? !getFullName().equals(userData.getFullName()) : userData.getFullName() != null)
+      return false;
+    if (getFirstName() != null ? !getFirstName().equals(userData.getFirstName()) : userData.getFirstName() != null)
+      return false;
+    if (getLastName() != null ? !getLastName().equals(userData.getLastName()) : userData.getLastName() != null)
+      return false;
+    if (getEmail() != null ? !getEmail().equals(userData.getEmail()) : userData.getEmail() != null) return false;
+    if (getLastLogin() != null ? !getLastLogin().equals(userData.getLastLogin()) : userData.getLastLogin() != null)
+      return false;
+    if (getCreated() != null ? !getCreated().equals(userData.getCreated()) : userData.getCreated() != null)
+      return false;
+    if (getKyc() != null ? !getKyc().equals(userData.getKyc()) : userData.getKyc() != null) return false;
+    return getStatus() != null ? getStatus().equals(userData.getStatus()) : userData.getStatus() == null;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getId(), getFullName(), getEmail(), getLastLogin(), getCreated(), getKyc(), getStatus());
+    int result = getId() != null ? getId().hashCode() : 0;
+    result = 31 * result + (getFullName() != null ? getFullName().hashCode() : 0);
+    result = 31 * result + (getFirstName() != null ? getFirstName().hashCode() : 0);
+    result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
+    result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+    result = 31 * result + (getLastLogin() != null ? getLastLogin().hashCode() : 0);
+    result = 31 * result + (getCreated() != null ? getCreated().hashCode() : 0);
+    result = 31 * result + (getKyc() != null ? getKyc().hashCode() : 0);
+    result = 31 * result + (getStatus() != null ? getStatus().hashCode() : 0);
+    return result;
   }
 }
