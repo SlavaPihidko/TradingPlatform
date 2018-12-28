@@ -15,11 +15,22 @@ import java.util.Set;
 public class ApiRequests {
 
   @Test
-  private Set<UserData> getWallets() throws IOException {
+  public void testUserList() throws IOException {
+    Set<UserData> setUsersFromRequest =  getUsers();
+    System.out.println("spisok " +setUsersFromRequest);
+    for(UserData n: setUsersFromRequest) {
+      System.out.println("n :" +n);
+    }
+  }
+
+
+
+  private Set<UserData> getUsers() throws IOException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
-            .addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDU5NDU1MzcsImV4cCI6MTU0NTk1NjMzNywibmJmIjoxNTQ1OTQ1NTM3LCJqdGkiOiI3NENCa09RRk5DdUdXdzdTIn0.6dv5eZ1CViKOVcxBC6HY_BeUsEEfDcnF6dlDfNDc_Ng")
+            .addHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDYwMzU0MjcsImV4cCI6MTU0NjA0NjIyNywibmJmIjoxNTQ2MDM1NDI3LCJqdGkiOiJSRDdaSHJpTjRCNGlWU0t2In0.h0dOWN_OKQ85pj89Yu7D7bKWCBauY5XgfwT1P0DzhfI")
             .execute().returnContent().asString();
+
 
     JsonParser jsonParser = new JsonParser();
     JsonArray parsed  = jsonParser.parse(json).getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users");
