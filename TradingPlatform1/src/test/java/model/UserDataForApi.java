@@ -10,7 +10,8 @@ public class UserDataForApi {
   private String email;
   private String username;
 
-  public UserDataForApi(String id, String type_id, String status_id, String last_login, String created_at, String email, String username) {
+  public UserDataForApi(String id, String type_id, String status_id,
+                        String last_login, String created_at, String email, String username) {
     this.id = id;
     this.type_id = type_id;
     this.status_id = status_id;

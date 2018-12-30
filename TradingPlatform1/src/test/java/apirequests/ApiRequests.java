@@ -7,6 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import model.UserData;
 import model.UserDataForApi;
+import model.UserDataForApiSecondPart;
 import org.apache.http.client.fluent.Request;
 import org.testng.annotations.Test;
 
@@ -54,11 +55,41 @@ public class ApiRequests {
             .addHeader("authorization", token)
             .execute().returnContent().asString();
 
-
     JsonParser jsonParser = new JsonParser();
-    JsonElement parsed  = jsonParser.parse(json).getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users").get(0);
+    JsonElement parsedFirstPart  = jsonParser.parse(json)
+            .getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users").get(0);
 
-    System.out.println("Массив обьектов wallets представлен строкой "+ parsed);
-    return new Gson().fromJson(parsed, new TypeToken<UserDataForApi>(){}.getType());
+    UserDataForApi userOneFromRequestFirstPart
+            = new Gson().fromJson(parsedFirstPart, new TypeToken<UserDataForApi>(){}.getType());
+
+
+
+    System.out.println("parsedFirstPart "+ parsedFirstPart);
+    System.out.println("userOneFromRequestFirstPart " +userOneFromRequestFirstPart);
+
+    //==============================================================================================
+
+    JsonElement parsedSecondPart  = jsonParser.parse(json)
+            .getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users").get(0);
+
+    JsonElement userAccountStatuses = parsedSecondPart.getAsJsonObject().get("user_account_statuses");
+
+    UserDataForApiSecondPart userOneFromRequestSecondPart
+            = new Gson().fromJson(userAccountStatuses, new TypeToken<UserDataForApiSecondPart>(){}.getType());
+
+    // Запихиваем результат с секондпарт в первый обьект
+    String status = userOneFromRequestSecondPart.getName();
+
+    UserDataForApi userOneFromRequestNew = new UserDataForApi(userOneFromRequestFirstPart.getId(),
+                                                              userOneFromRequestFirstPart.getType_id(),
+                                                              status,
+                                                              userOneFromRequestFirstPart.getLast_login(),
+                                                              userOneFromRequestFirstPart.getCreated_at(),
+                                                              userOneFromRequestFirstPart.getEmail(),
+                                                              userOneFromRequestFirstPart.getUsername());
+
+    System.out.println("parsedSecondPart "+ parsedSecondPart);
+    System.out.println("userOneFromRequestSecondPart " +userOneFromRequestSecondPart);
+    return userOneFromRequestNew;
   }
 }
