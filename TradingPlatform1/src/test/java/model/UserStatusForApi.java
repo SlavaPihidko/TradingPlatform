@@ -1,23 +1,24 @@
 package model;
 
-public class UserDataForApiSecondPart {
+public class UserStatusForApi {
   String name;
 
-  UserDataForApiSecondPart(String name) {
-    this.name=name;
-  }
 
-  public String getName() {
-    return name;
+  UserStatusForApi (String name){
+    this.name=name;
   }
 
   public void setName(String name) {
     this.name = name;
   }
 
+  public String getName() {
+    return name;
+  }
+
   @Override
   public String toString() {
-    return "UserDataForApiSecondPart{" +
+    return "UserStatusForApi{" +
             "name='" + name + '\'' +
             '}';
   }
@@ -25,9 +26,9 @@ public class UserDataForApiSecondPart {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof UserDataForApiSecondPart)) return false;
+    if (!(o instanceof UserStatusForApi)) return false;
 
-    UserDataForApiSecondPart that = (UserDataForApiSecondPart) o;
+    UserStatusForApi that = (UserStatusForApi) o;
 
     return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
   }
