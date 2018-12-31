@@ -2,6 +2,8 @@ package tests;
 
 import model.UserData;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Set;
@@ -51,4 +53,7 @@ public class Users extends TestBase {
   assertEquals(oneUserFromWeb,oneUserFromDB);
 
   }
+
+
+
 }

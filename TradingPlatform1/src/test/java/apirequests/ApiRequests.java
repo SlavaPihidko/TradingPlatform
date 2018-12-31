@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import model.UserData;
 import model.UserDataForApi;
 import model.UserAccountStatusesForApi;
 import model.UserStatusForApi;
@@ -29,13 +30,13 @@ public class ApiRequests {
 
   @Test
   public void testOneUserFromApi() throws IOException {
-    UserDataForApi userOneFromRequest =  getOneUserFromApi();
+    UserData userOneFromRequest =  getOneUserFromApi();
     System.out.println("one user from API: " +userOneFromRequest);
   }
 
 
 
-  private Set<UserDataForApi> getUsersFromApi() throws IOException {
+  public Set<UserDataForApi> getUsersFromApi() throws IOException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
             .addHeader("authorization", token )
@@ -48,8 +49,9 @@ public class ApiRequests {
     System.out.println("Массив обьектов wallets представлен строкой "+ parsed);
     return new Gson().fromJson(parsed, new TypeToken<Set<UserDataForApi>>(){}.getType());
   }
+
 // метод для создания обьекта одного юзера с АПИ
-  private UserDataForApi getOneUserFromApi() throws IOException {
+  public UserData getOneUserFromApi() throws IOException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
             .addHeader("authorization", token)
@@ -96,15 +98,15 @@ public class ApiRequests {
     String status = userOneFromRequestThirdPart.getName();
 
     // Делаем обьект userOneFromRequestNew с всех трех частей, которые распарсили
-    UserDataForApi userOneFromRequestNew = new UserDataForApi(
-                                                              userOneFromRequestFirstPart.getId(),
-                                                              status,
-                                                              statusAccount,
-                                                              userOneFromRequestFirstPart.getLast_login(),
-                                                              userOneFromRequestFirstPart.getCreated_at(),
-                                                              userOneFromRequestFirstPart.getEmail(),
-                                                              userOneFromRequestFirstPart.getUsername()
-                                                              );
+    UserData userOneFromRequestNew = new UserData(
+                                                  userOneFromRequestFirstPart.getId(),
+                                                  userOneFromRequestFirstPart.getUsername(),
+                                                  userOneFromRequestFirstPart.getEmail(),
+                                                  userOneFromRequestFirstPart.getLast_login(),
+                                                  userOneFromRequestFirstPart.getCreated_at(),
+                                                  status,
+                                                  statusAccount
+                                                  );
 
     System.out.println("parsedSecondPart "+ userStatus);
     System.out.println("userOneFromRequestSecondPart " + userOneFromRequestThirdPart);
