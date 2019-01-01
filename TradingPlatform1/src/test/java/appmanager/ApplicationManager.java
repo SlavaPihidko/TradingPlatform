@@ -17,7 +17,8 @@ public class ApplicationManager {
     userHelper = new UserHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
-    sessionHelper.loginToAdminPanel("tel.0931513382@gmail.com", "Coin4Coin12345");
+    //tel.0931513382@gmail.com
+    sessionHelper.loginToAdminPanel("dsgf@gmail.com", "Coin4Coin12345");
   }
 
   public void stop() {

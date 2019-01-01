@@ -14,10 +14,11 @@ import org.testng.annotations.Test;
 
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
-public class ApiRequests {
-  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDYyNTg3MDMsImV4cCI6MTU0NjI2OTUwMywibmJmIjoxNTQ2MjU4NzAzLCJqdGkiOiJFMGM5Q3dVa1RKYktHWTI0In0.4PxM1msA0e4mLAxYyI9EBk6FYgeQ-HFNiax6aWfcG6U";
+public class ApiUserRequestsHelper extends ApiHelperBase {
+  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDYzNTkyNjQsImV4cCI6MTU0NjM3MDA2NCwibmJmIjoxNTQ2MzU5MjY0LCJqdGkiOiJ5ZUV3ZFhQaGhVaktYY1VJIn0.Ik3aJCe_iMGGEs6VIeDXAXVNXtMB-iyXjnk6Ukj5V00";
 
   @Test
   public void testUsersSetFromApi() throws IOException {
@@ -28,11 +29,7 @@ public class ApiRequests {
     }
   }
 
-  @Test
-  public void testOneUserFromApi() throws IOException {
-    UserData userOneFromRequest =  getOneUserFromApi();
-    System.out.println("one user from API: " +userOneFromRequest);
-  }
+
 
 
 
@@ -51,7 +48,7 @@ public class ApiRequests {
   }
 
 // метод для создания обьекта одного юзера с АПИ
-  public UserData getOneUserFromApi() throws IOException {
+  public Set<UserData> getOneUserFromApi() throws IOException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
             .addHeader("authorization", token)
@@ -98,6 +95,7 @@ public class ApiRequests {
     String status = userOneFromRequestThirdPart.getName();
 
     // Делаем обьект userOneFromRequestNew с всех трех частей, которые распарсили
+    Set<UserData> userSetOneFromRequestNew = new HashSet<>();
     UserData userOneFromRequestNew = new UserData(
                                                   userOneFromRequestFirstPart.getId(),
                                                   userOneFromRequestFirstPart.getUsername(),
@@ -107,10 +105,11 @@ public class ApiRequests {
                                                   status,
                                                   statusAccount
                                                   );
+    userSetOneFromRequestNew.add(userOneFromRequestNew);
 
     System.out.println("parsedSecondPart "+ userStatus);
     System.out.println("userOneFromRequestSecondPart " + userOneFromRequestThirdPart);
 
-    return userOneFromRequestNew;
+    return userSetOneFromRequestNew;
   }
 }

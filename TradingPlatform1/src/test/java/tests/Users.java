@@ -50,10 +50,19 @@ public class Users extends TestBase {
             "join coin4coin_db.user_account_statuses UAS on U.account_status_id = UAS.id\n" +
             "where U.id=262;");
 
-  assertEquals(oneUserFromWeb,oneUserFromDB);
+  assertEquals(oneUserFromDB, oneUserFromWeb);
 
   }
 
+  @Test
+  public void testOneUserFromApi() throws IOException, InterruptedException, ParseException {
+    app.getNavigationHelper().goToUsers();
+    Thread.sleep(10000);
+    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb();
+    Set<UserData> userOneFromRequest =  am.getApiUserRequestsHelper().getOneUserFromApi();
+    System.out.println("one user from API: " +userOneFromRequest);
 
+    assertEquals(userOneFromRequest, oneUserFromWeb);
+  }
 
 }
