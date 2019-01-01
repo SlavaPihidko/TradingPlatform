@@ -17,7 +17,7 @@ public class Users extends TestBase {
 
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
-    Set<UserData> oneUser = app.getUserHelper().getOneUserFromWeb();
+    Set<UserData> oneUser = app.getUserHelper().getOneUserFromWeb(1);
 //    System.out.println( //Вывод данных по одному пользователю для отладки
 //            " ID of first user: " + oneUser.getId() + "\n" +
 //                    " FirstName of first user: " + oneUser.getFirstName() + "\n" +
@@ -38,7 +38,7 @@ public class Users extends TestBase {
 
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
-    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb();
+    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(1);
 
     cm.getConnection();
     Set<UserData> oneUserFromDB = cm.getSqlUserHelper().makeDbQueryForUsers("SELECT U.id," +
@@ -55,10 +55,10 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void testOneUserFromApi() throws IOException, InterruptedException, ParseException {
+  public void checkUserFromApiAndWeb() throws IOException, InterruptedException, ParseException {
     app.getNavigationHelper().goToUsers();
     Thread.sleep(10000);
-    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb();
+    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(0);
     Set<UserData> userOneFromRequest =  am.getApiUserRequestsHelper().getOneUserFromApi();
     System.out.println("one user from API: " +userOneFromRequest);
 

@@ -26,28 +26,36 @@ public class UserHelper extends HelperBase {
     }
     return users;
   }*/
-  public Set<UserData> getOneUserFromWeb() throws ParseException {
+  public Set<UserData> getOneUserFromWeb(int dateWithDash) throws ParseException {
     Set<UserData> users = new HashSet<>();
     String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
     String userFullName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
     String userEmail = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(3)")).getText();
     String userLastLogin = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(4)")).getText();
-//Приведение форматы даты к такой что в БД для userLastLogin
-    //String userLastLoginFormatted2 = userLastLogin.replaceAll("\\.", "-");
-    SimpleDateFormat input = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-    Date dateValue = input.parse(userLastLogin);
-    SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-    String userLastLoginFormatted = output.format(dateValue);
     String created = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(5)")).getText();
-    //Приведение форматы даты к такой что в БД для created
-    Date dateValue2 = input.parse(created);
-    String createdFormatted = output.format(dateValue2);
     String kyc = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(6)")).getText();
     String status = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();
 
-    UserData user = new UserData(userId, userFullName,  userEmail, userLastLoginFormatted, createdFormatted, kyc, status);
-    System.out.println("User from WEB equal : " + user);
-    users.add(user);
+//Приведение форматы даты к такой что в БД для userLastLogin
+    //String userLastLoginFormatted2 = userLastLogin.replaceAll("\\.", "-");
+    if (dateWithDash > 0) {
+      SimpleDateFormat input = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+      Date dateValue = input.parse(userLastLogin);
+      SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+      String userLastLoginFormatted = output.format(dateValue);
+      //String created = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(5)")).getText();
+      //Приведение форматы даты к такой что в БД для created
+      Date dateValue2 = input.parse(created);
+      String createdFormatted = output.format(dateValue2);
+      UserData user = new UserData(userId, userFullName,  userEmail, userLastLoginFormatted, createdFormatted, kyc, status);
+      System.out.println("User from WEB equal : " + user);
+      users.add(user);
+    }
+else {
+      UserData user = new UserData(userId, userFullName, userEmail, userLastLogin, created, kyc, status);
+      System.out.println("User from WEB equal : " + user);
+      users.add(user);
+    }
     return users;
   }
 

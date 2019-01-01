@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ApiUserRequestsHelper extends ApiHelperBase {
-  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDYzNTkyNjQsImV4cCI6MTU0NjM3MDA2NCwibmJmIjoxNTQ2MzU5MjY0LCJqdGkiOiJ5ZUV3ZFhQaGhVaktYY1VJIn0.Ik3aJCe_iMGGEs6VIeDXAXVNXtMB-iyXjnk6Ukj5V00";
+  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDYzNjYyOTYsImV4cCI6MTU0NjM3NzA5NiwibmJmIjoxNTQ2MzY2Mjk2LCJqdGkiOiJlTmJuU1JsTncyZTlIZno4In0.vpK3h60Nv1DqHzFXLnw61KYx3Xsx2W0Mq3rfMAwyufQ";
 
   @Test
   public void testUsersSetFromApi() throws IOException {
