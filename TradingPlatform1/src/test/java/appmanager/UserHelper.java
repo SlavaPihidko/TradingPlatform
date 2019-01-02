@@ -26,7 +26,7 @@ public class UserHelper extends HelperBase {
     }
     return users;
   }*/
-  public Set<UserData> getOneUserFromWeb(int dateWithDash) throws ParseException {
+  public Set<UserData> getOneUserFromWeb(boolean dateWithDash) throws ParseException {
     Set<UserData> users = new HashSet<>();
     String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
     String userFullName = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(2)")).getText();
@@ -36,7 +36,7 @@ public class UserHelper extends HelperBase {
     String kyc = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(6)")).getText();
     String status = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();
 
-    if (dateWithDash > 0) {
+    if (dateWithDash == true) {
       //Приведение форматы даты к такой что в БД для userLastLogin
       SimpleDateFormat input = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
       Date dateValue = input.parse(userLastLogin);

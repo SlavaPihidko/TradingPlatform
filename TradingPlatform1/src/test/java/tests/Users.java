@@ -34,7 +34,7 @@ public class Users extends TestBase {
   public void checkOneUserFromApiAndWeb() throws IOException, InterruptedException, ParseException {
     app.getNavigationHelper().goToUsers();
     Thread.sleep(7000);
-    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(0);
+    Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(false);
     Set<UserData> userOneFromRequest =  am.getApiUserHelper().getOneUserFromApi(false);
 
     assertEquals(oneUserFromWeb, userOneFromRequest);
