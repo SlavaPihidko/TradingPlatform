@@ -14,6 +14,9 @@ import org.testng.annotations.Test;
 
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +34,6 @@ public class ApiUserHelper extends ApiHelperBase {
 
 
 
-
-
   public Set<UserDataForApi> getUsersFromApi() throws IOException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
@@ -43,12 +44,12 @@ public class ApiUserHelper extends ApiHelperBase {
     JsonParser jsonParser = new JsonParser();
     JsonArray parsed  = jsonParser.parse(json).getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users");
 
-    System.out.println("Массив обьектов wallets представлен строкой "+ parsed);
+    //System.out.println("Массив обьектов wallets представлен строкой "+ parsed);
     return new Gson().fromJson(parsed, new TypeToken<Set<UserDataForApi>>(){}.getType());
   }
 
 // метод для создания обьекта одного юзера с АПИ. Берем первого юзера с АПИ
-  public Set<UserData> getOneUserFromApi() throws IOException {
+  public Set<UserData> getOneUserFromApi(boolean dataWithDash) throws IOException, ParseException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
             .addHeader("authorization", token)
@@ -63,8 +64,8 @@ public class ApiUserHelper extends ApiHelperBase {
     UserDataForApi OneUserFromRequestFirstPart
             = new Gson().fromJson(parsedFirstPart, new TypeToken<UserDataForApi>(){}.getType());
 
-    System.out.println("parsedFirstPart "+ parsedFirstPart);
-    System.out.println("OneUserFromRequestFirstPart " + OneUserFromRequestFirstPart);
+    //System.out.println("parsedFirstPart "+ parsedFirstPart);
+    //System.out.println("OneUserFromRequestFirstPart " + OneUserFromRequestFirstPart);
 
     //==============================================================================================
 
@@ -76,8 +77,8 @@ public class ApiUserHelper extends ApiHelperBase {
             = new Gson().fromJson(userAccountStatuses, new TypeToken<UserAccountStatusesForApi>(){}.getType());
 
     String statusAccount = OneUserFromRequestSecondPart.getName();
-    System.out.println("parsedSecondPart "+ userAccountStatuses);
-    System.out.println("OneUserFromRequestSecondPart " + OneUserFromRequestSecondPart);
+    //System.out.println("parsedSecondPart "+ userAccountStatuses);
+    //System.out.println("OneUserFromRequestSecondPart " + OneUserFromRequestSecondPart);
 
     //=============================================================================================
 
@@ -92,19 +93,48 @@ public class ApiUserHelper extends ApiHelperBase {
 
     // Делаем обьект oneUserFromRequestNew с всех трех частей, которые распарсили
     Set<UserData> userSetOneFromRequestNew = new HashSet<>();
-    UserData oneUserFromRequestNew = new UserData(
-                                                  OneUserFromRequestFirstPart.getId(),
-                                                  OneUserFromRequestFirstPart.getUsername(),
-                                                  OneUserFromRequestFirstPart.getEmail(),
-                                                  OneUserFromRequestFirstPart.getLast_login(),
-                                                  OneUserFromRequestFirstPart.getCreated_at(),
-                                                  status,
-                                                  statusAccount
-                                                  );
-    userSetOneFromRequestNew.add(oneUserFromRequestNew);
 
-    System.out.println("parsedSecondPart "+ userStatus);
-    System.out.println("OneUserFromRequestSecondPart " + OneUserFromRequestThirdPart);
+    if(dataWithDash == true) {
+      //Приведение форматы даты к такой что в БД для userLastLogin
+      SimpleDateFormat input = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+      Date dateValue = input.parse(OneUserFromRequestFirstPart.getLast_login());
+      SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+      String userLastLoginFormatted = output.format(dateValue);
+
+      //Приведение форматы даты к такой что в БД для created
+      Date dateValue2 = input.parse(OneUserFromRequestFirstPart.getCreated_at());
+      String createdFormatted = output.format(dateValue2);
+
+      UserData oneUserFromRequestNew = new UserData(
+                                                OneUserFromRequestFirstPart.getId(),
+                                                OneUserFromRequestFirstPart.getUsername(),
+                                                OneUserFromRequestFirstPart.getEmail(),
+                                                userLastLoginFormatted,
+                                                createdFormatted,
+                                                status,
+                                                statusAccount);
+
+      System.out.println("one user from API: " + oneUserFromRequestNew);
+
+      userSetOneFromRequestNew.add(oneUserFromRequestNew);
+    }
+    else {
+      UserData oneUserFromRequestNew = new UserData(
+                                                OneUserFromRequestFirstPart.getId(),
+                                                OneUserFromRequestFirstPart.getUsername(),
+                                                OneUserFromRequestFirstPart.getEmail(),
+                                                OneUserFromRequestFirstPart.getLast_login(),
+                                                OneUserFromRequestFirstPart.getCreated_at(),
+                                                status,
+                                                statusAccount);
+
+      System.out.println("one user from API: " + oneUserFromRequestNew);
+
+      userSetOneFromRequestNew.add(oneUserFromRequestNew);
+    }
+    //System.out.println("parsedSecondPart "+ userStatus);
+    //System.out.println("OneUserFromRequestSecondPart " + OneUserFromRequestThirdPart);
+
 // Возвращаем обьект типа UserData
     return userSetOneFromRequestNew;
   }
