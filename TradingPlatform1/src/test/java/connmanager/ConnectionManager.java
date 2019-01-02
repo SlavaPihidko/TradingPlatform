@@ -3,10 +3,9 @@ package connmanager;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
-import model.UserData;
-import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionManager {
 
@@ -17,10 +16,9 @@ public class ConnectionManager {
 
   public Connection getConnection() {
 
-    boolean useSSH = true;
     String host = "209.182.216.247";
     int sshPort = 22;
-    String sshPasword = "pxKL37ZA=n3A";
+    String sshPassword = "pxKL37ZA=n3A";
     String sqlIp = "127.0.0.1";
     int sqlPort = 3306;
     int lPort = 4321;
@@ -28,11 +26,10 @@ public class ConnectionManager {
     var password = "qwerty";
 
 
-
       JSch jSch = new JSch();
       try {
         this.session = jSch.getSession(user, host, sshPort);
-        this.session.setPassword(sshPasword);
+        this.session.setPassword(sshPassword);
         this.session.setConfig("StrictHostKeyChecking", "no");
         System.out.println("Establishing Connection...");
         this.session.connect();
@@ -47,7 +44,7 @@ public class ConnectionManager {
     try {
       Class.forName("com.mysql.jdbc.Driver");
       con = DriverManager.getConnection(connectionString, user, password);
-
+// Создание обьектов класса помощников
       sqlUserHelper = new SqlUserHelper(con);
     }
     catch (SQLException e) {

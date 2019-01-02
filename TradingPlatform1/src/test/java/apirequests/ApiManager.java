@@ -2,13 +2,13 @@ package apirequests;
 
 public class ApiManager {
 
-  private ApiUserRequestsHelper apiUserRequestsHelper;
+  private ApiUserHelper apiUserRequestsHelper;
 
   public void dealWithApi() {
-    apiUserRequestsHelper = new ApiUserRequestsHelper();
+    apiUserRequestsHelper = new ApiUserHelper();
   }
 
-  public ApiUserRequestsHelper getApiUserRequestsHelper() {
+  public ApiUserHelper getApiUserHelper() {
     return apiUserRequestsHelper;
   }
 }

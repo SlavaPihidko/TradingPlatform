@@ -36,14 +36,13 @@ public class UserHelper extends HelperBase {
     String kyc = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(6)")).getText();
     String status = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(7)")).getText();
 
-//Приведение форматы даты к такой что в БД для userLastLogin
-    //String userLastLoginFormatted2 = userLastLogin.replaceAll("\\.", "-");
     if (dateWithDash > 0) {
+      //Приведение форматы даты к такой что в БД для userLastLogin
       SimpleDateFormat input = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
       Date dateValue = input.parse(userLastLogin);
       SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
       String userLastLoginFormatted = output.format(dateValue);
-      //String created = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(5)")).getText();
+
       //Приведение форматы даты к такой что в БД для created
       Date dateValue2 = input.parse(created);
       String createdFormatted = output.format(dateValue2);
@@ -97,7 +96,6 @@ else {
       Thread.sleep(2000);}
     }
     */
-
 
     return users;
   }
