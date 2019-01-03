@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ApiUserHelper extends ApiHelperBase {
-  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY1MTQwNzcsImV4cCI6MTU0NjUyNDg3NywibmJmIjoxNTQ2NTE0MDc3LCJqdGkiOiI1bGI4cGk3UTJjY3NZSURsIn0.3QOuaF0PPM1CAA-kO_uJfuWleOnflsOUKKcIO2yTkyc";
+  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY1Mjc1MzEsImV4cCI6MTU0NjUzODMzMSwibmJmIjoxNTQ2NTI3NTMxLCJqdGkiOiJERWtmQzdZandqWW9RSmNnIn0.h3LE7tsWd0DRK05cEVQ0p5uy0h7ahikyW77KJBLpTlA";
 
   @Test
   public void testUsersSetFromApi() throws IOException {
@@ -105,28 +105,28 @@ public class ApiUserHelper extends ApiHelperBase {
       Date dateValue2 = input.parse(OneUserFromRequestFirstPart.getCreated_at());
       String createdFormatted = output.format(dateValue2);
 
-      UserData oneUserFromRequestNew = new UserData(
-                                                OneUserFromRequestFirstPart.getId(),
-                                                OneUserFromRequestFirstPart.getUsername(),
-                                                OneUserFromRequestFirstPart.getEmail(),
-                                                userLastLoginFormatted,
-                                                createdFormatted,
-                                                status,
-                                                statusAccount);
+      UserData oneUserFromRequestNew = new UserData()
+                                      .withId(OneUserFromRequestFirstPart.getId())
+                                      .withFullName(OneUserFromRequestFirstPart.getUsername())
+                                      .withEmail(OneUserFromRequestFirstPart.getEmail())
+                                      .withLastLogin(userLastLoginFormatted)
+                                      .withCreated(createdFormatted)
+                                      .withKyc(status)
+                                      .withStatus(statusAccount);
 
       System.out.println("User from API equal: " + oneUserFromRequestNew);
 
       userSetOneFromRequestNew.add(oneUserFromRequestNew);
     }
     else {
-      UserData oneUserFromRequestNew = new UserData(
-                                                OneUserFromRequestFirstPart.getId(),
-                                                OneUserFromRequestFirstPart.getUsername(),
-                                                OneUserFromRequestFirstPart.getEmail(),
-                                                OneUserFromRequestFirstPart.getLast_login(),
-                                                OneUserFromRequestFirstPart.getCreated_at(),
-                                                status,
-                                                statusAccount);
+      UserData oneUserFromRequestNew = new UserData()
+                                      .withId(OneUserFromRequestFirstPart.getId())
+                                      .withFullName(OneUserFromRequestFirstPart.getUsername())
+                                      .withEmail(OneUserFromRequestFirstPart.getEmail())
+                                      .withLastLogin(OneUserFromRequestFirstPart.getLast_login())
+                                      .withCreated(OneUserFromRequestFirstPart.getCreated_at())
+                                      .withKyc(status)
+                                      .withStatus(statusAccount);
 
       System.out.println("User from API _equal_: " + oneUserFromRequestNew);
 

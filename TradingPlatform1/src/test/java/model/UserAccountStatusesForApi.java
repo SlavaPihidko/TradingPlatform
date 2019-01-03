@@ -3,16 +3,17 @@ package model;
 public class UserAccountStatusesForApi {
   String name;
 
-  UserAccountStatusesForApi(String name) {
-    this.name=name;
-  }
+//  UserAccountStatusesForApi(String name) {
+//    this.name=name;
+//  }
 
   public String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public UserAccountStatusesForApi withName(String name) {
     this.name = name;
+    return this;
   }
 
   @Override

@@ -18,90 +18,99 @@ public class UserData {
 
 
   //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
-  public UserData(String id, String fullName, String email, String lastLogin, String created, String kyc, String status) {
-    this.id = id;
-    this.fullName = fullName;
-    this.email = email;
-    this.lastLogin = lastLogin;
-    this.created = created;
-    this.kyc = kyc;
-    this.status = status;
-  }
+//  public UserData(String id, String fullName, String email, String lastLogin, String created, String kyc, String status) {
+//    this.id = id;
+//    this.fullName = fullName;
+//    this.email = email;
+//    this.lastLogin = lastLogin;
+//    this.created = created;
+//    this.kyc = kyc;
+//    this.status = status;
+//  }
 
-  public UserData(String id) {
-    this.id = id;
-  }
+//  public UserData(String id) {
+//    this.id = id;
+//  }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public UserData withId(String id) {
     this.id = id;
+    return this;
   }
 
   public String getFullName() {
     return fullName;
   }
 
-  public void setFullName(String fullName) {
+  public UserData withFullName(String fullName) {
     this.fullName = fullName;
+    return this;
   }
 
   public String getFirstName() {
     return firstName;
   }
 
-  public void setFirstName(String firstName) {
+  public UserData withFirstName(String firstName) {
     this.firstName = firstName;
+    return this;
   }
 
   public String getLastName() {
     return lastName;
   }
 
-  public void setLastName(String lastName) {
+  public UserData withLastName(String lastName) {
     this.lastName = lastName;
+    return this;
   }
 
   public String getEmail() {
     return email;
   }
 
-  public void setEmail(String email) {
+  public UserData withEmail(String email) {
     this.email = email;
+    return this;
   }
 
   public String getLastLogin() {
     return lastLogin;
   }
 
-  public void setLastLogin(String lastLogin) {
+  public UserData withLastLogin(String lastLogin) {
     this.lastLogin = lastLogin;
+    return this;
   }
 
   public String getCreated() {
     return created;
   }
 
-  public void setCreated(String created) {
+  public UserData withCreated(String created) {
     this.created = created;
+    return this;
   }
 
   public String getKyc() {
     return kyc;
   }
 
-  public void setKyc(String kyc) {
+  public UserData withKyc(String kyc) {
     this.kyc = kyc;
+    return this;
   }
 
   public String getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public UserData withStatus(String status) {
     this.status = status;
+    return this;
   }
 
   @Override

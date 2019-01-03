@@ -10,71 +10,78 @@ public class UserDataForApi {
   private String email;
   private String username;
 
-  public UserDataForApi(String id, String type_id, String status_id,
-                        String last_login, String created_at, String email, String username) {
-    this.id = id;
-    this.type_id = type_id;
-    this.status_id = status_id;
-    this.last_login = last_login;
-    this.created_at = created_at;
-    this.email = email;
-    this.username = username;
-  }
+//  public UserDataForApi(String id, String type_id, String status_id,
+//                        String last_login, String created_at, String email, String username) {
+//    this.id = id;
+//    this.type_id = type_id;
+//    this.status_id = status_id;
+//    this.last_login = last_login;
+//    this.created_at = created_at;
+//    this.email = email;
+//    this.username = username;
+//  }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public UserDataForApi withId(String id) {
     this.id = id;
+    return this;
   }
 
   public String getType_id() {
     return type_id;
   }
 
-  public void setType_id(String type_id) {
+  public UserDataForApi withType_id(String type_id) {
     this.type_id = type_id;
+    return this;
   }
 
   public String getStatus_id() {
     return status_id;
   }
 
-  public void setStatus_id(String status_id) {
+  public UserDataForApi withStatus_id(String status_id) {
     this.status_id = status_id;
+    return this;
   }
 
   public String getLast_login() {
     return last_login;
   }
 
-  public void setLast_login(String last_login) {
+  public UserDataForApi withLast_login(String last_login) {
     this.last_login = last_login;
+    return this;
   }
 
   public String getCreated_at() {
     return created_at;
   }
 
-  public void setCreated_at(String created_at) {
+  public UserDataForApi withCreated_at(String created_at) {
     this.created_at = created_at;
+    return this;
   }
 
   public String getEmail() {
     return email;
   }
 
-  public void setEmail(String email) {
+  public UserDataForApi withEmail(String email) {
     this.email = email;
+    return this;
   }
 
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(String username) {
+  public UserDataForApi withUsername(String username) {
     this.username = username;
+    return this;
   }
 
   @Override

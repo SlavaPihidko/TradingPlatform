@@ -21,14 +21,15 @@ public class SqlUserHelper extends SqlHelperBase {
 
     Set<UserData> userOneFromDB = new HashSet<>();
     while (rs.next()) {
-      UserData userData = new UserData(
-              rs.getString("U.id"),
-              rs.getString("fullName"),
-              rs.getString("U.email"),
-              rs.getString("U.last_login"),
-              rs.getString("U.created_at"),
-              rs.getString("kyc"),
-              rs.getString("status"));
+      UserData userData = new UserData()
+              .withId(rs.getString("U.id"))
+              .withFullName(rs.getString("fullName"))
+              .withEmail(rs.getString("U.email"))
+              .withLastLogin(rs.getString("U.last_login"))
+              .withCreated(rs.getString("U.created_at"))
+              .withKyc(rs.getString("kyc"))
+              .withStatus(rs.getString("status"));
+
        userOneFromDB.add(userData);
 
       System.out.println();

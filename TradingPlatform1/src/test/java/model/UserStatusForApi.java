@@ -4,12 +4,13 @@ public class UserStatusForApi {
   String name;
 
 
-  UserStatusForApi (String name){
-    this.name=name;
-  }
+//  UserStatusForApi (String name){
+//    this.name=name;
+//  }
 
-  public void setName(String name) {
+  public UserStatusForApi withName(String name) {
     this.name = name;
+    return this;
   }
 
   public String getName() {

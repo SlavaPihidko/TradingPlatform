@@ -47,12 +47,26 @@ public class UserHelper extends HelperBase {
       //Приведение форматы даты к такой что в БД для created
       Date dateValue2 = input.parse(created);
       String createdFormatted = output.format(dateValue2);
-      UserData user = new UserData(userId, userFullName,  userEmail, userLastLoginFormatted, createdFormatted, kyc, status);
+      UserData user = new UserData()
+                          .withId(userId)
+                          .withFullName(userFullName)
+                          .withEmail(userEmail)
+                          .withLastLogin(userLastLoginFormatted)
+                          .withCreated(createdFormatted)
+                          .withKyc(kyc)
+                          .withStatus(status);
       System.out.println("User from WEB equal : " + user);
       users.add(user);
     }
 else {
-      UserData user = new UserData(userId, userFullName, userEmail, userLastLogin, created, kyc, status);
+      UserData user = new UserData()
+                          .withId(userId)
+                          .withFullName(userFullName)
+                          .withEmail(userEmail)
+                          .withLastLogin(userLastLogin)
+                          .withCreated(created)
+                          .withKyc(kyc)
+                          .withStatus(status);
       System.out.println("User from WEB equal : " + user);
       users.add(user);
     }
@@ -75,7 +89,15 @@ else {
         String kyc = element.findElement(By.cssSelector("th:nth-child(6)")).getText();
         String status = element.findElement(By.cssSelector("th:nth-child(7)")).getText();
 
-        users.add(new UserData(userId, userFullName, userEmail, userLastLogin, created, kyc, status));
+        users.add(new UserData()
+                      .withId(userId)
+                      .withFullName(userFullName)
+                      .withEmail(userEmail)
+                      .withLastLogin(userLastLogin)
+                      .withCreated(created)
+                      .withKyc(kyc)
+                      .withStatus(status)
+        );
     }
     /*
     // последнее число пагинации
