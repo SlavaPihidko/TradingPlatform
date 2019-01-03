@@ -1,5 +1,6 @@
 package appmanager;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -25,7 +26,10 @@ public class ApplicationManager {
     } else if (browser == BrowserType.CHROME) {
       wd = new ChromeDriver();
     }
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    if(browser == BrowserType.CHROME) {
+      wd.manage().window().setSize(new Dimension(1360, 720)); // устанавливает ширину открывающегося окна
+    }
     wd.get("http://209.182.216.247/admin");
     userHelper = new UserHelper(wd);
     navigationHelper = new NavigationHelper(wd);
