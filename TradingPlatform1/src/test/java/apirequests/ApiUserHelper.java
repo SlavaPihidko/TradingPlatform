@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ApiUserHelper extends ApiHelperBase {
-  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY0NjI0ODAsImV4cCI6MTU0NjQ3MzI4MCwibmJmIjoxNTQ2NDYyNDgwLCJqdGkiOiJlM09FanN4NTlqa25qNWx0In0.F_HUqmO0NVzcq82FrSaYx8zUvt9vGe1TxdxJZFN3y0E";
+  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY1MTQwNzcsImV4cCI6MTU0NjUyNDg3NywibmJmIjoxNTQ2NTE0MDc3LCJqdGkiOiI1bGI4cGk3UTJjY3NZSURsIn0.3QOuaF0PPM1CAA-kO_uJfuWleOnflsOUKKcIO2yTkyc";
 
   @Test
   public void testUsersSetFromApi() throws IOException {
@@ -114,7 +114,7 @@ public class ApiUserHelper extends ApiHelperBase {
                                                 status,
                                                 statusAccount);
 
-      System.out.println("one user from API: " + oneUserFromRequestNew);
+      System.out.println("User from API equal: " + oneUserFromRequestNew);
 
       userSetOneFromRequestNew.add(oneUserFromRequestNew);
     }
@@ -128,7 +128,7 @@ public class ApiUserHelper extends ApiHelperBase {
                                                 status,
                                                 statusAccount);
 
-      System.out.println("one user from API: " + oneUserFromRequestNew);
+      System.out.println("User from API _equal_: " + oneUserFromRequestNew);
 
       userSetOneFromRequestNew.add(oneUserFromRequestNew);
     }

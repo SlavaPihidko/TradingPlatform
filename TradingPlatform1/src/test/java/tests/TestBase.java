@@ -14,15 +14,21 @@ public class TestBase  {
 
   protected final ApiManager am = new ApiManager();
 
-  @BeforeMethod
-  public void setUp() throws Exception {
-    app.init();
+  // Запуск Браузера если true
+  public void setUp(boolean withWeb)  {
+    if(withWeb == true)
+    {
+      app.init();
+    }
     am.dealWithApi();
   }
-
-  @AfterMethod
-  public void teardown() {
+  // Киллинг Браузера если true
+  public void tearDown(boolean withWeb) {
+    if(withWeb == true)
+    {
     app.stop();
+    }
+    cm.close();
   }
 
 }

@@ -12,8 +12,9 @@ public class Users extends TestBase {
 
 // Тест берет первого юзера с API и этого же юзера ID 262 с БД и сравнивает эти обьекты по всем полям.
   @Test
-  public void checkOneUserFromApiAndDb() throws SQLException, IOException, ParseException {
+  public void checkOneUserFromApiAndDb() throws Exception {
 
+    setUp(false);
     Set<UserData> oneUserFromRequest =  am.getApiUserHelper().getOneUserFromApi(true);
 // Устанавливаем коннект с БД
     cm.getConnection();
@@ -27,17 +28,20 @@ public class Users extends TestBase {
             "where U.id=262;");
 // oneUserFromDB - expected result
   assertEquals(oneUserFromRequest, oneUserFromDb);
+    tearDown(false);
   }
 
   // Тест берет первого юзера с WEB морды и этого же юзера (первого юзера) с АПИ и сравнивает эти обьекты по всем полям.
   @Test
-  public void checkOneUserFromApiAndWeb() throws IOException, InterruptedException, ParseException {
+  public void checkOneUserFromApiAndWeb() throws Exception {
+    setUp(true);
     app.getNavigationHelper().goToUsers();
     Thread.sleep(7000);
     Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(false);
     Set<UserData> userOneFromRequest =  am.getApiUserHelper().getOneUserFromApi(false);
 
     assertEquals(oneUserFromWeb, userOneFromRequest);
+    tearDown(true);
   }
 
 }
