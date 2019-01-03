@@ -2,6 +2,7 @@ package appmanager;
 
 import model.UserData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -11,7 +12,7 @@ import java.util.*;
 
 public class UserHelper extends HelperBase {
 
-  public UserHelper(FirefoxDriver wd) {
+  public UserHelper(WebDriver wd) {
     super(wd);
 
   }
