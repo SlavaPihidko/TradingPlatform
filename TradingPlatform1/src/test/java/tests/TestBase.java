@@ -5,30 +5,28 @@ import appmanager.ApplicationManager;
 import connmanager.ConnectionManager;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 public class TestBase  {
 
-  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
-  protected final ConnectionManager cm = new ConnectionManager();
+  protected static final ConnectionManager cm = new ConnectionManager();
 
-  protected final ApiManager am = new ApiManager();
+  protected static final ApiManager am = new ApiManager();
 
   // Запуск Браузера если true
-  public void setUp(boolean withWeb)  {
-    if(withWeb == true)
-    {
+  @BeforeSuite
+  public void setUp()  {
       app.init();
-    }
     am.dealWithApi();
   }
   // Киллинг Браузера если true
-  public void tearDown(boolean withWeb) {
-    if(withWeb == true)
-    {
+  @AfterSuite
+  public void tearDown() {
     app.stop();
-    }
     cm.close();
   }
 

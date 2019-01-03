@@ -10,7 +10,7 @@ public class NavigationHelper extends HelperBase {
     super(wd);
   }
 
-  public void goToUsers() {
+  public void usersPage() {
     wd.findElement(By.cssSelector("a[name=users]")).click();
   }
 }
