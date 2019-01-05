@@ -9,9 +9,12 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-public class TestBase  {
+import java.io.IOException;
 
-  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+public class TestBase  {
+//BrowserType.CHROME  -Dbrowser=chrome
+  protected static final ApplicationManager app
+          = new ApplicationManager(BrowserType.CHROME);
 
   protected static final ConnectionManager cm = new ConnectionManager();
 
@@ -19,8 +22,8 @@ public class TestBase  {
 
   // Запуск Браузера если true
   @BeforeSuite
-  public void setUp()  {
-      app.init();
+  public void setUp() throws IOException {
+    app.init();
     am.dealWithApi();
   }
   // Киллинг Браузера если true
