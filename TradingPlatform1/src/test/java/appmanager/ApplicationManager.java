@@ -19,7 +19,7 @@ public class ApplicationManager {
   private UserHelper userHelper;
   private NavigationHelper navigationHelper;
   private String browser;
-  private final Properties properties;
+  private  Properties properties;
 
   public ApplicationManager(String browser) {
     this.browser=browser;
@@ -28,7 +28,7 @@ public class ApplicationManager {
 
   public void init() throws IOException {
 
-    String target = System.getProperty("target", "local");
+    String target = System.getProperty("target", "localWeb");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
     if (browser == BrowserType.FIREFOX) {

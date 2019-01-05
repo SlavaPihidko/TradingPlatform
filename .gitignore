@@ -13,3 +13,4 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 TradingPlatform1/src/test/resources/local.properties
+TradingPlatform1/src/test/resources/localDb.properties

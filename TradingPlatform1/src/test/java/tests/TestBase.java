@@ -13,8 +13,7 @@ import java.io.IOException;
 
 public class TestBase  {
 //BrowserType.CHROME  -Dbrowser=chrome
-  protected static final ApplicationManager app
-          = new ApplicationManager(BrowserType.CHROME);
+  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
   protected static final ConnectionManager cm = new ConnectionManager();
 

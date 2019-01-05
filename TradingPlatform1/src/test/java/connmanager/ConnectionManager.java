@@ -3,9 +3,15 @@ package connmanager;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConnectionManager {
 
@@ -13,17 +19,23 @@ public class ConnectionManager {
 
   private Connection con;
   private Session session;
+  private  Properties propertiesForDb;
 
-  public Connection getConnection() {
 
-    String host = "209.182.216.247";
+  public Connection getConnection() throws IOException {
+
+    propertiesForDb = new Properties();
+    String targetDb = System.getProperty("targetDb", "localDb");
+    propertiesForDb.load(new FileReader(new File(String.format("src/test/resources/%s.properties", targetDb))));
+
+    String host = propertiesForDb.getProperty("Db.host");
     int sshPort = 22;
-    String sshPassword = "pxKL37ZA=n3A";
+    String sshPassword = propertiesForDb.getProperty("Db.sshPassword");
     String sqlIp = "127.0.0.1";
     int sqlPort = 3306;
     int lPort = 4321;
-    var user = "root";
-    var password = "qwerty";
+    var user = propertiesForDb.getProperty("Db.user");
+    var password = propertiesForDb.getProperty("Db.password");
 
 
       JSch jSch = new JSch();
