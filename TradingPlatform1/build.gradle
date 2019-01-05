@@ -32,8 +32,8 @@ task testUsers(type: Test) {
 	}
 
 
-   if(project.hasProperty('target')) {
-		systemProperty 'target', "${target}"
+   if(project.hasProperty('targetWeb')) {
+		systemProperty 'targetWeb', "${targetWeb}"
 	}
 
 	if(project.hasProperty('targetDb')) {

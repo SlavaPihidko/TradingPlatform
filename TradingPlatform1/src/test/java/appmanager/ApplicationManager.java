@@ -28,8 +28,8 @@ public class ApplicationManager {
 
   public void init() throws IOException {
 
-    String target = System.getProperty("target", "localWeb");
-    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    String targetWeb = System.getProperty("targetWeb", "localWeb");
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", targetWeb))));
 
     if (browser == BrowserType.FIREFOX) {
       wd = new FirefoxDriver();
