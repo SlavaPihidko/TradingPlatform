@@ -1,5 +1,8 @@
 .gradle
+
 build/
+
+out/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -12,11 +15,11 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
-TradingPlatform1/src/test/resources/localWeb.properties
-TradingPlatform1/src/test/resources/localDb.properties
-TradingPlatform1/out/test/resources/localDb.properties
-TradingPlatform1/out/test/resources/localWeb.properties
 
-.idea\workspace.xml
+TradingPlatform/.idea/workspace.xml
+
+.idea/workspace.xml
+
 *.log
+
 *.iml
