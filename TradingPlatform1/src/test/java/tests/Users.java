@@ -27,7 +27,6 @@ public class Users extends TestBase {
             "where U.id=262;");
 // oneUserFromDB - expected result
   assertEquals(oneUserFromRequest, oneUserFromDb);
-
   }
 
   // Тест берет первого юзера с WEB морды и этого же юзера (первого юзера) с АПИ и сравнивает эти обьекты по всем полям.

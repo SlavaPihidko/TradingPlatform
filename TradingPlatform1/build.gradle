@@ -21,3 +21,9 @@ dependencies{
 	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
 
 }
+
+task testUsers(type: Test) {
+	useTestNG{
+		suites 'src/test/resources/testng-Users.xml'
+	}
+}

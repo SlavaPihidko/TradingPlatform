@@ -21,7 +21,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ApiUserHelper extends ApiHelperBase {
-  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY1Mjc1MzEsImV4cCI6MTU0NjUzODMzMSwibmJmIjoxNTQ2NTI3NTMxLCJqdGkiOiJERWtmQzdZandqWW9RSmNnIn0.h3LE7tsWd0DRK05cEVQ0p5uy0h7ahikyW77KJBLpTlA";
+  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY3MDY0NDgsImV4cCI6MTU0NjcxNzI0OCwibmJmIjoxNTQ2NzA2NDQ4LCJqdGkiOiJYdXFZTUpzYkhHNFZTQ25kIn0.KtBKKa2oYQMWA4rAS6lw1Ex2ugnlXuwGTRWBK_fZGFU";
 
   @Test
   public void testUsersSetFromApi() throws IOException {
@@ -49,7 +49,7 @@ public class ApiUserHelper extends ApiHelperBase {
   }
 
 // метод для создания обьекта одного юзера с АПИ. Берем первого юзера с АПИ
-  public Set<UserData> getOneUserFromApi(boolean dataWithDash) throws IOException, ParseException {
+  public Set<UserData> getOneUserFromApi(boolean dateWithDash) throws IOException, ParseException {
     String json = Request.Get("http://209.182.216.247/api/admin/users")
             .addHeader("Content-Type", "application/json")
             .addHeader("authorization", token)
@@ -94,7 +94,7 @@ public class ApiUserHelper extends ApiHelperBase {
     // Делаем обьект oneUserFromRequestNew с всех трех частей, которые распарсили
     Set<UserData> userSetOneFromRequestNew = new HashSet<>();
 
-    if(dataWithDash == true) {
+    if(dateWithDash == true) {
       //Приведение форматы даты к такой что в БД для userLastLogin
       SimpleDateFormat input = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
       Date dateValue = input.parse(OneUserFromRequestFirstPart.getLast_login());

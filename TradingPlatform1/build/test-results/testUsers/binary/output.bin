@@ -1,0 +1,7 @@
+àUser from API equal: UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='2018-10-31 08:46:46.0', created='2018-10-23 15:06:02.0', kyc='waiting', status='active'}
+Establishing Connection...
+"127.0.0.1:4321 -> 127.0.0.1:3306
+
+àUser from DB equal : UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='2018-10-31 08:46:46.0', created='2018-10-23 15:06:02.0', kyc='waiting', status='active'}
+ÝUser from WEB equal : UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='31.10.2018 08:46:46', created='23.10.2018 15:06:02', kyc='waiting', status='active'}
+ÞUser from API _equal_: UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='31.10.2018 08:46:46', created='23.10.2018 15:06:02', kyc='waiting', status='active'}

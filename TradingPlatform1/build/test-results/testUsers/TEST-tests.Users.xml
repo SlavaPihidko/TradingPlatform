@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.Users" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-01-05T17:04:58" hostname="PC" time="26.644">
+  <properties/>
+  <testcase name="checkOneUserFromApiAndDb" classname="tests.Users" time="12.893"/>
+  <testcase name="checkOneUserFromApiAndWeb" classname="tests.Users" time="13.751"/>
+  <system-out><![CDATA[User from API equal: UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='2018-10-31 08:46:46.0', created='2018-10-23 15:06:02.0', kyc='waiting', status='active'}
+Establishing Connection...
+127.0.0.1:4321 -> 127.0.0.1:3306
+
+User from DB equal : UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='2018-10-31 08:46:46.0', created='2018-10-23 15:06:02.0', kyc='waiting', status='active'}
+User from WEB equal : UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='31.10.2018 08:46:46', created='23.10.2018 15:06:02', kyc='waiting', status='active'}
+User from API _equal_: UserData{id='262', fullName='le po', firstName='null', lastName='null', email='bgzglrqcc@emltmp.com', lastLogin='31.10.2018 08:46:46', created='23.10.2018 15:06:02', kyc='waiting', status='active'}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
