@@ -4,6 +4,8 @@ build/
 
 TradingPlatform1/out/
 
+out/
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
