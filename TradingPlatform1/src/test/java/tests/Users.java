@@ -45,9 +45,7 @@ public class Users extends TestBase {
   @Test
   public void cdcd() {
     System.out.println("dcdcd");
-    System.out.println("dcdcd");
-    System.out.println("dcdcd");
-    System.out.println("dcdcd");
+
 
   }
 
