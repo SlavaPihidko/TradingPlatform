@@ -41,14 +41,4 @@ public class Users extends TestBase {
     assertEquals(oneUserFromWeb, userOneFromRequest);
 
   }
-
-  @Test
-  public void cdcd() {
-    System.out.println("dcdcd");
-    System.out.println("dcdcd");
-    System.out.println("dcdcd");
-
-
-  }
-
 }
