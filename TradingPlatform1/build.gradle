@@ -22,6 +22,10 @@ dependencies{
 
 }
 
+test {
+	useTestNG()
+}
+
 task testUsers(type: Test) {
 	useTestNG{
 		suites 'src/test/resources/testng-Users.xml'
@@ -40,3 +44,8 @@ task testUsers(type: Test) {
 		systemProperty 'targetDb', "${targetDb}"
 	}
 }
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
