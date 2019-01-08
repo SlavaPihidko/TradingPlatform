@@ -1,6 +1,7 @@
 package tests;
 
 import model.UserData;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -40,5 +41,15 @@ public class Users extends TestBase {
 
     assertEquals(oneUserFromWeb, userOneFromRequest);
 
+  }
+
+  @Test
+  public void checkAccountInfo() throws InterruptedException {
+    app.goTo().usersPage();
+    Thread.sleep(7000);
+    app.goTo().userInfo();
+    Thread.sleep(5000);
+    //Set<UserData> userAccountInfoFromWeb = app.getUserHelper().getuserAccountInfoFromWeb();
+    //System.out.println("userAccountInfoFromWeb equal : " + userAccountInfoFromWeb);
   }
 }

@@ -13,4 +13,10 @@ public class NavigationHelper extends HelperBase {
   public void usersPage() {
     wd.findElement(By.cssSelector("a[name=users]")).click();
   }
+
+  // выбираем самого верхнего юзера с списка и переходим в его аккаунт
+  public void userInfo() {
+    String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
+    wd.findElement(By.cssSelector(String.format("a[href='/users/%s']", userId))).click();
+  }
 }
