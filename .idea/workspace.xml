@@ -2,15 +2,59 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/META-INF/TradingPlatform1.main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/ApplicationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/ApplicationManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/tests/TestBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/tests/TestBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/tests/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/tests/Users.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/main/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/Square.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/SquareTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiHelperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiUserHelper$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiUserHelper$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiUserHelper$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiUserHelper$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/apirequests/ApiUserHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/appmanager/ApplicationManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/appmanager/HelperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/appmanager/NavigationHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/appmanager/SessionHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/appmanager/UserHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/connmanager/ConnectionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/connmanager/SqlHelperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/connmanager/SqlUserHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/model/UserAccountStatusesForApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/model/UserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/model/UserDataForApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/model/UserStatusForApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/tests/TestBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/classes/java/test/tests/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/libs/TradingPlatform1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/resources/test/local.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/Square.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/SquareTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiHelperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiUserHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/ApplicationManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/HelperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/NavigationHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/SessionHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/appmanager/UserHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/connmanager/ConnectionManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/connmanager/SqlHelperBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/connmanager/SqlUserHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/model/UserAccountStatusesForApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/model/UserData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/model/UserDataForApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/model/UserStatusForApi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/tests/TestBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/classes/tests/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/resources/localWeb.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/test/resources/testng-Users.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/TradingPlatform1/.gradle/" />
     <ignored path="$PROJECT_DIR$/TradingPlatform1/build/" />
@@ -38,26 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/SquareTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+            <state relative-caret-position="170">
+              <caret line="16" column="68" lean-forward="true" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -65,17 +91,85 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="23" column="277" selection-start-line="23" selection-start-column="277" selection-end-line="23" selection-end-column="277" />
+            <state relative-caret-position="119">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiHelperBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localWeb.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiHelperBase.class">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+            <state relative-caret-position="264">
+              <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-75">
+              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -112,8 +206,13 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/build.gradle" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiRequests.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/resources/localWeb.properties" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiHelperBase.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiManager.java" />
       </list>
     </option>
   </component>
@@ -127,13 +226,102 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="apirequests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="appmanager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="connmanager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TradingPlatform1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TradingPlatform" type="462c0819:PsiDirectoryNode" />
+              <item name="TradingPlatform1" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546961248495" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546983505499" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="F:/javaQuickAppium" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -160,6 +348,53 @@
     </option>
   </component>
   <component name="RunManager" selected="TestNG.Users">
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="TradingPlatform1" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="TradingPlatform1" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApiRequests.getUsers" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="TradingPlatform1.test" />
       <extension name="coverage">
@@ -272,21 +507,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ApiRequests_testUserList - 2018.12.30 at 21h 37m 39s.xml">
-      <configuration name="ApiRequests.testUserList" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ApiRequests_testUserList - 2018.12.30 at 21h 39m 04s.xml">
-      <configuration name="ApiRequests.testUserList" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ApiRequests_testUserList - 2018.12.30 at 21h 53m 06s.xml">
-      <configuration name="ApiRequests.testUserList" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ApiRequests_testOneUserFromApi - 2018.12.30 at 22h 06m 43s.xml">
-      <configuration name="ApiRequests.testOneUserFromApi" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="ApiRequests_testOneUserFromApi - 2018.12.30 at 22h 07m 43s.xml">
-      <configuration name="ApiRequests.testOneUserFromApi" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="ApiRequests_testOneUserFromApi - 2018.12.30 at 22h 08m 36s.xml">
       <configuration name="ApiRequests.testOneUserFromApi" configurationId="TestNG" />
     </history-entry>
@@ -302,6 +522,21 @@
     <history-entry file="Users - 2019.01.08 at 16h 53m 52s.xml">
       <configuration name="Users" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="Users - 2019.01.08 at 17h 43m 34s.xml">
+      <configuration name="Users" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users - 2019.01.08 at 17h 46m 17s.xml">
+      <configuration name="Users" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users - 2019.01.08 at 22h 59m 40s.xml">
+      <configuration name="Users" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users - 2019.01.08 at 23h 01m 04s.xml">
+      <configuration name="Users" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="Users - 2019.01.08 at 23h 32m 04s.xml">
+      <configuration name="Users" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -314,9 +549,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26928896" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26928896" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -325,7 +559,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41503268" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3006536" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -345,6 +579,18 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/Square.java">
@@ -520,47 +766,6 @@
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/testng-Users.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localWeb.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="70" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="23" column="277" selection-start-line="23" selection-start-column="277" selection-end-line="23" selection-end-column="277" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -570,10 +775,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="204">
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiHelperBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="16" column="68" lean-forward="true" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localWeb.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/out/test/classes/apirequests/ApiHelperBase.class">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
