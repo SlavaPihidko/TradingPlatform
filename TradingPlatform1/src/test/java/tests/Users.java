@@ -25,7 +25,7 @@ public class Users extends TestBase {
             "join coin4coin_db.user_datas UD on U.id = UD.user_id \n" +
             "join coin4coin_db.user_statuses US on U.status_id = US.id\n" +
             "join coin4coin_db.user_account_statuses UAS on U.account_status_id = UAS.id\n" +
-            "where U.id=262;");
+            "where U.id=(select Max(users.id) from coin4coin_db.users);");
 // oneUserFromDB - expected result
   assertEquals(oneUserFromRequest, oneUserFromDb);
   }
@@ -35,7 +35,7 @@ public class Users extends TestBase {
   public void checkOneUserFromApiAndWeb() throws InterruptedException, ParseException, IOException {
 
     app.goTo().usersPage();
-    Thread.sleep(7000);
+    //Thread.sleep(7000);
     Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(false);
     Set<UserData> userOneFromRequest =  am.getApiUserHelper().getOneUserFromApi(false);
 
@@ -45,8 +45,8 @@ public class Users extends TestBase {
 
   @Test(priority = 3)
   public void checkAccountInfo() throws InterruptedException {
-    app.goTo().usersPage();
-    Thread.sleep(7000);
+   // app.goTo().usersPage();
+   // Thread.sleep(7000);
     app.goTo().userInfo();
     Thread.sleep(5000);
     //Set<UserData> userAccountInfoFromWeb = app.getUserHelper().getuserAccountInfoFromWeb();
