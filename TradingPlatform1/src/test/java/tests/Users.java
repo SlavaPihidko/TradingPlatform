@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 public class Users extends TestBase {
 
 // Тест берет первого юзера с API и этого же юзера ID 262 с БД и сравнивает эти обьекты по всем полям.
-  @Test
+  @Test(priority = 1)
   public void checkOneUserFromApiAndDb() throws IOException, ParseException, SQLException {
 
     Set<UserData> oneUserFromRequest =  am.getApiUserHelper().getOneUserFromApi(true);
@@ -31,7 +31,7 @@ public class Users extends TestBase {
   }
 
   // Тест берет первого юзера с WEB морды и этого же юзера (первого юзера) с АПИ и сравнивает эти обьекты по всем полям.
-  @Test
+  @Test(priority = 2)
   public void checkOneUserFromApiAndWeb() throws InterruptedException, ParseException, IOException {
 
     app.goTo().usersPage();
@@ -43,7 +43,7 @@ public class Users extends TestBase {
 
   }
 
-  @Test
+  @Test(priority = 3)
   public void checkAccountInfo() throws InterruptedException {
     app.goTo().usersPage();
     Thread.sleep(7000);
