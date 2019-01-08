@@ -2,9 +2,7 @@
 
 build/
 
-TradingPlatform1/out/
-
-out/test/classes/tests/
+out/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -17,8 +15,6 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
-
-TradingPlatform/.idea/workspace.xml
 
 .idea/workspace.xml
 
