@@ -13,15 +13,22 @@ import org.apache.http.client.fluent.Request;
 import org.testng.annotations.Test;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 
+
 public class ApiUserHelper extends ApiHelperBase {
-  String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjExOCwiaXNzIjoiaHR0cDovLzIwOS4xODIuMjE2LjI0Ny9hcGkvbG9naW4iLCJpYXQiOjE1NDY5ODExODcsImV4cCI6MTU0Njk5MTk4NywibmJmIjoxNTQ2OTgxMTg3LCJqdGkiOiJTRkw4VW5CSnpuMmtzZ1pUIn0.3oPfB2nGgjCfhG1P0GnglDJLzyq3i5sK8iul_vg51t8";
+
+  public String token = getToken();
+
+  public ApiUserHelper() throws IOException {
+  }
 
   @Test
   public void testUsersSetFromApi() throws IOException {
