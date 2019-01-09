@@ -5,10 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import model.UserData;
-import model.UserDataForApi;
-import model.UserAccountStatusesForApi;
-import model.UserStatusForApi;
+import model.*;
 import org.apache.http.client.fluent.Request;
 import org.testng.annotations.Test;
 
@@ -161,16 +158,27 @@ public class ApiUserHelper extends ApiHelperBase {
     UserDataForApi OneUserFromRequestFirstPart
             = new Gson().fromJson(parsedFirstPart, new TypeToken<UserDataForApi>(){}.getType());
 
-    UserData user = new UserData()
-            .withId(OneUserFromRequestFirstPart.getId())
-            .withEmail(OneUserFromRequestFirstPart.getEmail())
-            .withFullName(OneUserFromRequestFirstPart.getUsername());
-    users.add(user);
-    System.out.println("from api " + user);
-
     JsonElement parsedSecondPart = jsonParser.parse(json)
             .getAsJsonObject().get("data").getAsJsonObject().get("data");
 
+    UserDataForApi OneUserFromRequestSecondPart
+            = new Gson().fromJson(parsedSecondPart, new TypeToken<UserDataForApi>(){}.getType());
+
+    JsonElement parsedThirdPart = jsonParser.parse(json)
+            .getAsJsonObject().get("data").getAsJsonObject().get("account_type");
+
+    UserAccountTypeForApi OneUserFromRequestThirdPart
+            = new Gson().fromJson(parsedThirdPart, new TypeToken<UserAccountTypeForApi>(){}.getType());
+
+
+    UserData user = new UserData()
+            .withId(OneUserFromRequestFirstPart.getId())
+            .withEmail(OneUserFromRequestFirstPart.getEmail())
+            .withFullName(OneUserFromRequestFirstPart.getUsername())
+            .withMobileNumber(OneUserFromRequestSecondPart.getPhone())
+            .withAccountType(OneUserFromRequestThirdPart.getName());
+    users.add(user);
+    System.out.println("from api " + user);
     return users;
   }
 }

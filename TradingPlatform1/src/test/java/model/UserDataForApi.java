@@ -86,6 +86,16 @@ public class UserDataForApi {
     return this;
   }
 
+  public String getPhone() {
+    return phone;
+  }
+
+  public UserDataForApi withPhone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+
   @Override
   public String toString() {
     return "UserDataForApi{" +
@@ -96,6 +106,7 @@ public class UserDataForApi {
             ", created_at='" + created_at + '\'' +
             ", email='" + email + '\'' +
             ", username='" + username + '\'' +
+            ", phone='" + phone + '\'' +
             '}';
   }
 
@@ -115,7 +126,8 @@ public class UserDataForApi {
     if (getCreated_at() != null ? !getCreated_at().equals(that.getCreated_at()) : that.getCreated_at() != null)
       return false;
     if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
-    return getUsername() != null ? getUsername().equals(that.getUsername()) : that.getUsername() == null;
+    if (getUsername() != null ? !getUsername().equals(that.getUsername()) : that.getUsername() != null) return false;
+    return getPhone() != null ? getPhone().equals(that.getPhone()) : that.getPhone() == null;
   }
 
   @Override
@@ -127,6 +139,7 @@ public class UserDataForApi {
     result = 31 * result + (getCreated_at() != null ? getCreated_at().hashCode() : 0);
     result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
     result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
+    result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
     return result;
   }
 }
