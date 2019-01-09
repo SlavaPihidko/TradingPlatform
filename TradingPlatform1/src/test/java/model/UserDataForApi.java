@@ -9,6 +9,8 @@ public class UserDataForApi {
   private String created_at;
   private String email;
   private String username;
+  private String phone;
+
 
 //  public UserDataForApi(String id, String type_id, String status_id,
 //                        String last_login, String created_at, String email, String username) {

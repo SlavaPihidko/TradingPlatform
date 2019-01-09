@@ -145,4 +145,32 @@ public class ApiUserHelper extends ApiHelperBase {
 // Возвращаем обьект типа UserData
     return userSetOneFromRequestNew;
   }
+
+  public Set<UserData> getUserAccountInfoFromApi() throws IOException {
+    Set<UserData> users = new HashSet<>();
+    String json = Request.Get("http://209.182.216.247/api/admin/user/262/account")
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", token)
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    JsonElement parsedFirstPart  = jsonParser.parse(json)
+            .getAsJsonObject().get("data");
+
+//получаем обьект OneUserFromRequestFirstPart, который пропарсили согласно модели UserDataForApi
+    UserDataForApi OneUserFromRequestFirstPart
+            = new Gson().fromJson(parsedFirstPart, new TypeToken<UserDataForApi>(){}.getType());
+
+    UserData user = new UserData()
+            .withId(OneUserFromRequestFirstPart.getId())
+            .withEmail(OneUserFromRequestFirstPart.getEmail())
+            .withFullName(OneUserFromRequestFirstPart.getUsername());
+    users.add(user);
+    System.out.println("from api " + user);
+
+    JsonElement parsedSecondPart = jsonParser.parse(json)
+            .getAsJsonObject().get("data").getAsJsonObject().get("data");
+
+    return users;
+  }
 }

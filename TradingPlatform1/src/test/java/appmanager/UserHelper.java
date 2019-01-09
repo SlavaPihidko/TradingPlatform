@@ -131,12 +131,25 @@ else {
     String mobileNumber = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(4)")).getText();
     String email = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(5)")).getText();
 
+    //Режим строки и удаляем по бокам пробелы
+    String [] id = userId.split(":");
+    String subUserId = id[1].trim();
+    String [] name = fullName.split(":");
+    String subFullName = name[1].trim();
+    String [] mail = email.split(":");
+    String subEmail = mail[1].trim();
+    String [] type = accountType.split(":");
+    String subAccountType = type[1].trim();
+    String [] mobile = mobileNumber.split(":");
+    String subMobileNumber = mobile[1].trim();
+
+
     UserData user = new UserData()
-            .withId(userId)
-            .withFullName(fullName)
-            .withEmail(email)
-            .withAccountType(accountType)
-            .withMobileNumber(mobileNumber);
+            .withId(subUserId)
+            .withFullName(subFullName)
+            .withEmail(subEmail)
+            .withAccountType(subAccountType)
+            .withMobileNumber(subMobileNumber);
 
     users.add(user);
     return users;
