@@ -151,32 +151,30 @@ public class ApiUserHelper extends ApiHelperBase {
             .execute().returnContent().asString();
 
     JsonParser jsonParser = new JsonParser();
-    JsonElement parsedFirstPart  = jsonParser.parse(json)
-            .getAsJsonObject().get("data");
+    JsonElement parsedFirstPart  = jsonParser.parse(json).getAsJsonObject().get("data");
 
-//получаем обьект OneUserFromRequestFirstPart, который пропарсили согласно модели UserDataForApi
-    UserDataForApi OneUserFromRequestFirstPart
+    UserDataForApi userFromRequestFirstPart
             = new Gson().fromJson(parsedFirstPart, new TypeToken<UserDataForApi>(){}.getType());
 
     JsonElement parsedSecondPart = jsonParser.parse(json)
             .getAsJsonObject().get("data").getAsJsonObject().get("data");
 
-    UserDataForApi OneUserFromRequestSecondPart
+    UserDataForApi userFromRequestSecondPart
             = new Gson().fromJson(parsedSecondPart, new TypeToken<UserDataForApi>(){}.getType());
 
     JsonElement parsedThirdPart = jsonParser.parse(json)
             .getAsJsonObject().get("data").getAsJsonObject().get("account_type");
 
-    UserAccountTypeForApi OneUserFromRequestThirdPart
+    UserAccountTypeForApi userFromRequestThirdPart
             = new Gson().fromJson(parsedThirdPart, new TypeToken<UserAccountTypeForApi>(){}.getType());
 
 
     UserData user = new UserData()
-            .withId(OneUserFromRequestFirstPart.getId())
-            .withEmail(OneUserFromRequestFirstPart.getEmail())
-            .withFullName(OneUserFromRequestFirstPart.getUsername())
-            .withMobileNumber(OneUserFromRequestSecondPart.getPhone())
-            .withAccountType(OneUserFromRequestThirdPart.getName());
+            .withId(userFromRequestFirstPart.getId())
+            .withEmail(userFromRequestFirstPart.getEmail())
+            .withFullName(userFromRequestFirstPart.getUsername())
+            .withMobileNumber(userFromRequestSecondPart.getPhone())
+            .withAccountType(userFromRequestThirdPart.getName());
     users.add(user);
     System.out.println("from api " + user);
     return users;

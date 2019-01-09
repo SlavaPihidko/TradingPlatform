@@ -44,7 +44,7 @@ public class Users extends TestBase {
   }
 
   @Test(priority = 3)
-  public void checkAccountInfo() throws InterruptedException, IOException {
+  public void checkUserAccountInfoFromApiAndWeb() throws InterruptedException, IOException {
     app.goTo().usersPage();
     Thread.sleep(7000);
     app.goTo().userInfo();
@@ -54,5 +54,20 @@ public class Users extends TestBase {
     Set<UserData> userAccountInfoFromApi = am.getApiUserHelper().getUserAccountInfoFromApi();
 
     assertEquals(userAccountInfoFromWeb,userAccountInfoFromApi );
+  }
+
+  @Test(priority = 4)
+  public void checkUserAccountInfoFromApiAndDb() throws IOException, SQLException {
+    Set<UserData> userAccountInfoFromApi = am.getApiUserHelper().getUserAccountInfoFromApi();
+    cm.getConnection();
+    Set<UserData> userAccountInfoFromDb = cm.getSqlUserHelper()
+            .getUserAccountInfoFromDb("SELECT U.id, concat(UD.first_name, ' ', UD.last_name) as fullName," +
+                    " UD.phone, U.email, UT.name as accounTypeName \n" +
+                    "FROM coin4coin_db.users U \n" +
+                    "join coin4coin_db.user_datas UD on U.id = UD.user_id \n" +
+                    "join coin4coin_db.account_types UT on U.account_type_id=UT.id\n" +
+                    "where U.id=(select Max(users.id) from coin4coin_db.users)");
+
+    assertEquals(userAccountInfoFromApi,userAccountInfoFromDb);
   }
 }

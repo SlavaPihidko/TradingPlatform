@@ -44,4 +44,25 @@ public class SqlUserHelper extends SqlHelperBase {
       return userOneFromDB;
     }
 
+  public Set<UserData> getUserAccountInfoFromDb(String query) throws SQLException {
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    Set<UserData> users = new HashSet<>();
+    while (rs.next()){
+      UserData user = new UserData()
+              .withId(rs.getString("U.id"))
+              .withEmail(rs.getString("U.email"))
+              .withFullName(rs.getString("fullName"))
+              .withMobileNumber(rs.getString("UD.phone"))
+              .withAccountType(rs.getString("accounTypeName"));
+
+      System.out.println("user from DB " + user);
+      users.add(user);
+    }
+    rs.close();
+    st.close();
+
+    return users;
   }
+}
