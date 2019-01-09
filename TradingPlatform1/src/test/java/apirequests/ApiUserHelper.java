@@ -10,19 +10,17 @@ import org.apache.http.client.fluent.Request;
 import org.testng.annotations.Test;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Properties;
 import java.util.Set;
 
 
 public class ApiUserHelper extends ApiHelperBase {
 
-  public String token = getToken();
+  //public String token = getToken();
 
   public ApiUserHelper() throws IOException {
   }
@@ -39,10 +37,11 @@ public class ApiUserHelper extends ApiHelperBase {
 
 
   public Set<UserDataForApi> getUsersFromApi() throws IOException {
-    String json = Request.Get("http://209.182.216.247/api/admin/users")
-            .addHeader("Content-Type", "application/json")
-            .addHeader("authorization", token )
-            .execute().returnContent().asString();
+    String header = getPrpsApi().getProperty("api.baseUrl")+"/api/admin/users";
+    String json = Request.Get(header)
+                          .addHeader("Content-Type", "application/json")
+                          .addHeader("authorization", getPrpsApi().getProperty("api.userToken") )
+                          .execute().returnContent().asString();
 
 
     JsonParser jsonParser = new JsonParser();
@@ -54,9 +53,10 @@ public class ApiUserHelper extends ApiHelperBase {
 
 // метод для создания обьекта одного юзера с АПИ. Берем первого юзера с АПИ
   public Set<UserData> getOneUserFromApi(boolean dateWithDash) throws IOException, ParseException {
-    String json = Request.Get("http://209.182.216.247/api/admin/users")
+    String header = getPrpsApi().getProperty("api.baseUrl")+"/api/admin/users";
+    String json = Request.Get(header)
             .addHeader("Content-Type", "application/json")
-            .addHeader("authorization", token)
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
             .execute().returnContent().asString();
 
     JsonParser jsonParser = new JsonParser();
@@ -144,11 +144,13 @@ public class ApiUserHelper extends ApiHelperBase {
   }
 
   public Set<UserData> getUserAccountInfoFromApi() throws IOException {
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
     Set<UserData> users = new HashSet<>();
-    String json = Request.Get("http://209.182.216.247/api/admin/user/262/account")
-            .addHeader("Content-Type", "application/json")
-            .addHeader("authorization", token)
-            .execute().returnContent().asString();
+    String json = Request.Get(header)
+                          .addHeader("Content-Type", "application/json")
+                          .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+                          .execute().returnContent().asString();
 
     JsonParser jsonParser = new JsonParser();
     JsonElement parsedFirstPart  = jsonParser.parse(json).getAsJsonObject().get("data");

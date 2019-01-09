@@ -45,8 +45,8 @@ public class Users extends TestBase {
 
   @Test(priority = 3)
   public void checkUserAccountInfoFromApiAndWeb() throws InterruptedException, IOException {
-    app.goTo().usersPage();
-    Thread.sleep(7000);
+    //app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
+    //Thread.sleep(7000);
     app.goTo().userInfo();
     Thread.sleep(5000);
     Set<UserData> userAccountInfoFromWeb = app.getUserHelper().getUserAccountInfoFromWeb();
@@ -59,7 +59,7 @@ public class Users extends TestBase {
   @Test(priority = 4)
   public void checkUserAccountInfoFromApiAndDb() throws IOException, SQLException {
     Set<UserData> userAccountInfoFromApi = am.getApiUserHelper().getUserAccountInfoFromApi();
-    cm.getConnection();
+    //cm.getConnection(); // если используем тест в Suite, то не нужно делать еще один коннект к ДБ
     Set<UserData> userAccountInfoFromDb = cm.getSqlUserHelper()
             .getUserAccountInfoFromDb("SELECT U.id, concat(UD.first_name, ' ', UD.last_name) as fullName," +
                     " UD.phone, U.email, UT.name as accounTypeName \n" +
