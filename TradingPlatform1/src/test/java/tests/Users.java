@@ -45,11 +45,11 @@ public class Users extends TestBase {
 
   @Test(priority = 3)
   public void checkAccountInfo() throws InterruptedException {
-   // app.goTo().usersPage();
-   // Thread.sleep(7000);
+    app.goTo().usersPage();
+    Thread.sleep(7000);
     app.goTo().userInfo();
     Thread.sleep(5000);
-    //Set<UserData> userAccountInfoFromWeb = app.getUserHelper().getuserAccountInfoFromWeb();
-    //System.out.println("userAccountInfoFromWeb equal : " + userAccountInfoFromWeb);
+    Set<UserData> userAccountInfoFromWeb = app.getUserHelper().getUserAccountInfoFromWeb();
+    System.out.println("userAccountInfoFromWeb equal : " + userAccountInfoFromWeb);
   }
 }

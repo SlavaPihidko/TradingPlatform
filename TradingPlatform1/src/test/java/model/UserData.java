@@ -15,6 +15,8 @@ public class UserData {
   private String created;
   private String kyc;
   private String status;
+  private String accountType;
+  private String mobileNumber;
 
 
   //, String firstName, String lastName, String email, String lastLogin, String created, String kyc, String status
@@ -113,6 +115,24 @@ public class UserData {
     return this;
   }
 
+  public String getAccountType() {
+    return accountType;
+  }
+
+  public UserData withAccountType(String accountType) {
+    this.accountType = accountType;
+    return this;
+  }
+
+  public String getMobileNumber() {
+    return mobileNumber;
+  }
+
+  public UserData withMobileNumber(String mobileNumber) {
+    this.mobileNumber = mobileNumber;
+    return this;
+  }
+
   @Override
   public String toString() {
     return "UserData{" +
@@ -125,6 +145,8 @@ public class UserData {
             ", created='" + created + '\'' +
             ", kyc='" + kyc + '\'' +
             ", status='" + status + '\'' +
+            ", accountType='" + accountType + '\'' +
+            ", mobileNumber='" + mobileNumber + '\'' +
             '}';
   }
 
@@ -148,7 +170,10 @@ public class UserData {
     if (getCreated() != null ? !getCreated().equals(userData.getCreated()) : userData.getCreated() != null)
       return false;
     if (getKyc() != null ? !getKyc().equals(userData.getKyc()) : userData.getKyc() != null) return false;
-    return getStatus() != null ? getStatus().equals(userData.getStatus()) : userData.getStatus() == null;
+    if (getStatus() != null ? !getStatus().equals(userData.getStatus()) : userData.getStatus() != null) return false;
+    if (getAccountType() != null ? !getAccountType().equals(userData.getAccountType()) : userData.getAccountType() != null)
+      return false;
+    return getMobileNumber() != null ? getMobileNumber().equals(userData.getMobileNumber()) : userData.getMobileNumber() == null;
   }
 
   @Override
@@ -162,6 +187,8 @@ public class UserData {
     result = 31 * result + (getCreated() != null ? getCreated().hashCode() : 0);
     result = 31 * result + (getKyc() != null ? getKyc().hashCode() : 0);
     result = 31 * result + (getStatus() != null ? getStatus().hashCode() : 0);
+    result = 31 * result + (getAccountType() != null ? getAccountType().hashCode() : 0);
+    result = 31 * result + (getMobileNumber() != null ? getMobileNumber().hashCode() : 0);
     return result;
   }
 }

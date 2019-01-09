@@ -123,4 +123,22 @@ else {
     return users;
   }
 
+  public Set<UserData> getUserAccountInfoFromWeb() {
+    Set<UserData> users = new HashSet<>();
+    String userId = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(1)")).getText();
+    String accountType = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(2)")).getText();
+    String fullName = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(3)")).getText();
+    String mobileNumber = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(4)")).getText();
+    String email = wd.findElement(By.cssSelector("div.information > p.user_info:nth-child(5)")).getText();
+
+    UserData user = new UserData()
+            .withId(userId)
+            .withFullName(fullName)
+            .withEmail(email)
+            .withAccountType(accountType)
+            .withMobileNumber(mobileNumber);
+
+    users.add(user);
+    return users;
+  }
 }
