@@ -1,5 +1,6 @@
 package appmanager;
 
+import model.UserAccount;
 import model.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -153,5 +154,32 @@ else {
 
     users.add(user);
     return users;
+  }
+
+  public Set<UserAccount> getUserAccountFromWeb() {
+    Set<UserAccount> userAccounts = new HashSet<>();
+    String verificationStatus = wd.findElement(By.cssSelector("tr.table_row:nth-child(1) > .text-left")).getText();
+    String first_name = wd.findElement(By.cssSelector("tr.table_row:nth-child(2) > .text-left")).getText();
+    String last_name = wd.findElement(By.cssSelector("tr.table_row:nth-child(3) > .text-left")).getText();
+    String dob = wd.findElement(By.cssSelector("tr.table_row:nth-child(4) > .text-left")).getText();
+    String country = wd.findElement(By.cssSelector("tr.table_row:nth-child(5) > .text-left")).getText();
+    String state = wd.findElement(By.cssSelector("tr.table_row:nth-child(6) > .text-left")).getText();
+    String street = wd.findElement(By.cssSelector("tr.table_row:nth-child(7) > .text-left")).getText();
+    String post_code = wd.findElement(By.cssSelector("tr.table_row:nth-child(8) > .text-left")).getText();
+    String facebook_link = wd.findElement(By.cssSelector("tr.table_row:nth-child(9) > .text-left")).getText();
+
+    UserAccount userAccount = new UserAccount()
+            .withtVerificationStatus(verificationStatus)
+            .withFirst_name(first_name)
+            .withLast_name(last_name)
+            .withDob(dob)
+            .withCountry(country)
+            .withState(state)
+            .withStreet(street)
+            .withPost_code(post_code)
+            .withFacebook_link(facebook_link);
+
+    userAccounts.add(userAccount);
+    return userAccounts;
   }
 }

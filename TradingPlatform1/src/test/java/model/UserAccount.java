@@ -10,6 +10,7 @@ public class UserAccount {
   String street;
   String post_code;
   String facebook_link;
+  String verificationStatus;
 
   public String getFirst_name() {
     return first_name;
@@ -83,6 +84,15 @@ public class UserAccount {
     return this;
   }
 
+  public String getVerificationStatus() {
+    return verificationStatus;
+  }
+
+  public UserAccount withtVerificationStatus(String verificationStatus) {
+    this.verificationStatus = verificationStatus;
+    return this;
+  }
+
   @Override
   public String toString() {
     return "UserAccount{" +
@@ -94,6 +104,7 @@ public class UserAccount {
             ", street='" + street + '\'' +
             ", post_code='" + post_code + '\'' +
             ", facebook_link='" + facebook_link + '\'' +
+            ", verificationStatus='" + verificationStatus + '\'' +
             '}';
   }
 
@@ -114,7 +125,9 @@ public class UserAccount {
     if (getStreet() != null ? !getStreet().equals(that.getStreet()) : that.getStreet() != null) return false;
     if (getPost_code() != null ? !getPost_code().equals(that.getPost_code()) : that.getPost_code() != null)
       return false;
-    return getFacebook_link() != null ? getFacebook_link().equals(that.getFacebook_link()) : that.getFacebook_link() == null;
+    if (getFacebook_link() != null ? !getFacebook_link().equals(that.getFacebook_link()) : that.getFacebook_link() != null)
+      return false;
+    return getVerificationStatus() != null ? getVerificationStatus().equals(that.getVerificationStatus()) : that.getVerificationStatus() == null;
   }
 
   @Override
@@ -127,6 +140,7 @@ public class UserAccount {
     result = 31 * result + (getStreet() != null ? getStreet().hashCode() : 0);
     result = 31 * result + (getPost_code() != null ? getPost_code().hashCode() : 0);
     result = 31 * result + (getFacebook_link() != null ? getFacebook_link().hashCode() : 0);
+    result = 31 * result + (getVerificationStatus() != null ? getVerificationStatus().hashCode() : 0);
     return result;
   }
 }

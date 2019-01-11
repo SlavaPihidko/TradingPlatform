@@ -1,5 +1,6 @@
 package tests;
 
+import model.UserAccount;
 import model.UserData;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
@@ -70,4 +71,17 @@ public class Users extends TestBase {
 
     assertEquals(userAccountInfoFromApi,userAccountInfoFromDb);
   }
+
+  @Test(priority = 5)
+  public void checkUserAccountFromApiAndWeb() throws InterruptedException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
+    Thread.sleep(7000);
+    app.goTo().userInfo();
+    Thread.sleep(5000);
+    //Set<UserAccount> userAccountFromApi = am.getApiUserHelper().getUserAccountFromApi();
+    Set<UserAccount> userAccountFromWeb = app.getUserHelper().getUserAccountFromWeb();
+    System.out.println("userAccountFromWeb :" + userAccountFromWeb);
+    //assertEquals(userAccountFromWeb, userAccountFromApi);
+  }
+
 }
