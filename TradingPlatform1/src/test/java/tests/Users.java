@@ -73,15 +73,15 @@ public class Users extends TestBase {
   }
 
   @Test(priority = 5)
-  public void checkUserAccountFromApiAndWeb() throws InterruptedException {
+  public void checkUserAccountFromApiAndWeb() throws InterruptedException, IOException {
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(7000);
     app.goTo().userInfo();
     Thread.sleep(5000);
-    //Set<UserAccount> userAccountFromApi = am.getApiUserHelper().getUserAccountFromApi();
+    Set<UserAccount> userAccountFromApi = am.getApiUserHelper().getUserAccountFromApi();
     Set<UserAccount> userAccountFromWeb = app.getUserHelper().getUserAccountFromWeb();
     System.out.println("userAccountFromWeb :" + userAccountFromWeb);
-    //assertEquals(userAccountFromWeb, userAccountFromApi);
+    assertEquals(userAccountFromWeb, userAccountFromApi);
   }
 
 }

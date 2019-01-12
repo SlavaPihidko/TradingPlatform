@@ -1,6 +1,7 @@
 package model;
 
 public class UserStatusForApi {
+  // это KYC
   String name;
 
 

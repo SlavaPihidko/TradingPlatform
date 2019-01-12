@@ -181,4 +181,53 @@ public class ApiUserHelper extends ApiHelperBase {
     System.out.println("from api " + user);
     return users;
   }
+
+  public Set<UserAccount> getUserAccountFromApi() throws IOException {
+    String status;
+    UserAccount userAccount;
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
+    Set<UserAccount> users = new HashSet<>();
+    String json = Request.Get(header)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    JsonElement parsedFirstPart = jsonParser.parse(json)
+            .getAsJsonObject().get("data").getAsJsonObject().get("data");
+
+    UserAccount userFromRequestFirstPart
+            = new Gson().fromJson(parsedFirstPart, new TypeToken<UserAccount>(){}.getType());
+
+    JsonElement parsedSecondPart = jsonParser.parse(json)
+            .getAsJsonObject().get("data")
+            .getAsJsonObject().getAsJsonArray("verifications").get(2)
+            .getAsJsonObject().get("pivot");
+
+    UserAccountHolderDetails userAccountHolderDetails =
+            new Gson().fromJson(parsedSecondPart, new TypeToken<UserAccountHolderDetails>(){}.getType());
+    if(userAccountHolderDetails.getStatus_id() == 1) {
+      status = "Verified";
+
+//Integer x = userAccountHolderDetails.getStatus_id();
+//String status = x.toString();
+
+      userAccount = new UserAccount()
+              .withtVerificationStatus(status)
+              .withFirst_name(userFromRequestFirstPart.getFirst_name())
+              .withLast_name(userFromRequestFirstPart.getLast_name())
+              .withDob(userFromRequestFirstPart.getDob())
+              .withCountry(userFromRequestFirstPart.getCountry())
+              .withState(userFromRequestFirstPart.getState())
+              .withStreet(userFromRequestFirstPart.getStreet())
+              .withPost_code(userFromRequestFirstPart.getPost_code())
+              .withFacebook_link(userFromRequestFirstPart.getFacebook_link());
+
+      users.add(userAccount);
+
+      System.out.println("userAccount from API: " + userAccount);
+    }
+    return users;
+  }
 }
