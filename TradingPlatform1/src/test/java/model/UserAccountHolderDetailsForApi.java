@@ -1,6 +1,6 @@
 package model;
 
-public class UserAccountHolderDetails {
+public class UserAccountHolderDetailsForApi {
 
   int status_id;
 
@@ -8,14 +8,14 @@ public class UserAccountHolderDetails {
     return status_id;
   }
 
-  public UserAccountHolderDetails withStatus_id(int status_id) {
+  public UserAccountHolderDetailsForApi withStatus_id(int status_id) {
     this.status_id = status_id;
     return this;
   }
 
   @Override
   public String toString() {
-    return "UserAccountHolderDetails{" +
+    return "UserAccountHolderDetailsForApi{" +
             "status_id=" + status_id +
             '}';
   }
@@ -23,9 +23,9 @@ public class UserAccountHolderDetails {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof UserAccountHolderDetails)) return false;
+    if (!(o instanceof UserAccountHolderDetailsForApi)) return false;
 
-    UserAccountHolderDetails that = (UserAccountHolderDetails) o;
+    UserAccountHolderDetailsForApi that = (UserAccountHolderDetailsForApi) o;
 
     return getStatus_id() == that.getStatus_id();
   }

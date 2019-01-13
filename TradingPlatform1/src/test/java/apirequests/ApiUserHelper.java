@@ -205,8 +205,8 @@ public class ApiUserHelper extends ApiHelperBase {
             .getAsJsonObject().getAsJsonArray("verifications").get(2)
             .getAsJsonObject().get("pivot");
 
-    UserAccountHolderDetails userAccountHolderDetails =
-            new Gson().fromJson(parsedSecondPart, new TypeToken<UserAccountHolderDetails>(){}.getType());
+    UserAccountHolderDetailsForApi userAccountHolderDetails =
+            new Gson().fromJson(parsedSecondPart, new TypeToken<UserAccountHolderDetailsForApi>(){}.getType());
     if(userAccountHolderDetails.getStatus_id() == 1) {
       status = "Verified";
 
@@ -225,7 +225,6 @@ public class ApiUserHelper extends ApiHelperBase {
               .withFacebook_link(userFromRequestFirstPart.getFacebook_link());
 
       users.add(userAccount);
-
       System.out.println("userAccount from API: " + userAccount);
     }
     return users;

@@ -73,7 +73,7 @@ public class Users extends TestBase {
   }
 
   @Test(priority = 5)
-  public void checkUserAccountFromApiAndWeb() throws InterruptedException, IOException {
+  public void checkUserAccountFromApiAndWeb() throws InterruptedException, IOException, ParseException {
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(7000);
     app.goTo().userInfo();

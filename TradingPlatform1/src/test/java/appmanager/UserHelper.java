@@ -156,7 +156,7 @@ else {
     return users;
   }
 
-  public Set<UserAccount> getUserAccountFromWeb() {
+  public Set<UserAccount> getUserAccountFromWeb() throws ParseException {
     Set<UserAccount> userAccounts = new HashSet<>();
     String verificationStatus = wd.findElement(By.cssSelector("tr.table_row:nth-child(1) > .text-left")).getText();
     String first_name = wd.findElement(By.cssSelector("tr.table_row:nth-child(2) > .text-left")).getText();
@@ -168,11 +168,16 @@ else {
     String post_code = wd.findElement(By.cssSelector("tr.table_row:nth-child(8) > .text-left")).getText();
     String facebook_link = wd.findElement(By.cssSelector("tr.table_row:nth-child(9) > .text-left")).getText();
 
+    SimpleDateFormat input = new SimpleDateFormat("dd/MM/yyyy");
+    Date dateValue = input.parse(dob);
+    SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+    String dobFormatted = output.format(dateValue);
+
     UserAccount userAccount = new UserAccount()
             .withtVerificationStatus(verificationStatus)
             .withFirst_name(first_name)
             .withLast_name(last_name)
-            .withDob(dob)
+            .withDob(dobFormatted)
             .withCountry(country)
             .withState(state)
             .withStreet(street)
