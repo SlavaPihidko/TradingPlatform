@@ -190,23 +190,25 @@ public class ApiUserHelper extends ApiHelperBase {
     String street;
     String postCode;
     String FbLink;
-    UserAccount userAccount;
 
     String header = String.format(getPrpsApi()
             .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
+
     Set<UserAccount> users = new HashSet<>();
+
     String json = Request.Get(header)
             .addHeader("Content-Type", "application/json")
             .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
             .execute().returnContent().asString();
 
     JsonParser jsonParser = new JsonParser();
+    // первая часть
     JsonElement parsedFirstPart = jsonParser.parse(json)
             .getAsJsonObject().get("data").getAsJsonObject().get("data");
 
     UserAccount userFromRequestFirstPart
             = new Gson().fromJson(parsedFirstPart, new TypeToken<UserAccount>(){}.getType());
-
+    // вторая часть
     JsonElement parsedSecondPart = jsonParser.parse(json)
             .getAsJsonObject().get("data")
             .getAsJsonObject().getAsJsonArray("verifications").get(2)
@@ -215,11 +217,19 @@ public class ApiUserHelper extends ApiHelperBase {
     UserAccountHolderDetailsForApi userAccountHolderDetails =
             new Gson().fromJson(parsedSecondPart, new TypeToken<UserAccountHolderDetailsForApi>(){}.getType());
 
+    // приводим int к строке
     status = Integer.toString(userAccountHolderDetails.getStatus_id());
     System.out.println("status " + status);
 
+    //  проверка на статус. С апи получаем int значение
     if(status.equals("1")) {
       status = "Verified";
+    }
+    if(status.equals("2")) {
+      status = "Not verified";
+    }
+    if(status.equals("3")) {
+      status = "Waiting";
     }
 //Integer x = userAccountHolderDetails.getStatus_id();
 //String status = x.toString();
@@ -230,6 +240,8 @@ public class ApiUserHelper extends ApiHelperBase {
        postCode = userFromRequestFirstPart.getPost_code();
        FbLink = userFromRequestFirstPart.getFacebook_link();
 
+       // проверка на NULL параметров, которые получаем с АПИ.
+      // если NULL присваиваем прочерк
       if( state== null) {
         state = "-";
       }
@@ -249,16 +261,16 @@ public class ApiUserHelper extends ApiHelperBase {
         FbLink = "-";
       }
 
-      userAccount = new UserAccount()
-              .withtVerificationStatus(status)
-              .withFirst_name(userFromRequestFirstPart.getFirst_name())
-              .withLast_name(userFromRequestFirstPart.getLast_name())
-              .withDob(dob)
-              .withCountry(country)
-              .withState(state)
-              .withStreet(street)
-              .withPost_code(postCode)
-              .withFacebook_link(FbLink);
+      UserAccount userAccount = new UserAccount()
+                  .withtVerificationStatus(status)
+                  .withFirst_name(userFromRequestFirstPart.getFirst_name())
+                  .withLast_name(userFromRequestFirstPart.getLast_name())
+                  .withDob(dob)
+                  .withCountry(country)
+                  .withState(state)
+                  .withStreet(street)
+                  .withPost_code(postCode)
+                  .withFacebook_link(FbLink);
 
       users.add(userAccount);
       System.out.println("userAccount from API: " + userAccount);
@@ -266,14 +278,3 @@ public class ApiUserHelper extends ApiHelperBase {
     return users;
   }
 }
-
-//  String firstName = user.getFirstName();
-//  String lastName = user.getLastName();
-//  String gender = user.getGender();
-//
-//  if (firstName == null) {
-//    firstNameFormatted = "-";
-//          }
-//
-//
-//  User user = new User(firstNameFormatted, lastName, gender);
