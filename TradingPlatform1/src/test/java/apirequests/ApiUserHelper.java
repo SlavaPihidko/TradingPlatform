@@ -183,8 +183,15 @@ public class ApiUserHelper extends ApiHelperBase {
   }
 
   public Set<UserAccount> getUserAccountFromApi() throws IOException {
+    String state;
     String status;
+    String dob;
+    String country;
+    String street;
+    String postCode;
+    String FbLink;
     UserAccount userAccount;
+
     String header = String.format(getPrpsApi()
             .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
     Set<UserAccount> users = new HashSet<>();
@@ -207,26 +214,66 @@ public class ApiUserHelper extends ApiHelperBase {
 
     UserAccountHolderDetailsForApi userAccountHolderDetails =
             new Gson().fromJson(parsedSecondPart, new TypeToken<UserAccountHolderDetailsForApi>(){}.getType());
-    if(userAccountHolderDetails.getStatus_id() == 1) {
-      status = "Verified";
 
+    status = Integer.toString(userAccountHolderDetails.getStatus_id());
+    System.out.println("status " + status);
+
+    if(status.equals("1")) {
+      status = "Verified";
+    }
 //Integer x = userAccountHolderDetails.getStatus_id();
 //String status = x.toString();
+       state = userFromRequestFirstPart.getState();
+       dob = userFromRequestFirstPart.getDob();
+       country = userFromRequestFirstPart.getCountry();
+       street = userFromRequestFirstPart.getStreet();
+       postCode = userFromRequestFirstPart.getPost_code();
+       FbLink = userFromRequestFirstPart.getFacebook_link();
+
+      if( state== null) {
+        state = "-";
+      }
+      if (dob == null) {
+        dob = "-";
+      }
+      if (country == null) {
+        country = "-";
+      }
+      if(street == null){
+        street = "-";
+      }
+      if(postCode == null){
+        postCode = "-";
+      }
+      if(FbLink == null){
+        FbLink = "-";
+      }
 
       userAccount = new UserAccount()
               .withtVerificationStatus(status)
               .withFirst_name(userFromRequestFirstPart.getFirst_name())
               .withLast_name(userFromRequestFirstPart.getLast_name())
-              .withDob(userFromRequestFirstPart.getDob())
-              .withCountry(userFromRequestFirstPart.getCountry())
-              .withState(userFromRequestFirstPart.getState())
-              .withStreet(userFromRequestFirstPart.getStreet())
-              .withPost_code(userFromRequestFirstPart.getPost_code())
-              .withFacebook_link(userFromRequestFirstPart.getFacebook_link());
+              .withDob(dob)
+              .withCountry(country)
+              .withState(state)
+              .withStreet(street)
+              .withPost_code(postCode)
+              .withFacebook_link(FbLink);
 
       users.add(userAccount);
       System.out.println("userAccount from API: " + userAccount);
-    }
+
     return users;
   }
 }
+
+//  String firstName = user.getFirstName();
+//  String lastName = user.getLastName();
+//  String gender = user.getGender();
+//
+//  if (firstName == null) {
+//    firstNameFormatted = "-";
+//          }
+//
+//
+//  User user = new User(firstNameFormatted, lastName, gender);

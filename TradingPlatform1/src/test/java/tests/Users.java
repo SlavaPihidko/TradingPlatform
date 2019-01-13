@@ -75,7 +75,7 @@ public class Users extends TestBase {
   @Test(priority = 5)
   public void checkUserAccountFromApiAndWeb() throws InterruptedException, IOException, ParseException {
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
-    Thread.sleep(7000);
+    Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(5000);
     Set<UserAccount> userAccountFromApi = am.getApiUserHelper().getUserAccountFromApi();
