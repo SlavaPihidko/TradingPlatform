@@ -187,4 +187,11 @@ else {
     userAccounts.add(userAccount);
     return userAccounts;
   }
+
+  public UserAccount getStatusAtUserAccountFromWeb() {
+    String verificationStatus = wd.findElement(By.cssSelector("tr.table_row:nth-child(1) > .text-left")).getText();
+    UserAccount status = new UserAccount().withtVerificationStatus(verificationStatus);
+    System.out.println("status from Web: " + status);
+    return status;
+  }
 }

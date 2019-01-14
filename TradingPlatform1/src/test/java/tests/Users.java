@@ -84,4 +84,16 @@ public class Users extends TestBase {
     assertEquals(userAccountFromWeb, userAccountFromApi);
   }
 
+  @Test
+  public void checkButtonsAtUserAccount() throws InterruptedException, ParseException, IOException {
+    // тест когда, status_id=3 Waiting и появляются кнопки
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(5000);
+    UserAccount statusFromWeb = app.getUserHelper().getStatusAtUserAccountFromWeb();
+    UserAccount statusFromApi = am.getApiUserHelper().getStatusAtUserAccountFromApi();
+    assertEquals(statusFromWeb, statusFromApi);
+  }
+
 }

@@ -284,4 +284,32 @@ public class ApiUserHelper extends ApiHelperBase {
 
     return users;
   }
+
+  public UserAccount getStatusAtUserAccountFromApi() throws IOException {
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
+
+    String json = Request.Get(header)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    // первая часть
+    JsonElement parsedSecondPart = jsonParser.parse(json)
+            .getAsJsonObject().get("data")
+            .getAsJsonObject().getAsJsonArray("verifications").get(2)
+            .getAsJsonObject().get("pivot");
+
+    UserAccountHolderDetailsForApi userAccountHolderDetails =
+            new Gson().fromJson(parsedSecondPart, new TypeToken<UserAccountHolderDetailsForApi>(){}.getType());
+
+    String status = Integer.toString(userAccountHolderDetails.getStatus_id());
+    if(status.equals("3")) {
+      status = "Not verified";
+    }
+    UserAccount status2 = new UserAccount().withtVerificationStatus(status);
+    System.out.println("status from API: " + status2);
+    return status2;
+  }
 }
