@@ -1,6 +1,7 @@
 package tests;
 
 import model.UserAccount;
+import model.UserAssets;
 import model.UserData;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
@@ -138,6 +139,16 @@ public class Users extends TestBase {
     UserAccount statusFromApiAfter = am.getApiUserHelper().getStatusAtUserAccountFromApi();
 
     assertEquals(statusFromWebAfter,statusFromApiAfter);
+  }
+
+  @Test
+  public void checkUserBalances() throws InterruptedException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userBalance();
+    Set<UserAssets> userBalances = app.getUserHelper().getUserBalancesFromWeb();
   }
 
 }

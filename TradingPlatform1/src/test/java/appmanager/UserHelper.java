@@ -1,6 +1,7 @@
 package appmanager;
 
 import model.UserAccount;
+import model.UserAssets;
 import model.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -120,7 +121,7 @@ else {
       Thread.sleep(2000);}
     }
     */
-
+    System.out.println(users);
     return users;
   }
 
@@ -193,5 +194,21 @@ else {
     UserAccount status = new UserAccount().withtVerificationStatus(verificationStatus);
     System.out.println("status from Web: " + status);
     return status;
+  }
+
+  public Set<UserAssets> getUserBalancesFromWeb() {
+    Set<UserAssets> users = new HashSet<>();
+    String baseLocatorUser = "table_row";
+    List<WebElement> elements = wd.findElements(By.className(baseLocatorUser));
+    System.out.println("elements.size() " + elements.size());
+
+    for(WebElement element:elements) {
+
+
+      String code = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+      String balance = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+      System.out.println("code " + code + "   balance " + balance);
+    }
+    return null;
   }
 }
