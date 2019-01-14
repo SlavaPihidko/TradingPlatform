@@ -45,7 +45,8 @@ public class ApiUserHelper extends ApiHelperBase {
 
 
     JsonParser jsonParser = new JsonParser();
-    JsonArray parsed  = jsonParser.parse(json).getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users");
+    JsonArray parsed  = jsonParser.parse(json).getAsJsonObject().get("data")
+            .getAsJsonObject().getAsJsonArray("users");
 
     //System.out.println("Массив обьектов wallets представлен строкой "+ parsed);
     return new Gson().fromJson(parsed, new TypeToken<Set<UserDataForApi>>(){}.getType());
@@ -233,8 +234,9 @@ public class ApiUserHelper extends ApiHelperBase {
     if(status.equals("2")) {
       status = "Not verified";
     }
+    //вместо Waiting на фронтенде показывается Not verified и 2 кнопки
     if(status.equals("3")) {
-      status = "Waiting";
+      status = "Not verified";
     }
 //Integer x = userAccountHolderDetails.getStatus_id();
 //String status = x.toString();
