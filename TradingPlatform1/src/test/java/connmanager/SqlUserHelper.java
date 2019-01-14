@@ -65,4 +65,12 @@ public class SqlUserHelper extends SqlHelperBase {
 
     return users;
   }
+
+  public void setStatusId(String query) throws SQLException {
+    Statement st = con.createStatement();
+    int rs = st.executeUpdate(query);
+    System.out.println("rs :" + rs);
+
+    st.close();
+  }
 }

@@ -85,12 +85,17 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void checkButtonsAtUserAccount() throws InterruptedException, ParseException, IOException {
+  public void checkButtonsAtUserAccount() throws InterruptedException, ParseException, IOException, SQLException {
+    // подготовка теста, установка status_id=3
+    cm.getConnection();
+    cm.getSqlUserHelper().setStatusId("update coin4coin_db.user_verifications " +
+            "set status_id=3 where user_id=262 and verification_id=3;");
+
     // тест когда, status_id=3 Waiting и появляются кнопки
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
-    Thread.sleep(5000);
+    Thread.sleep(4000);
     UserAccount statusFromWebBefore = app.getUserHelper().getStatusAtUserAccountFromWeb();
     UserAccount statusFromApiBefore = am.getApiUserHelper().getStatusAtUserAccountFromApi();
 
