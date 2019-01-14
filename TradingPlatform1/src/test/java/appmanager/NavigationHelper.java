@@ -23,4 +23,8 @@ public class NavigationHelper extends HelperBase {
   public void approveButton() {
     wd.findElement(By.cssSelector("div.btns > button.green_btn")).click();
   }
+
+  public void rejectButton() {
+    wd.findElement(By.cssSelector("div.btns > button.red_btn")).click();
+  }
 }

@@ -61,6 +61,10 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
+  public NavigationHelper press() {
+    return navigationHelper;
+  }
+
   public SessionHelper getSessionHelper() {
     return sessionHelper;
   }

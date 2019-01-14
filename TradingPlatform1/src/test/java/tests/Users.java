@@ -85,24 +85,55 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void checkButtonsAtUserAccount() throws InterruptedException, ParseException, IOException, SQLException {
+  public void checkApproveButtonAtUserAccount() throws InterruptedException, ParseException, IOException, SQLException {
     // подготовка теста, установка status_id=3
     cm.getConnection();
     cm.getSqlUserHelper().setStatusId("update coin4coin_db.user_verifications " +
             "set status_id=3 where user_id=262 and verification_id=3;");
 
-    // тест когда, status_id=3 Waiting и появляются кнопки
+    // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем approve
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
+    System.out.println("Before:\n");
     UserAccount statusFromWebBefore = app.getUserHelper().getStatusAtUserAccountFromWeb();
     UserAccount statusFromApiBefore = am.getApiUserHelper().getStatusAtUserAccountFromApi();
 
     assertEquals(statusFromWebBefore, statusFromApiBefore);
 
-    app.goTo().approveButton();
+    app.press().approveButton();
+
     Thread.sleep(3000);
+    System.out.println("After:\n");
+    UserAccount statusFromWebAfter = app.getUserHelper().getStatusAtUserAccountFromWeb();
+    UserAccount statusFromApiAfter = am.getApiUserHelper().getStatusAtUserAccountFromApi();
+
+    assertEquals(statusFromWebAfter,statusFromApiAfter);
+  }
+
+  @Test
+  public void checkRejectButtonAtUserAccount() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка status_id=3
+    cm.getConnection();
+    cm.getSqlUserHelper().setStatusId("update coin4coin_db.user_verifications " +
+            "set status_id=3 where user_id=262 and verification_id=3;");
+
+    // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем Reject
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    System.out.println("Before:\n");
+    UserAccount statusFromWebBefore = app.getUserHelper().getStatusAtUserAccountFromWeb();
+    UserAccount statusFromApiBefore = am.getApiUserHelper().getStatusAtUserAccountFromApi();
+
+    assertEquals(statusFromWebBefore, statusFromApiBefore);
+
+    app.press().rejectButton();
+
+    Thread.sleep(3000);
+    System.out.println("After:\n");
     UserAccount statusFromWebAfter = app.getUserHelper().getStatusAtUserAccountFromWeb();
     UserAccount statusFromApiAfter = am.getApiUserHelper().getStatusAtUserAccountFromApi();
 

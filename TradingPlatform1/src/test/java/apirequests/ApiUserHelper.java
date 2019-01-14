@@ -308,6 +308,9 @@ public class ApiUserHelper extends ApiHelperBase {
     if(status.equals("3")) {
       status = "Not verified";
     }
+    if(status.equals("2")) {
+      status = "Not verified";
+    }
     if(status.equals("1")) {
       status = "Verified";
     }
