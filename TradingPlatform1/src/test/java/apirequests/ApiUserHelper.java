@@ -144,6 +144,7 @@ public class ApiUserHelper extends ApiHelperBase {
   }
 
   public Set<UserData> getUserAccountInfoFromApi() throws IOException {
+    String phone;
     String header = String.format(getPrpsApi()
             .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
     Set<UserData> users = new HashSet<>();
@@ -170,12 +171,16 @@ public class ApiUserHelper extends ApiHelperBase {
     UserAccountTypeForApi userFromRequestThirdPart
             = new Gson().fromJson(parsedThirdPart, new TypeToken<UserAccountTypeForApi>(){}.getType());
 
+    phone = userFromRequestSecondPart.getPhone();
+    if (phone == null){
+      phone = "-";
+    }
 
     UserData user = new UserData()
             .withId(userFromRequestFirstPart.getId())
             .withEmail(userFromRequestFirstPart.getEmail())
             .withFullName(userFromRequestFirstPart.getUsername())
-            .withMobileNumber(userFromRequestSecondPart.getPhone())
+            .withMobileNumber(phone)
             .withAccountType(userFromRequestThirdPart.getName());
     users.add(user);
     System.out.println("from api " + user);
@@ -189,7 +194,7 @@ public class ApiUserHelper extends ApiHelperBase {
     String country;
     String street;
     String postCode;
-    String FbLink;
+    String fbLink;
 
     String header = String.format(getPrpsApi()
             .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
@@ -238,7 +243,7 @@ public class ApiUserHelper extends ApiHelperBase {
        country = userFromRequestFirstPart.getCountry();
        street = userFromRequestFirstPart.getStreet();
        postCode = userFromRequestFirstPart.getPost_code();
-       FbLink = userFromRequestFirstPart.getFacebook_link();
+       fbLink = userFromRequestFirstPart.getFacebook_link();
 
        // проверка на NULL параметров, которые получаем с АПИ.
       // если NULL присваиваем прочерк
@@ -257,8 +262,8 @@ public class ApiUserHelper extends ApiHelperBase {
       if(postCode == null){
         postCode = "-";
       }
-      if(FbLink == null){
-        FbLink = "-";
+      if(fbLink == null){
+        fbLink = "-";
       }
 
       UserAccount userAccount = new UserAccount()
@@ -270,7 +275,7 @@ public class ApiUserHelper extends ApiHelperBase {
                   .withState(state)
                   .withStreet(street)
                   .withPost_code(postCode)
-                  .withFacebook_link(FbLink);
+                  .withFacebook_link(fbLink);
 
       users.add(userAccount);
       System.out.println("userAccount from API: " + userAccount);
