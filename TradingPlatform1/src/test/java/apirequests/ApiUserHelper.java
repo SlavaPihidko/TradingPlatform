@@ -308,6 +308,10 @@ public class ApiUserHelper extends ApiHelperBase {
     if(status.equals("3")) {
       status = "Not verified";
     }
+    if(status.equals("1")) {
+      status = "Verified";
+    }
+
     UserAccount status2 = new UserAccount().withtVerificationStatus(status);
     System.out.println("status from API: " + status2);
     return status2;

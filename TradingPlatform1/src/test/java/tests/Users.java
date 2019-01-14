@@ -91,9 +91,17 @@ public class Users extends TestBase {
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(5000);
-    UserAccount statusFromWeb = app.getUserHelper().getStatusAtUserAccountFromWeb();
-    UserAccount statusFromApi = am.getApiUserHelper().getStatusAtUserAccountFromApi();
-    assertEquals(statusFromWeb, statusFromApi);
+    UserAccount statusFromWebBefore = app.getUserHelper().getStatusAtUserAccountFromWeb();
+    UserAccount statusFromApiBefore = am.getApiUserHelper().getStatusAtUserAccountFromApi();
+
+    assertEquals(statusFromWebBefore, statusFromApiBefore);
+
+    app.goTo().approveButton();
+    Thread.sleep(3000);
+    UserAccount statusFromWebAfter = app.getUserHelper().getStatusAtUserAccountFromWeb();
+    UserAccount statusFromApiAfter = am.getApiUserHelper().getStatusAtUserAccountFromApi();
+
+    assertEquals(statusFromWebAfter,statusFromApiAfter);
   }
 
 }

@@ -19,4 +19,8 @@ public class NavigationHelper extends HelperBase {
     String userId = wd.findElement(By.cssSelector("tr.table_row > th:nth-child(1)")).getText();
     wd.findElement(By.cssSelector(String.format("a[href='/users/%s']", userId))).click();
   }
+
+  public void approveButton() {
+    wd.findElement(By.cssSelector("div.btns > button.green_btn")).click();
+  }
 }
