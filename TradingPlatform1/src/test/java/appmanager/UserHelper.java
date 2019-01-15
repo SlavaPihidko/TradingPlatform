@@ -197,7 +197,7 @@ else {
   }
 
   public Set<UserAssets> getUserBalancesFromWeb() {
-    Set<UserAssets> users = new HashSet<>();
+    Set<UserAssets> usersAssets = new HashSet<>();
     String baseLocatorUser = "table_row";
     List<WebElement> elements = wd.findElements(By.className(baseLocatorUser));
     System.out.println("elements.size() " + elements.size());
@@ -206,9 +206,15 @@ else {
 
 
       String code = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
-      String balance = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+      double balance = Double.parseDouble(element.findElement(By.cssSelector("th:nth-child(2)")).getText());
+
       System.out.println("code " + code + "   balance " + balance);
+
+      UserAssets userAssets = new UserAssets().withBalance(balance).withCode(code);
+      usersAssets.add(userAssets);
     }
-    return null;
+    System.out.println(usersAssets);
+    return usersAssets;
+
   }
 }

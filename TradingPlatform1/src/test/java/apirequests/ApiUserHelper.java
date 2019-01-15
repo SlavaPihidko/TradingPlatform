@@ -319,4 +319,25 @@ public class ApiUserHelper extends ApiHelperBase {
     System.out.println("status from API: " + status2);
     return status2;
   }
+
+  public Set<UserAssets> getUserBalancesFromApi() throws IOException {
+   // Set<UserAssets> userAssets = new HashSet<>();
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/balances", getPrpsApi().getProperty("api.userID"));
+
+    String json = Request.Get(header)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    JsonElement parsedFirstPart = jsonParser.parse(json)
+            .getAsJsonObject().getAsJsonArray("data");
+
+//    Set<UserAssets> userAssetsOnlyBalance =
+//            new Gson().fromJson(parsedFirstPart, new TypeToken<Set<UserAssets>>(){}.getType());
+//userAssets.add(userAssetsOnlyBalance);
+    System.out.println("parsedFirstPart " + parsedFirstPart);
+    return new Gson().fromJson(parsedFirstPart, new TypeToken<Set<UserAssets>>(){}.getType());
+  }
 }

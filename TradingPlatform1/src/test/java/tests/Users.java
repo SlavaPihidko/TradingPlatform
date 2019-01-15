@@ -142,13 +142,15 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void checkUserBalances() throws InterruptedException {
-    app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
+  public void checkUserBalances() throws InterruptedException, IOException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userBalance();
-    Set<UserAssets> userBalances = app.getUserHelper().getUserBalancesFromWeb();
+    Set<UserAssets> userBalancesFromWeb = app.getUserHelper().getUserBalancesFromWeb();
+    Set<UserAssets> userBalancesFromApi = am.getApiUserHelper().getUserBalancesFromApi();
+    assertEquals(userBalancesFromWeb, userBalancesFromApi);
   }
 
 }
