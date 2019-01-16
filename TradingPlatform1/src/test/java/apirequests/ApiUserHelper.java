@@ -1,9 +1,6 @@
 package apirequests;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import model.*;
 import org.apache.http.client.fluent.Request;
@@ -321,7 +318,7 @@ public class ApiUserHelper extends ApiHelperBase {
   }
 
   public Set<UserAssets> getUserBalancesFromApi() throws IOException {
-   // Set<UserAssets> userAssets = new HashSet<>();
+    Set<UserAssets> userAssets = new HashSet<>();
     String header = String.format(getPrpsApi()
             .getProperty("api.baseUrl")+"/api/admin/user/%s/balances", getPrpsApi().getProperty("api.userID"));
 
@@ -334,10 +331,33 @@ public class ApiUserHelper extends ApiHelperBase {
     JsonElement parsedFirstPart = jsonParser.parse(json)
             .getAsJsonObject().getAsJsonArray("data");
 
-//    Set<UserAssets> userAssetsOnlyBalance =
-//            new Gson().fromJson(parsedFirstPart, new TypeToken<Set<UserAssets>>(){}.getType());
+    Set<UserAssets> userAssetsOnlyBalance =
+            new Gson().fromJson(parsedFirstPart, new TypeToken<Set<UserAssets>>(){}.getType());
 //userAssets.add(userAssetsOnlyBalance);
-    System.out.println("parsedFirstPart " + parsedFirstPart);
-    return new Gson().fromJson(parsedFirstPart, new TypeToken<Set<UserAssets>>(){}.getType());
+
+    for(UserAssets userAssets1: userAssetsOnlyBalance){
+      double balance = userAssets1.getBalance();
+      int asset_id = userAssets1.getAsset_id();
+      UserAssets userAssets2 = new UserAssets().withBalance(balance).withAsset_id(asset_id);
+      userAssets.add(userAssets2);
+      System.out.println("userAssets from API firstPart" + userAssets);
+    }
+//??????????????????????????????????????????????????????????????
+    JsonArray parsedSecondPart =  jsonParser.parse(json)
+            .getAsJsonObject().getAsJsonArray("data").getAsJsonArray().;
+
+    Set<UserAssets> userAssetsOnlyCode =
+            new Gson().fromJson(parsedSecondPart, new TypeToken<Set<UserAssets>>(){}.getType());
+    System.out.println( "userAssetsOnlyCode "+userAssetsOnlyCode);
+   /* for(UserAssets userAssets1: userAssetsOnlyCode){
+     String code = userAssets1.getCode();
+      UserAssets userAssets2 = new UserAssets().withCode(code);
+      userAssets.add(userAssets2);
+      System.out.println("userAssets from API secondPart" + userAssets);
+    } */
+    //??????????????????????????????????????????????????????????
+    //System.out.println("parsedFirstPart " + parsedFirstPart);
+
+    return userAssets;
   }
 }
