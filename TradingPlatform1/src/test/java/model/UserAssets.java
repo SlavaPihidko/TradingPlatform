@@ -4,6 +4,17 @@ public class UserAssets {
   int asset_id;
   double balance;
   String code;
+  Asset asset;
+
+  public Asset getAsset() {
+    return asset;
+  }
+
+  public void setAsset(Asset asset) {
+    this.asset = asset;
+  }
+
+
 
   public int getAsset_id() {
     return asset_id;
@@ -38,6 +49,7 @@ public class UserAssets {
             "asset_id=" + asset_id +
             ", balance=" + balance +
             ", code='" + code + '\'' +
+            ", asset=" + asset +
             '}';
   }
 
@@ -50,7 +62,8 @@ public class UserAssets {
 
     if (getAsset_id() != that.getAsset_id()) return false;
     if (Double.compare(that.getBalance(), getBalance()) != 0) return false;
-    return getCode() != null ? getCode().equals(that.getCode()) : that.getCode() == null;
+    if (getCode() != null ? !getCode().equals(that.getCode()) : that.getCode() != null) return false;
+    return getAsset() != null ? getAsset().equals(that.getAsset()) : that.getAsset() == null;
   }
 
   @Override
@@ -61,6 +74,7 @@ public class UserAssets {
     temp = Double.doubleToLongBits(getBalance());
     result = 31 * result + (int) (temp ^ (temp >>> 32));
     result = 31 * result + (getCode() != null ? getCode().hashCode() : 0);
+    result = 31 * result + (getAsset() != null ? getAsset().hashCode() : 0);
     return result;
   }
 }

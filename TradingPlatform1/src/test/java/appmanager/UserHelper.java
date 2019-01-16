@@ -205,15 +205,15 @@ else {
     for(WebElement element:elements) {
 
 
-      String code = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+      String code = element.findElement(By.cssSelector("th:nth-child(1)")).getText().toLowerCase();
       double balance = Double.parseDouble(element.findElement(By.cssSelector("th:nth-child(2)")).getText());
 
-      System.out.println("code " + code + "   balance " + balance);
+      //System.out.println("code " + code + "   balance " + balance);
 
       UserAssets userAssets = new UserAssets().withBalance(balance).withCode(code);
       usersAssets.add(userAssets);
     }
-    System.out.println(usersAssets);
+    System.out.println("usersAssets from WEB " + usersAssets);
     return usersAssets;
 
   }

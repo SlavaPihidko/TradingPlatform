@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -328,7 +329,7 @@ public class ApiUserHelper extends ApiHelperBase {
             .execute().returnContent().asString();
 
     JsonParser jsonParser = new JsonParser();
-    JsonElement parsedFirstPart = jsonParser.parse(json)
+    /*JsonElement parsedFirstPart = jsonParser.parse(json)
             .getAsJsonObject().getAsJsonArray("data");
 
     Set<UserAssets> userAssetsOnlyBalance =
@@ -341,23 +342,24 @@ public class ApiUserHelper extends ApiHelperBase {
       UserAssets userAssets2 = new UserAssets().withBalance(balance).withAsset_id(asset_id);
       userAssets.add(userAssets2);
       System.out.println("userAssets from API firstPart" + userAssets);
-    }
+    }*/
 //??????????????????????????????????????????????????????????????
     JsonArray parsedSecondPart =  jsonParser.parse(json)
-            .getAsJsonObject().getAsJsonArray("data").getAsJsonArray().;
+            .getAsJsonObject().getAsJsonArray("data");
 
-    Set<UserAssets> userAssetsOnlyCode =
-            new Gson().fromJson(parsedSecondPart, new TypeToken<Set<UserAssets>>(){}.getType());
-    System.out.println( "userAssetsOnlyCode "+userAssetsOnlyCode);
-   /* for(UserAssets userAssets1: userAssetsOnlyCode){
-     String code = userAssets1.getCode();
-      UserAssets userAssets2 = new UserAssets().withCode(code);
+    List<UserAssets> userAssetsOnlyCode =
+            new Gson().fromJson(parsedSecondPart, new TypeToken<List<UserAssets>>(){}.getType());
+    //System.out.println( "userAssetsOnlyCode "+userAssetsOnlyCode);
+    for(UserAssets userAssets1: userAssetsOnlyCode){
+     String code = userAssets1.getAsset().getCode();
+     double balance = userAssets1.getBalance();
+      UserAssets userAssets2 = new UserAssets().withCode(code).withBalance(balance);
+      //System.out.println("userAssets2 " +userAssets2);
       userAssets.add(userAssets2);
-      System.out.println("userAssets from API secondPart" + userAssets);
-    } */
+      //System.out.println("userAssets from API secondPart" + userAssets);
+    }
     //??????????????????????????????????????????????????????????
-    //System.out.println("parsedFirstPart " + parsedFirstPart);
-
+    System.out.println("usersAssets from API " + userAssets);
     return userAssets;
   }
 }
