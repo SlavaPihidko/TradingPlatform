@@ -362,4 +362,41 @@ public class ApiUserHelper extends ApiHelperBase {
     System.out.println("usersAssets from API " + userAssets);
     return userAssets;
   }
+
+  public Set<UserTxes> getUserTransactionsFromApi() throws IOException {
+    Set<UserTxes> userTxes = new HashSet<>();
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/transactions", getPrpsApi().getProperty("api.userID"));
+
+    String json = Request.Get(header)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    JsonArray parsed = jsonParser.parse(json)
+            .getAsJsonObject().get("data")
+            .getAsJsonObject().getAsJsonArray("transactions");
+
+    List<UserTxes> userTxesList = new Gson().fromJson(parsed, new TypeToken<List<UserTxes>>(){}.getType());
+    for (UserTxes userTxes1: userTxesList) {
+      String code = userTxes1.getAsset().getCode();
+      int id = userTxes1.getId();
+      String transaction_type = userTxes1.getTransaction_type();
+      double amount = userTxes1.getAmount();
+      String status = userTxes1.getStatus();
+      String created_at = userTxes1.getCreated_at();
+      int user_id = userTxes1.getUser_id();
+
+      UserTxes userTxes2 = new UserTxes()
+              .withId(id)
+              .withTransaction_type(transaction_type)
+              .withUser_id(user_id)
+              .withCode(code)
+              .withAmount(amount).withStatus(status).withCreated_at(created_at);
+      userTxes.add(userTxes2);
+    }
+    System.out.println("userTxes from API " + userTxes);
+    return userTxes;
+  }
 }

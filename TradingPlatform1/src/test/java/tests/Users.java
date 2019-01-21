@@ -3,6 +3,7 @@ package tests;
 import model.UserAccount;
 import model.UserAssets;
 import model.UserData;
+import model.UserTxes;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class Users extends TestBase {
 
 // Тест берет первого юзера с API и этого же юзера ID 262 с БД и сравнивает эти обьекты по всем полям.
   @Test(priority = 1)
-  public void checkOneUserFromApiAndDb() throws IOException, ParseException, SQLException {
+  public void checkUserAtListFromApiAndDb() throws IOException, ParseException, SQLException {
 
     Set<UserData> oneUserFromRequest =  am.getApiUserHelper().getOneUserFromApi(true);
 // Устанавливаем коннект с БД
@@ -34,7 +35,7 @@ public class Users extends TestBase {
 
   // Тест берет первого юзера с WEB морды и этого же юзера (первого юзера) с АПИ и сравнивает эти обьекты по всем полям.
   @Test(priority = 2)
-  public void checkOneUserFromApiAndWeb() throws InterruptedException, ParseException, IOException {
+  public void checkUserAtListFromApiAndWeb() throws InterruptedException, ParseException, IOException {
 
     app.goTo().usersPage();
     //Thread.sleep(7000);
@@ -84,6 +85,8 @@ public class Users extends TestBase {
     System.out.println("userAccountFromWeb :" + userAccountFromWeb);
     assertEquals(userAccountFromWeb, userAccountFromApi);
   }
+
+  // Добавить кейс checkUserAccountFromApiAndDB()
 
   @Test
   public void checkApproveButtonAtUserAccount() throws InterruptedException, ParseException, IOException, SQLException {
@@ -147,10 +150,21 @@ public class Users extends TestBase {
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
-    app.goTo().userBalance();
+    app.goTo().userBalances();
     Set<UserAssets> userBalancesFromWeb = app.getUserHelper().getUserBalancesFromWeb();
     Set<UserAssets> userBalancesFromApi = am.getApiUserHelper().getUserBalancesFromApi();
     assertEquals(userBalancesFromWeb, userBalancesFromApi);
+  }
+
+  @Test
+  public void checkUserTransactionsFromApiAndWeb() throws InterruptedException, IOException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userTransactions();
+    //Set<UserTxes> userTxesFromWeb = app.getUserHelper().getUserTxesFromWeb();
+    Set<UserTxes> userTxesFromApi = am.getApiUserHelper().getUserTransactionsFromApi();
   }
 
 }

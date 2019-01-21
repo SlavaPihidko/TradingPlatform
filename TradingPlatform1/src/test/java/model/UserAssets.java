@@ -60,21 +60,17 @@ public class UserAssets {
 
     UserAssets that = (UserAssets) o;
 
-    if (getAsset_id() != that.getAsset_id()) return false;
     if (Double.compare(that.getBalance(), getBalance()) != 0) return false;
-    if (getCode() != null ? !getCode().equals(that.getCode()) : that.getCode() != null) return false;
-    return getAsset() != null ? getAsset().equals(that.getAsset()) : that.getAsset() == null;
+    return getCode() != null ? getCode().equals(that.getCode()) : that.getCode() == null;
   }
 
   @Override
   public int hashCode() {
     int result;
     long temp;
-    result = getAsset_id();
     temp = Double.doubleToLongBits(getBalance());
-    result = 31 * result + (int) (temp ^ (temp >>> 32));
+    result = (int) (temp ^ (temp >>> 32));
     result = 31 * result + (getCode() != null ? getCode().hashCode() : 0);
-    result = 31 * result + (getAsset() != null ? getAsset().hashCode() : 0);
     return result;
   }
 }
