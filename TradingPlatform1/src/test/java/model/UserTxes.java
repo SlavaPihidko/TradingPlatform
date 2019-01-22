@@ -9,6 +9,7 @@ public class UserTxes {
   String status;
   String created_at;
   Asset asset;
+  int position;
 
 
   public int getId() {
@@ -74,6 +75,15 @@ public class UserTxes {
     return this;
   }
 
+  public int getPosition() {
+    return position;
+  }
+
+  public UserTxes withPosition(int position) {
+    this.position = position;
+    return this;
+  }
+
   public Asset getAsset() {
     return asset;
   }
@@ -93,6 +103,7 @@ public class UserTxes {
             ", status='" + status + '\'' +
             ", created_at='" + created_at + '\'' +
             ", asset=" + asset +
+            ", position=" + position +
             '}';
   }
 

@@ -164,7 +164,8 @@ public class Users extends TestBase {
     Thread.sleep(4000);
     app.goTo().userTransactions();
     Set<UserTxes> userTxesFromWeb = app.getUserHelper().getUserTxesFromWeb();
-    //Set<UserTxes> userTxesFromApi = am.getApiUserHelper().getUserTransactionsFromApi();
+    Set<UserTxes> userTxesFromApi = am.getApiUserHelper().getUserTransactionsFromApi();
+    assertEquals(userTxesFromWeb, userTxesFromApi);
   }
 
 }

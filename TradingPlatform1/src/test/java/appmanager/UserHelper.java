@@ -230,9 +230,9 @@ else {
       int id = Integer.parseInt(element.findElement(By.cssSelector("th:nth-child(1)")).getText());
       String transaction_type = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
       int user_id = Integer.parseInt(element.findElement(By.cssSelector("th:nth-child(3)")).getText());
-      String code = element.findElement(By.cssSelector("th:nth-child(4)")).getText();
+      String code = element.findElement(By.cssSelector("th:nth-child(4)")).getText().toLowerCase();
       double amount = Double.parseDouble(element.findElement(By.cssSelector("th:nth-child(5)")).getText());
-      String status = element.findElement(By.cssSelector("th:nth-child(6)")).getText();
+      String status = element.findElement(By.cssSelector("th:nth-child(6)")).getText().toLowerCase();
       String created_at = element.findElement(By.cssSelector("th:nth-child(7)")).getText();
 
 //      System.out.println(" id " + id + " transaction_type " + transaction_type + " user_id " + user_id

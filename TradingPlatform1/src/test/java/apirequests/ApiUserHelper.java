@@ -379,10 +379,21 @@ public class ApiUserHelper extends ApiHelperBase {
             .getAsJsonObject().getAsJsonArray("transactions");
 
     List<UserTxes> userTxesList = new Gson().fromJson(parsed, new TypeToken<List<UserTxes>>(){}.getType());
+
     for (UserTxes userTxes1: userTxesList) {
       String code = userTxes1.getAsset().getCode();
       int id = userTxes1.getId();
       String transaction_type = userTxes1.getTransaction_type();
+
+      if (transaction_type.equals("input")) {
+         id = userTxes1.getPosition();
+         transaction_type = "Deposit";
+      }
+
+      if(transaction_type.equals("output")) {
+        transaction_type = "Withdraw";
+      }
+
       double amount = userTxes1.getAmount();
       String status = userTxes1.getStatus();
       String created_at = userTxes1.getCreated_at();
