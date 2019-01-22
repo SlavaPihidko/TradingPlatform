@@ -3,6 +3,7 @@ package appmanager;
 import model.UserAccount;
 import model.UserAssets;
 import model.UserData;
+import model.UserTxes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -216,5 +217,34 @@ else {
     System.out.println("usersAssets from WEB " + usersAssets);
     return usersAssets;
 
+  }
+
+  public Set<UserTxes> getUserTxesFromWeb() {
+    Set<UserTxes> userTxes = new HashSet<>();
+    String baseLocatorTxes = "table_row";
+    List<WebElement> elements =  wd.findElements(By.className(baseLocatorTxes));
+
+    System.out.println("elements.size() " + elements.size());
+
+    for (WebElement element: elements) {
+      int id = Integer.parseInt(element.findElement(By.cssSelector("th:nth-child(1)")).getText());
+      String transaction_type = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+      int user_id = Integer.parseInt(element.findElement(By.cssSelector("th:nth-child(3)")).getText());
+      String code = element.findElement(By.cssSelector("th:nth-child(4)")).getText();
+      double amount = Double.parseDouble(element.findElement(By.cssSelector("th:nth-child(5)")).getText());
+      String status = element.findElement(By.cssSelector("th:nth-child(6)")).getText();
+      String created_at = element.findElement(By.cssSelector("th:nth-child(7)")).getText();
+
+//      System.out.println(" id " + id + " transaction_type " + transaction_type + " user_id " + user_id
+//      + " code " + code + " amount " + amount + " status " + status + " created_at " + created_at);
+
+      UserTxes userTxes1 = new UserTxes()
+              .withId(id).withTransaction_type(transaction_type).withUser_id(user_id)
+              .withCode(code).withAmount(amount).withStatus(status).withCreated_at(created_at);
+
+    userTxes.add(userTxes1);
+    }
+    System.out.println("userTxes from WEB: " + userTxes);
+    return userTxes;
   }
 }
