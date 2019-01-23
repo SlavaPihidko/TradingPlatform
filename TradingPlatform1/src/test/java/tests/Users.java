@@ -168,4 +168,15 @@ public class Users extends TestBase {
     assertEquals(userTxesFromWeb, userTxesFromApi);
   }
 
+  @Test
+  public void checkUserHasNotOrders() throws InterruptedException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userOrders();
+    assertEquals(app.getUserHelper()
+            .text(By.cssSelector("table.table.orders tr:nth-child(2) > th")), "This user has no orders");
+  }
+
 }
