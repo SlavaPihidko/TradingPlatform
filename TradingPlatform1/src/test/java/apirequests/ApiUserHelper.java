@@ -431,13 +431,21 @@ public class ApiUserHelper extends ApiHelperBase {
 
     for (UserOrders userOrders1: userOrdersList) {
       int id = userOrders1.getId();
-      String pair = userOrders1.getPair();
-      String type = userOrders1.getType();
+      String pair = userOrders1.getPair().toUpperCase().replace("_","/");
+      String type = userOrders1.getType().substring(0,1).toUpperCase() + userOrders1.getType().substring(1);
       int user_id = userOrders1.getUser_id();
       double quantity = userOrders1.getQuantity();
       String created_at = userOrders1.getCreated_at();
       // делаем первую букву заглавной
       String status = userOrders1.getStatus().substring(0,1).toUpperCase() + userOrders1.getStatus().substring(1);
+
+      if (type.equals("Market_sell")) {
+        type = "Sell";
+      }
+
+      if(type.equals("Market_buy")) {
+        type = "Buy";
+      }
 
       UserOrders userOrders2 = new UserOrders()
               .withId(id)
