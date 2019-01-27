@@ -39,4 +39,8 @@ public class NavigationHelper extends HelperBase {
   public void userOrders() {
     wd.findElement(By.cssSelector("div.buttons a[data-name='orders']")).click();
   }
+
+  public void userLimits() {
+    wd.findElement(By.cssSelector("div.buttons a[data-name='personalLimits']")).click();
+  }
 }

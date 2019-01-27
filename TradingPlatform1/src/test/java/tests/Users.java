@@ -166,7 +166,7 @@ public class Users extends TestBase {
   }
 
   @Test
-  public void checkUserHasNotOrders() throws InterruptedException {
+  public void checkTextIfUserHasNotOrders() throws InterruptedException {
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -186,6 +186,20 @@ public class Users extends TestBase {
     Set<UserOrders> userOrdersFromWeb = app.getUserHelper().getUserOrdersFromWeb();
     Set<UserOrders> userOrdersFromApi = am.getApiUserHelper().getUserOrdersFromApi();
     assertEquals(userOrdersFromWeb, userOrdersFromApi);
+  }
+
+  @Test
+  public void checkTextIfUsersLimitsOff() throws InterruptedException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(1000);
+//    System.out.println(app.getUserHelper()
+//            .text(By.cssSelector(".text-center:nth-child(1)")));
+    assertEquals(app.getUserHelper()
+            .text(By.cssSelector(".text-center:nth-child(1)")), "Personal limits is not active");
   }
 
 }
