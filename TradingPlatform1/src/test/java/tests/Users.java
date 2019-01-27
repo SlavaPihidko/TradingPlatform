@@ -89,7 +89,7 @@ public class Users extends TestBase {
   public void checkApproveButtonAtUserAccount() throws InterruptedException, ParseException, IOException, SQLException {
     // подготовка теста, установка status_id=3
     cm.getConnection();
-    cm.getSqlUserHelper().setStatusId("update coin4coin_db.user_verifications " +
+    cm.getSqlUserHelper().setIntValue("update coin4coin_db.user_verifications " +
             "set status_id=3 where user_id=262 and verification_id=3;");
 
     // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем approve
@@ -117,7 +117,7 @@ public class Users extends TestBase {
   public void checkRejectButtonAtUserAccount() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка status_id=3
     cm.getConnection();
-    cm.getSqlUserHelper().setStatusId("update coin4coin_db.user_verifications " +
+    cm.getSqlUserHelper().setIntValue("update coin4coin_db.user_verifications " +
             "set status_id=3 where user_id=262 and verification_id=3;");
 
     // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем Reject
@@ -206,7 +206,7 @@ public class Users extends TestBase {
   public void checkStateOfToggleIfToggleOffAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=0
     cm.getConnection();
-    cm.getSqlUserHelper().setStatusId("update coin4coin_db.users " +
+    cm.getSqlUserHelper().setIntValue("update coin4coin_db.users " +
             "set personal_fee_active=0 where id=262;");
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
@@ -214,6 +214,8 @@ public class Users extends TestBase {
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(1000);
+    assertEquals(app.getUserHelper()
+            .elementPresent(By.cssSelector("button.active")), false);
   }
 
 }
