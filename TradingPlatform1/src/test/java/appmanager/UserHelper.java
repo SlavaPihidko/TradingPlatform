@@ -1,9 +1,6 @@
 package appmanager;
 
-import model.UserAccount;
-import model.UserAssets;
-import model.UserData;
-import model.UserTxes;
+import model.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -246,5 +243,37 @@ else {
     }
     System.out.println("userTxes from WEB: " + userTxes);
     return userTxes;
+  }
+
+  public Set<UserOrders> getUserOrdersFromWeb() {
+    Set<UserOrders> userOrders = new HashSet<>();
+    String baseLocator = "table_row";
+    List<WebElement> elements = wd.findElements(By.className(baseLocator));
+
+    System.out.println("elements.size() " + elements.size());
+
+    for (WebElement element: elements) {
+      int id = Integer.parseInt(element.findElement(By.cssSelector("th:nth-child(1)")).getText());
+      String pair = element.findElement(By.cssSelector("th:nth-child(2)")).getText();
+      String type = element.findElement(By.cssSelector("th:nth-child(3)")).getText();
+      int user_id = Integer.parseInt(element.findElement(By.cssSelector("th:nth-child(4)")).getText());
+      double quantity = Double.parseDouble(element.findElement(By.cssSelector("th:nth-child(5)")).getText());
+      String created_at = element.findElement(By.cssSelector("th:nth-child(7)")).getText();
+      String status = element.findElement(By.cssSelector("th:nth-child(8)")).getText();
+
+      UserOrders userOrders1 = new UserOrders()
+              .withId(id)
+              .withPair(pair)
+              .withType(type)
+              .withUser_id(user_id)
+              .withQuantity(quantity)
+              .withCreated_at(created_at)
+              .withStatus(status);
+
+      userOrders.add(userOrders1);
+    }
+    System.out.println("userOrders from WEB " + userOrders );
+
+    return userOrders;
   }
 }

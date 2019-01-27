@@ -410,4 +410,47 @@ public class ApiUserHelper extends ApiHelperBase {
     System.out.println("userTxes from API " + userTxes);
     return userTxes;
   }
+
+  public Set<UserOrders> getUserOrdersFromApi() throws IOException {
+    Set<UserOrders> userOrders = new HashSet<>();
+
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/orders", getPrpsApi().getProperty("api.userID"));
+
+    String json = Request.Get(header)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    JsonArray parsed = jsonParser.parse(json)
+            .getAsJsonObject().get("data")
+            .getAsJsonObject().getAsJsonArray("orders");
+
+    List<UserOrders> userOrdersList = new Gson().fromJson(parsed, new TypeToken<List<UserOrders>>(){}.getType());
+
+    for (UserOrders userOrders1: userOrdersList) {
+      int id = userOrders1.getId();
+      String pair = userOrders1.getPair();
+      String type = userOrders1.getType();
+      int user_id = userOrders1.getUser_id();
+      double quantity = userOrders1.getQuantity();
+      String created_at = userOrders1.getCreated_at();
+      String status = userOrders1.getStatus();
+
+      UserOrders userOrders2 = new UserOrders()
+              .withUser_id(id)
+              .withPair(pair)
+              .withType(type)
+              .withUser_id(user_id)
+              .withQuantity(quantity)
+              .withCreated_at(created_at)
+              .withStatus(status);
+
+      userOrders.add(userOrders2);
+    }
+
+    System.out.println("userOrders from API: " + userOrders);
+    return userOrders;
+  }
 }

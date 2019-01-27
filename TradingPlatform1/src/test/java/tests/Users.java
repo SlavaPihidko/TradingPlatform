@@ -1,9 +1,6 @@
 package tests;
 
-import model.UserAccount;
-import model.UserAssets;
-import model.UserData;
-import model.UserTxes;
+import model.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import java.io.IOException;
@@ -177,6 +174,18 @@ public class Users extends TestBase {
     app.goTo().userOrders();
     assertEquals(app.getUserHelper()
             .text(By.cssSelector("table.table.orders tr:nth-child(2) > th")), "This user has no orders");
+  }
+
+  @Test
+  public  void checkUserOrdersFromApiAndWeb() throws InterruptedException, IOException {
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userOrders();
+    Set<UserOrders> userOrdersFromWeb = app.getUserHelper().getUserOrdersFromWeb();
+    Set<UserOrders> userOrdersFromApi = am.getApiUserHelper().getUserOrdersFromApi();
+    assertEquals(userOrdersFromWeb, userOrdersFromApi);
   }
 
 }
