@@ -202,4 +202,18 @@ public class Users extends TestBase {
             .text(By.cssSelector(".text-center:nth-child(1)")), "Personal limits is not active");
   }
 
+  @Test
+  public void checkStateOfToggleIfToggleOffAtUserLimits() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=0
+    cm.getConnection();
+    cm.getSqlUserHelper().setStatusId("update coin4coin_db.users " +
+            "set personal_fee_active=0 where id=262;");
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(1000);
+  }
+
 }
