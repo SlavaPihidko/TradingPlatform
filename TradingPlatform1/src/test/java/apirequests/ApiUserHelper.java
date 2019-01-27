@@ -436,10 +436,11 @@ public class ApiUserHelper extends ApiHelperBase {
       int user_id = userOrders1.getUser_id();
       double quantity = userOrders1.getQuantity();
       String created_at = userOrders1.getCreated_at();
-      String status = userOrders1.getStatus();
+      // делаем первую букву заглавной
+      String status = userOrders1.getStatus().substring(0,1).toUpperCase() + userOrders1.getStatus().substring(1);
 
       UserOrders userOrders2 = new UserOrders()
-              .withUser_id(id)
+              .withId(id)
               .withPair(pair)
               .withType(type)
               .withUser_id(user_id)
