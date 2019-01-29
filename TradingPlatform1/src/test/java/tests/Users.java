@@ -236,4 +236,20 @@ public class Users extends TestBase {
             .elementPresent(By.cssSelector("button.active")), true);
   }
 
+  @Test
+  public void checkTurnOnToggleAtUserLimits() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=0
+    cm.getConnection();
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=0 where id=%s;",  userId));
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(1000);
+    app.getUserHelper().turnOnTogleAtUserLimits();
+    Thread.sleep(4000);
+  }
+
 }
