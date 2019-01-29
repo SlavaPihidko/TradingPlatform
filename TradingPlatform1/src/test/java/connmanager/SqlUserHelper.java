@@ -73,4 +73,20 @@ public class SqlUserHelper extends SqlHelperBase {
 
     st.close();
   }
+
+  public int getPersonalFeeActiveFromDb(String query) throws SQLException {
+
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    int personal_fee_active = 3;
+    while (rs.next()) {
+       personal_fee_active = rs.getInt("personal_fee_active");
+      System.out.println("personal_fee_active : " + personal_fee_active);
+    }
+
+    rs.close();
+    st.close();
+    return personal_fee_active;
+  }
 }

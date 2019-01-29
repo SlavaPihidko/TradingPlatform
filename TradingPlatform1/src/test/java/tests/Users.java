@@ -222,7 +222,7 @@ public class Users extends TestBase {
 
   @Test
   public void checkStateOfToggleIfToggleOnAtUserLimits() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=0
+    // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userId));
@@ -249,7 +249,11 @@ public class Users extends TestBase {
     app.goTo().userLimits();
     Thread.sleep(1000);
     app.getUserHelper().turnOnTogleAtUserLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
+    int personalFeeActiveFromDb = cm.getSqlUserHelper()
+            .getPersonalFeeActiveFromDb(String.format("SELECT personal_fee_active " +
+                    "FROM coin4coin_db.users where id=%s;", userId));
+    assertEquals(1, personalFeeActiveFromDb);
   }
 
 }
