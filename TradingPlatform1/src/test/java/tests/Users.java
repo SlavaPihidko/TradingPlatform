@@ -11,6 +11,8 @@ import static org.testng.Assert.assertEquals;
 
 public class Users extends TestBase {
 
+  int userId = 262;
+
 // Тест берет первого юзера с API и этого же юзера ID 262 с БД и сравнивает эти обьекты по всем полям.
   @Test(priority = 1)
   public void checkUserAtListFromApiAndDb() throws IOException, ParseException, SQLException {
@@ -206,8 +208,8 @@ public class Users extends TestBase {
   public void checkStateOfToggleIfToggleOffAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=0
     cm.getConnection();
-    cm.getSqlUserHelper().setIntValue("update coin4coin_db.users " +
-            "set personal_fee_active=0 where id=262;");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=0 where id=%s;", userId));
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -216,6 +218,22 @@ public class Users extends TestBase {
     Thread.sleep(1000);
     assertEquals(app.getUserHelper()
             .elementPresent(By.cssSelector("button.active")), false);
+  }
+
+  @Test
+  public void checkStateOfToggleIfToggleOnAtUserLimits() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=0
+    cm.getConnection();
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userId));
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(1000);
+    assertEquals(app.getUserHelper()
+            .elementPresent(By.cssSelector("button.active")), true);
   }
 
 }
