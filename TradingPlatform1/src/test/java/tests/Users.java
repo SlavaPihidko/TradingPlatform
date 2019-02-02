@@ -282,4 +282,8 @@ public class Users extends TestBase {
     assertEquals(0, personalFeeActiveFromDb);
   }
 
+  /*SELECT UA.code, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max
+FROM coin4coin_db.user_fees UF
+join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
+
 }
