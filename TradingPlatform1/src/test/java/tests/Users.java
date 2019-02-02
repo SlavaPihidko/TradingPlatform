@@ -224,8 +224,9 @@ public class Users extends TestBase {
   public void checkStateOfToggleIfToggleOnAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userId));
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -242,19 +243,43 @@ public class Users extends TestBase {
     cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=0 where id=%s;",  userId));
+            "set personal_fee_active=0 where id=%s;",  userIdMax));
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(1000);
-    app.getUserHelper().turnOnToggleAtUserLimits();
+    // в этом случае включаем тогл
+    app.getUserHelper().turnOnOffToggleAtUserLimits();
     Thread.sleep(2000);
     int personalFeeActiveFromDb = cm.getSqlUserHelper()
             .getPersonalFeeActiveFromDb(String.format("SELECT personal_fee_active " +
-                    "FROM coin4coin_db.users where id=%s;", userId));
+                    "FROM coin4coin_db.users where id=%s;", userIdMax));
     assertEquals(1, personalFeeActiveFromDb);
+  }
+
+
+  @Test
+  public void checkTurnOffToggleAtUserLimits() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    cm.getConnection();
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(1000);
+    // в этом случае выключаем тогл
+    app.getUserHelper().turnOnOffToggleAtUserLimits();
+    Thread.sleep(2000);
+    int personalFeeActiveFromDb = cm.getSqlUserHelper()
+            .getPersonalFeeActiveFromDb(String.format("SELECT personal_fee_active " +
+                    "FROM coin4coin_db.users where id=%s;", userIdMax));
+    assertEquals(0, personalFeeActiveFromDb);
   }
 
 }
