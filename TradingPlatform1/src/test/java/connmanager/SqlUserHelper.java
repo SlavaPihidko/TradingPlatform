@@ -89,4 +89,20 @@ public class SqlUserHelper extends SqlHelperBase {
     st.close();
     return personal_fee_active;
   }
+
+  public int getMaxUserId(String query) throws SQLException {
+
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    int userIdMax = 3;
+    while (rs.next()) {
+      userIdMax = rs.getInt("Max(id)");
+      System.out.println("id : " + userIdMax);
+    }
+
+    rs.close();
+    st.close();
+    return userIdMax;
+  }
 }

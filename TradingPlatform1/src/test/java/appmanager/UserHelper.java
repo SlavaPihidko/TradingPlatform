@@ -277,7 +277,7 @@ else {
     return userOrders;
   }
 
-  public void turnOnTogleAtUserLimits() {
+  public void turnOnToggleAtUserLimits() {
     wd.findElement(By.cssSelector("button.btn")).click();
   }
 }

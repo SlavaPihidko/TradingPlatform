@@ -240,6 +240,7 @@ public class Users extends TestBase {
   public void checkTurnOnToggleAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=0
     cm.getConnection();
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=0 where id=%s;",  userId));
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
@@ -248,7 +249,7 @@ public class Users extends TestBase {
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(1000);
-    app.getUserHelper().turnOnTogleAtUserLimits();
+    app.getUserHelper().turnOnToggleAtUserLimits();
     Thread.sleep(2000);
     int personalFeeActiveFromDb = cm.getSqlUserHelper()
             .getPersonalFeeActiveFromDb(String.format("SELECT personal_fee_active " +
