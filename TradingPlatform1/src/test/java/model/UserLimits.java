@@ -2,19 +2,19 @@ package model;
 
 public class UserLimits {
 
-  String code;
+  String name;
   double order_min;
   double exchange;
   double withdraw_min;
   double withdraw_max;
   Asset asset;
 
-  public String getCode() {
-    return code;
+  public String getName() {
+    return name;
   }
 
-  public UserLimits withCode(String code) {
-    this.code = code;
+  public UserLimits withName(String name) {
+    this.name = name;
     return this;
   }
 
@@ -65,7 +65,7 @@ public class UserLimits {
   @Override
   public String toString() {
     return "UserLimits{" +
-            "code='" + code + '\'' +
+            "name='" + name + '\'' +
             ", order_min=" + order_min +
             ", exchange=" + exchange +
             ", withdraw_min=" + withdraw_min +
@@ -85,15 +85,14 @@ public class UserLimits {
     if (Double.compare(that.getExchange(), getExchange()) != 0) return false;
     if (Double.compare(that.getWithdraw_min(), getWithdraw_min()) != 0) return false;
     if (Double.compare(that.getWithdraw_max(), getWithdraw_max()) != 0) return false;
-    if (getCode() != null ? !getCode().equals(that.getCode()) : that.getCode() != null) return false;
-    return getAsset() != null ? getAsset().equals(that.getAsset()) : that.getAsset() == null;
+    return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
   }
 
   @Override
   public int hashCode() {
     int result;
     long temp;
-    result = getCode() != null ? getCode().hashCode() : 0;
+    result = getName() != null ? getName().hashCode() : 0;
     temp = Double.doubleToLongBits(getOrder_min());
     result = 31 * result + (int) (temp ^ (temp >>> 32));
     temp = Double.doubleToLongBits(getExchange());
@@ -102,7 +101,6 @@ public class UserLimits {
     result = 31 * result + (int) (temp ^ (temp >>> 32));
     temp = Double.doubleToLongBits(getWithdraw_max());
     result = 31 * result + (int) (temp ^ (temp >>> 32));
-    result = 31 * result + (getAsset() != null ? getAsset().hashCode() : 0);
     return result;
   }
 }

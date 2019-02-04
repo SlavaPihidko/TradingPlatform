@@ -481,14 +481,14 @@ public class ApiUserHelper extends ApiHelperBase {
 
     List<UserLimits> userLimitsList = new Gson().fromJson(parsed, new TypeToken<List<UserLimits>>(){}.getType());
     for (UserLimits userLimits1: userLimitsList) {
-      String code = userLimits1.getAsset().getCode();
+      String name = userLimits1.getAsset().getName();
       double order_min = userLimits1.getOrder_min();
       double exchange = userLimits1.getExchange();
       double withdraw_min = userLimits1.getWithdraw_min();
       double withdraw_max = userLimits1.getWithdraw_max();
 
       UserLimits userLimits2 = new UserLimits()
-                                  .withCode(code)
+                                  .withName(name)
                                   .withOrder_min(order_min)
                                   .withExchange(exchange)
                                   .withWithdraw_min(withdraw_min)

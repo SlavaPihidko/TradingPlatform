@@ -298,8 +298,8 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(4000);
-    //Set<UserLimits> userLimitsFromWeb = app.getUserHelper().getUserOrdersFromWeb();
+    Set<UserLimits> userLimitsFromWeb = app.getUserHelper().getUserLimitsFromWeb();
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
-    //assertEquals(userLimitsFromWeb, userLimitsFromApi);
+    assertEquals(userLimitsFromWeb, userLimitsFromApi);
   }
 }

@@ -2,6 +2,7 @@ package model;
 
 public class Asset {
   String code;
+  String name;
 
   public String getCode() {
     return code;
@@ -12,10 +13,20 @@ public class Asset {
     return this;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public Asset withName(String name) {
+    this.name = name;
+    return this;
+  }
+
   @Override
   public String toString() {
     return "Asset{" +
             "code='" + code + '\'' +
+            ", name='" + name + '\'' +
             '}';
   }
 
@@ -26,11 +37,14 @@ public class Asset {
 
     Asset asset = (Asset) o;
 
-    return getCode() != null ? getCode().equals(asset.getCode()) : asset.getCode() == null;
+    if (getCode() != null ? !getCode().equals(asset.getCode()) : asset.getCode() != null) return false;
+    return getName() != null ? getName().equals(asset.getName()) : asset.getName() == null;
   }
 
   @Override
   public int hashCode() {
-    return getCode() != null ? getCode().hashCode() : 0;
+    int result = getCode() != null ? getCode().hashCode() : 0;
+    result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+    return result;
   }
 }
