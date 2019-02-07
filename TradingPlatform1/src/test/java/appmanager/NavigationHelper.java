@@ -43,4 +43,8 @@ public class NavigationHelper extends HelperBase {
   public void userLimits() {
     wd.findElement(By.cssSelector("div.buttons a[data-name='personalLimits']")).click();
   }
+
+  public void saveButtonAtUserLimits() {
+    wd.findElement(By.cssSelector("button.blue_btn")).click();
+  }
 }

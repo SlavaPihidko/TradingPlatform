@@ -302,4 +302,22 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsFromWeb, userLimitsFromApi);
   }
+
+  @Test
+  public void checkSetUserLimitsFromWebAndDb() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    cm.getConnection();
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSet = app.getUserHelper().setUserLimits();
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+  }
 }

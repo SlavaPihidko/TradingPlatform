@@ -16,11 +16,17 @@ public class HelperBase {
     wd.findElement(locator).click();
   }
 
-  protected void type(String text, By locator) {
+  public void type(String text, By locator) {
     click(locator);
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
   }
+
+//  protected void typeDouble(Double d, By locator) {
+//    click(locator);
+//    wd.findElement(locator).clear();
+//    wd.findElement(locator).sendKeys(d);
+//  }
 
   public String text(By locator) {
 return wd.findElement(locator).getText();
