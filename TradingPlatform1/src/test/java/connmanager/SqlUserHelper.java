@@ -1,6 +1,8 @@
 package connmanager;
 
 import model.UserData;
+import model.UserLimits;
+
 import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -104,5 +106,27 @@ public class SqlUserHelper extends SqlHelperBase {
     rs.close();
     st.close();
     return userIdMax;
+  }
+
+  public UserLimits getUserBtcLimitFromDb(String query) throws SQLException {
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    UserLimits userBtcLimit = null;
+    while (rs.next()){
+       userBtcLimit = new UserLimits()
+              .withName(rs.getString("UA.name"))
+              .withOrder_min(Double.parseDouble(rs.getString("UF.order_min")))
+              .withExchange(Double.parseDouble(rs.getString("UF.exchange")))
+              .withWithdraw_min(Double.parseDouble(rs.getString("UF.withdraw_min")))
+              .withWithdraw_max(Double.parseDouble(rs.getString("UF.withdraw_max")));
+
+      System.out.println("userBtcLimit from DB " + userBtcLimit);
+
+    }
+    rs.close();
+    st.close();
+
+    return userBtcLimit;
   }
 }

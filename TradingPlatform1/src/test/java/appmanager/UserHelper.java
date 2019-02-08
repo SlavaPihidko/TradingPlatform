@@ -364,4 +364,44 @@ else {
   }
 
 
+  public UserLimits setUserBtcLimit(String orderMin, String exchange, String withdrawMin, String withdrawMax) {
+//    UserLimits userLimit = new UserLimits()
+//                              .withOrder_min(0.1234567891)
+//                              .withExchange(0.1234567892)
+//                              .withWithdraw_min(0.1234567893)
+//                              .withWithdraw_max(0.1234567894);
+
+    String baseLocator = "table_row";
+    WebElement element = wd.findElement(By.className(baseLocator));
+
+      element.findElement(By.cssSelector("input[name='order_min']")).clear();
+      element.findElement(By.cssSelector("input[name='order_min']"))
+              .sendKeys(orderMin);
+      element.findElement(By.cssSelector("input[name='exchange']")).clear();
+      element.findElement(By.cssSelector("input[name='exchange']"))
+              .sendKeys(exchange);
+      element.findElement(By.cssSelector("input[name='withdraw_min']")).clear();
+      element.findElement(By.cssSelector("input[name='withdraw_min']"))
+              .sendKeys(withdrawMin);
+      element.findElement(By.cssSelector("input[name='withdraw_max']")).clear();
+      element.findElement(By.cssSelector("input[name='withdraw_max']"))
+              .sendKeys(withdrawMax);
+
+    String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+    double order_min1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("value"));
+    double exchange1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("value"));
+    double withdraw_min1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("value"));
+    double withdraw_max1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("value"));
+
+
+    UserLimits userLimits2 = new UserLimits()
+            .withName(name)
+            .withOrder_min(order_min1)
+            .withExchange(exchange1)
+            .withWithdraw_min(withdraw_min1)
+            .withWithdraw_max(withdraw_max1);
+
+    System.out.println("userLimits2 : " + userLimits2 );
+    return userLimits2;
+  }
 }
