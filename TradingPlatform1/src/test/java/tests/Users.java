@@ -324,6 +324,26 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   }
 
   @Test
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    cm.getConnection();
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper().setUserLimitsWithoutNeo();
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+
+  @Test
   public void checkSetBtcValueAtUserLimit_1() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
@@ -441,5 +461,31 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=2;");
     assertEquals(userBtcLimitFromDb, userBtcLimitFromWeb);
+  }
+
+  @Test
+  public void checkSetBtcValueAtUserLimit_5() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    cm.getConnection();
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    // здесь просто прокликали поля, значения в плейсхолдере, значения value не имеет
+    UserLimits userBtcLimitFromWebBefore = app.getUserHelper().setUserBtcEmptyLimit();
+    Thread.sleep(2000);
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    UserLimits userBtcLimitFromDb = cm.getSqlUserHelper()
+            .getUserBtcLimitFromDb("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+                    "FROM coin4coin_db.user_fees UF\n" +
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=2;");
+    UserLimits userBtcLimitFromWebAfter = app.getUserHelper().getUserBtcLimitFromWeb();
+    assertEquals(userBtcLimitFromDb, userBtcLimitFromWebAfter);
   }
 }
