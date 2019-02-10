@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,15 +38,19 @@ public class ApplicationManager {
     if (browser == BrowserType.FIREFOX) {
       wd = new FirefoxDriver();
     } else if (browser == BrowserType.CHROME) {
-      wd = new ChromeDriver();
+      ChromeOptions options = new ChromeOptions();
+      options.addArguments("start-fullscreen");
+//      DesiredCapabilities caps = new DesiredCapabilities();
+//      caps.setCapability(ChromeOptions.CAPABILITY, options);
+      wd = new ChromeDriver(options);
       System.out.println( "Свойства браузера: \n" + ((ChromeDriver) wd).getCapabilities());
     } else if (browser == BrowserType.IE) {
       wd = new InternetExplorerDriver();
     }
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    if(browser == BrowserType.CHROME) {
-      wd.manage().window().setSize(new Dimension(1360, 720)); // устанавливает ширину открывающегося окна
-    }
+//    if(browser == BrowserType.CHROME) {
+//      wd.manage().window().setSize(new Dimension(1360, 720)); // устанавливает ширину открывающегося окна
+//    }
     wd.get(properties.getProperty("web.BaseUrl"));
     userHelper = new UserHelper(wd);
     navigationHelper = new NavigationHelper(wd);
