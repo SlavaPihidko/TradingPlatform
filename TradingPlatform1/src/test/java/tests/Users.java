@@ -373,7 +373,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   }
 
   @Test  //проверяем что в НЕО записываюься Минимальные значения, передаются и сохраняются в БД
-  public void checkSetNeoValueAtUserLimit_2() throws IOException, SQLException, InterruptedException {
+  public void checkSetNeoValueAtUserLimits_2() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -403,7 +403,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   }
 
   @Test  //проверяем что в НЕО записываюься Максимальные значения, передаются и сохраняются в БД
-  public void checkSetBtcValueAtUserLimit_3() throws IOException, SQLException, InterruptedException {
+  public void checkSetNeoValueAtUserLimits_3() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -432,8 +432,8 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test
-  public void checkSetBtcValueAtUserLimit_4() throws IOException, SQLException, InterruptedException {
+  @Test  //проверяем что в НЕО НЕ записываюься символы кроме цифр и единой точки, только цифры и цифра с точкой передаются и сохраняются в БД
+  public void checkSetNeoValueAtUserLimits_4() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -445,21 +445,21 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(4000);
-    UserLimits userBtcLimitFromWeb = app.getUserHelper()
+    UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
-                    "abcd0.0001",
+                    "0.",
                     "abcd!@#$%^&*()0..0001",
-                    "abcd0.0001",
-                    "abcd0.0001"
+                    ".0001",
+                    "abcd  -=+0.0001"
             );
     Thread.sleep(5000);
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    UserLimits userBtcLimitFromDb = cm.getSqlUserHelper()
+    UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
             .getUserBtcLimitFromDb("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
                     "FROM coin4coin_db.user_fees UF\n" +
-                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=2;");
-    assertEquals(userBtcLimitFromDb, userBtcLimitFromWeb);
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=12;");
+    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
   @Test
