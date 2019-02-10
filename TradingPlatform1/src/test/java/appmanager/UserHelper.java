@@ -310,28 +310,30 @@ else {
     return userLimits;
   }
 
-  public UserLimits getUserBtcLimitFromWeb() {
-
+  public UserLimits getUserNeoLimitsFromWeb() {
+    UserLimits userBtcLimits = null;
     String baseLocator = "table_row";
-    WebElement element = wd.findElement(By.className(baseLocator));
+    List<WebElement> elements = wd.findElements(By.className(baseLocator));
+    for(WebElement element: elements) {
+      if ("Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
 
+        String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+        //System.out.println("code :" + code);
+        double order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("placeholder"));
+        //System.out.println("order_min :" + order_min);
+        double exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("placeholder"));
+        double withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("placeholder"));
+        double withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("placeholder"));
 
-      String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
-      //System.out.println("code :" + code);
-      double order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("placeholder"));
-      //System.out.println("order_min :" + order_min);
-      double exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("placeholder"));
-      double withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("placeholder"));
-      double withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("placeholder"));
+        userBtcLimits = new UserLimits()
+                .withName(name)
+                .withOrder_min(order_min)
+                .withExchange(exchange)
+                .withWithdraw_min(withdraw_min)
+                .withWithdraw_max(withdraw_max);
 
-      UserLimits userBtcLimits = new UserLimits()
-              .withName(name)
-              .withOrder_min(order_min)
-              .withExchange(exchange)
-              .withWithdraw_min(withdraw_min)
-              .withWithdraw_max(withdraw_max);
-
-
+      }
+    }
     System.out.println("userLimits from WEB :" + userBtcLimits);
     return userBtcLimits;
   }
@@ -496,24 +498,27 @@ else {
     return userLimits2;
   }
 
-  public UserLimits setUserBtcEmptyLimit() throws InterruptedException {
+  public UserLimits setUserNeoEmptyLimits() throws InterruptedException {
 
     String baseLocator = "table_row";
-    WebElement element = wd.findElement(By.className(baseLocator));
+    List<WebElement> elements = wd.findElements(By.className(baseLocator));
+    for(WebElement element: elements) {
+      if ("Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
 
-    element.findElement(By.cssSelector("input[name='order_min']")).click();
-    element.findElement(By.cssSelector("input[name='order_min']")).clear();
+      element.findElement(By.cssSelector("input[name='order_min']")).click();
+      element.findElement(By.cssSelector("input[name='order_min']")).clear();
 
 
-    element.findElement(By.cssSelector("input[name='exchange']")).click();
-    element.findElement(By.cssSelector("input[name='exchange']")).clear();
+      element.findElement(By.cssSelector("input[name='exchange']")).click();
+      element.findElement(By.cssSelector("input[name='exchange']")).clear();
 
-    element.findElement(By.cssSelector("input[name='withdraw_min']")).click();
-    element.findElement(By.cssSelector("input[name='withdraw_min']")).clear();
+      element.findElement(By.cssSelector("input[name='withdraw_min']")).click();
+      element.findElement(By.cssSelector("input[name='withdraw_min']")).clear();
 
-    element.findElement(By.cssSelector("input[name='withdraw_max']")).click();
-    element.findElement(By.cssSelector("input[name='withdraw_max']")).clear();
-
+      element.findElement(By.cssSelector("input[name='withdraw_max']")).click();
+      element.findElement(By.cssSelector("input[name='withdraw_max']")).clear();
+    }
+    }
     return null;
   }
 }

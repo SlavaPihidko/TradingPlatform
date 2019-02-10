@@ -108,7 +108,7 @@ public class SqlUserHelper extends SqlHelperBase {
     return userIdMax;
   }
 
-  public UserLimits getUserBtcLimitFromDb(String query) throws SQLException {
+  public UserLimits getUserNeoLimitsFromDb(String query) throws SQLException {
     Statement st = con.createStatement();
     ResultSet rs = st.executeQuery(query);
 
