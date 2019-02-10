@@ -343,8 +343,8 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test
-  public void checkSetBtcValueAtUserLimit_1() throws IOException, SQLException, InterruptedException {
+  @Test //проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД
+  public void checkSetNeoValueAtUserLimits_1() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -356,21 +356,20 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(4000);
-    UserLimits userBtcLimitFromWeb = app.getUserHelper()
-            .setUserBtcLimit(
-                    "0.1234567891",
-                    "0.1234567892",
-                    "0.1234567893",
-                    "0.1234567894"
-            );
+    UserLimits userNeoLimitFromWeb = app.getUserHelper()
+            .setUserNeoLimits(
+                    "1",
+                    "2",
+                    "3",
+                    "4");
     Thread.sleep(5000);
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    UserLimits userBtcLimitFromDb = cm.getSqlUserHelper()
+    UserLimits userNeoLimitFromDb = cm.getSqlUserHelper()
             .getUserBtcLimitFromDb("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
                     "FROM coin4coin_db.user_fees UF\n" +
-                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=2;");
-    assertEquals(userBtcLimitFromDb, userBtcLimitFromWeb);
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=12;");
+    assertEquals(userNeoLimitFromDb, userNeoLimitFromWeb);
   }
 
   @Test
@@ -387,7 +386,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     app.goTo().userLimits();
     Thread.sleep(4000);
     UserLimits userBtcLimitFromWeb = app.getUserHelper()
-            .setUserBtcLimit(
+            .setUserNeoLimits(
                               "0.0000000001",
                               "0.0000000001",
                               "0.0000000001",
@@ -417,7 +416,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     app.goTo().userLimits();
     Thread.sleep(4000);
     UserLimits userBtcLimitFromWeb = app.getUserHelper()
-            .setUserBtcLimit(
+            .setUserNeoLimits(
                     "10000000000",
                     "10000000000",
                     "10000000000",
@@ -447,7 +446,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     app.goTo().userLimits();
     Thread.sleep(4000);
     UserLimits userBtcLimitFromWeb = app.getUserHelper()
-            .setUserBtcLimit(
+            .setUserNeoLimits(
                     "abcd0.0001",
                     "abcd!@#$%^&*()0..0001",
                     "abcd0.0001",

@@ -410,7 +410,7 @@ else {
 
     for(WebElement element: elements) {
       if (!"Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
-        System.out.println("name " + element.findElement(By.cssSelector("th:nth-child(1)")).getText());
+        //System.out.println("name " + element.findElement(By.cssSelector("th:nth-child(1)")).getText());
         element.findElement(By.cssSelector("input[name='order_min']")).clear();
         element.findElement(By.cssSelector("input[name='order_min']"))
                 .sendKeys(Double.toString(userLimits1.getOrder_min()));
@@ -424,21 +424,21 @@ else {
         element.findElement(By.cssSelector("input[name='withdraw_max']"))
                 .sendKeys(Double.toString(userLimits1.getWithdraw_max()));
       }
-      System.out.println("lalalla");
+      //System.out.println("lalalla");
 
       if (!"Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
+        // если  монета не NEO то берем атрибут value
          name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
          order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("value"));
-        exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("value"));
-        withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("value"));
-        withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("value"));
-      } else {
+         exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("value"));
+         withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("value"));
+         withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("value"));
+      } else { //если монета NEO то берем атрибут placeholder
          name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
          order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("placeholder"));
-        exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("placeholder"));
+         exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("placeholder"));
          withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("placeholder"));
          withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("placeholder"));
-
       }
 
       UserLimits userLimits2 = new UserLimits()
@@ -457,43 +457,41 @@ else {
   }
 
 
-  public UserLimits setUserBtcLimit(String orderMin, String exchange, String withdrawMin, String withdrawMax) {
-//    UserLimits userLimit = new UserLimits()
-//                              .withOrder_min(0.1234567891)
-//                              .withExchange(0.1234567892)
-//                              .withWithdraw_min(0.1234567893)
-//                              .withWithdraw_max(0.1234567894);
-
+  public UserLimits setUserNeoLimits(String orderMin, String exchange, String withdrawMin, String withdrawMax) {
+    UserLimits userLimits2 = null;
     String baseLocator = "table_row";
-    WebElement element = wd.findElement(By.className(baseLocator));
-
-      element.findElement(By.cssSelector("input[name='order_min']")).clear();
-      element.findElement(By.cssSelector("input[name='order_min']"))
-              .sendKeys(orderMin);
-      element.findElement(By.cssSelector("input[name='exchange']")).clear();
-      element.findElement(By.cssSelector("input[name='exchange']"))
-              .sendKeys(exchange);
-      element.findElement(By.cssSelector("input[name='withdraw_min']")).clear();
-      element.findElement(By.cssSelector("input[name='withdraw_min']"))
-              .sendKeys(withdrawMin);
-      element.findElement(By.cssSelector("input[name='withdraw_max']")).clear();
-      element.findElement(By.cssSelector("input[name='withdraw_max']"))
-              .sendKeys(withdrawMax);
-
-    String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
-    double order_min1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("value"));
-    double exchange1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("value"));
-    double withdraw_min1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("value"));
-    double withdraw_max1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("value"));
+    List<WebElement> elements = wd.findElements(By.className(baseLocator));
+    for(WebElement element: elements) {
+      if ("Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
+        element.findElement(By.cssSelector("input[name='order_min']")).clear();
+        element.findElement(By.cssSelector("input[name='order_min']"))
+                .sendKeys(orderMin);
+        element.findElement(By.cssSelector("input[name='exchange']")).clear();
+        element.findElement(By.cssSelector("input[name='exchange']"))
+                .sendKeys(exchange);
+        element.findElement(By.cssSelector("input[name='withdraw_min']")).clear();
+        element.findElement(By.cssSelector("input[name='withdraw_min']"))
+                .sendKeys(withdrawMin);
+        element.findElement(By.cssSelector("input[name='withdraw_max']")).clear();
+        element.findElement(By.cssSelector("input[name='withdraw_max']"))
+                .sendKeys(withdrawMax);
 
 
-    UserLimits userLimits2 = new UserLimits()
-            .withName(name)
-            .withOrder_min(order_min1)
-            .withExchange(exchange1)
-            .withWithdraw_min(withdraw_min1)
-            .withWithdraw_max(withdraw_max1);
+        String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+        double order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("value"));
+        double exchange1 = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("value"));
+        double withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("value"));
+        double withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("value"));
 
+
+        userLimits2 = new UserLimits()
+                .withName(name)
+                .withOrder_min(order_min)
+                .withExchange(exchange1)
+                .withWithdraw_min(withdraw_min)
+                .withWithdraw_max(withdraw_max);
+      }
+    }
     System.out.println("userLimits2 : " + userLimits2 );
     return userLimits2;
   }
