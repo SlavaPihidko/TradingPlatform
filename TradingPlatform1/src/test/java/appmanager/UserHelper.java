@@ -579,4 +579,23 @@ else {
     }
     return null;
   }
+
+  public Set<UserLimits> setUserEmptyLimitsWithoutNeo() throws InterruptedException {
+
+    String baseLocator = "table_row";
+    List<WebElement> elements = wd.findElements(By.className(baseLocator));
+    for(WebElement element: elements) {
+      if (!"Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
+
+        element.findElement(By.cssSelector("input[name='order_min']")).click();
+
+        element.findElement(By.cssSelector("input[name='exchange']")).click();
+
+        element.findElement(By.cssSelector("input[name='withdraw_min']")).click();
+
+        element.findElement(By.cssSelector("input[name='withdraw_max']")).click();
+      }
+    }
+    return null;
+  }
 }
