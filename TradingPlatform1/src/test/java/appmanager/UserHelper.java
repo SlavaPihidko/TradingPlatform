@@ -530,6 +530,37 @@ else {
      return null;
   }
 
+  public Set<UserLimits> setUserZeroLimitsWithoutNeo(String orderMin, String exchange, String withdrawMin, String withdrawMax) {
+    UserLimits userLimits2 = null;
+    String baseLocator = "table_row";
+    List<WebElement> elements = wd.findElements(By.className(baseLocator));
+    for(WebElement element: elements) {
+      if (!"Neo".equals(element.findElement(By.cssSelector("th:nth-child(1)")).getText())) {
+        element.findElement(By.cssSelector("input[name='order_min']")).clear();
+        element.findElement(By.cssSelector("input[name='order_min']"))
+                .sendKeys(orderMin);
+        element.findElement(By.cssSelector("input[name='order_min']"))
+                .sendKeys(Keys.BACK_SPACE);
+        element.findElement(By.cssSelector("input[name='exchange']")).clear();
+        element.findElement(By.cssSelector("input[name='exchange']"))
+                .sendKeys(exchange);
+        element.findElement(By.cssSelector("input[name='exchange']"))
+                .sendKeys(Keys.BACK_SPACE);
+        element.findElement(By.cssSelector("input[name='withdraw_min']")).clear();
+        element.findElement(By.cssSelector("input[name='withdraw_min']"))
+                .sendKeys(withdrawMin);
+        element.findElement(By.cssSelector("input[name='withdraw_min']"))
+                .sendKeys(Keys.BACK_SPACE);
+        element.findElement(By.cssSelector("input[name='withdraw_max']")).clear();
+        element.findElement(By.cssSelector("input[name='withdraw_max']"))
+                .sendKeys(withdrawMax);
+        element.findElement(By.cssSelector("input[name='withdraw_max']"))
+                .sendKeys(Keys.BACK_SPACE);
+      }
+    }
+    return null;
+  }
+
   public UserLimits setUserNeoEmptyLimits() throws InterruptedException {
 
     String baseLocator = "table_row";

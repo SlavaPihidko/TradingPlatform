@@ -543,31 +543,32 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
- /* @Test (priority = 27)
+ @Test (priority = 27)
   //проверяем что в Все ассеты кроме НЕО записали значения, сразу же стерли, в форме путота, в запросе передается 0
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_9() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
-    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    //app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(4000);
-    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
-            .setUserLimitsWithoutNeo(
-                    "0.00000000001",
-                    "0.00000000001",
-                    "0.00000000001",
-                    "0.00000000001");
+    Set<UserLimits> userLimitsSetFromWebBefore = app.getUserHelper()
+            .setUserZeroLimitsWithoutNeo(
+                    "1",
+                    "1",
+                    "1",
+                    "1");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
-    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
-  }*/
+    Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsFromWeb();
+    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+  }
 
 
   // =============================================================================================
