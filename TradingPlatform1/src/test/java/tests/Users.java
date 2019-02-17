@@ -11,11 +11,11 @@ import static org.testng.Assert.assertEquals;
 
 public class Users extends TestBase {
 
-  int userId = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+  //int userId = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
   String baseAdminPage = "http://209.182.216.247/admin/";
 
-  public Users() throws SQLException {
-  }
+//  public Users() throws SQLException {
+//  }
 
   // Тест берет первого юзера с API и этого же юзера с БД и сравнивает эти обьекты по всем полям.
   @Test(priority = 1)
@@ -200,8 +200,9 @@ public class Users extends TestBase {
   @Test (priority = 12)
   public void checkTextIfUsersLimitsOff() throws InterruptedException, IOException, SQLException {
     // подготовка теста, установка personal_fee_active=0
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=0 where id=%s;", userId));
+            "set personal_fee_active=0 where id=%s;", userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
@@ -216,8 +217,9 @@ public class Users extends TestBase {
   @Test (priority = 13)
   public void checkStateOfToggleIfToggleOffAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=0
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=0 where id=%s;", userId));
+            "set personal_fee_active=0 where id=%s;", userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
@@ -313,7 +315,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsFromWeb, userLimitsFromApi);
   }
 
-  @Test (priority = 18)
+  @Test (priority = 18) // проверяем что в Все вссеты вообщем записываются значения, передаются и сохраняются в БД
   public void checkSetUserLimitsFromWebAndDb() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -337,7 +339,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test (priority = 19) //проверяем что в все ассеты вообщем записываются значения, передаются и сохраняются в БД
+  @Test (priority = 19) //проверяем что в все ассеты кроме НЕО вообщем записываются значения, передаются и сохраняются в БД
   public void checkSetUserLimitsWithoutNeoFromWebAndDb() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -360,7 +362,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
-@Test // Установка Минимальные значения на Все ассеты кроме НЕО
+@Test (priority = 20)// Установка Минимальные значения на Все ассеты кроме НЕО
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_2() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -384,7 +386,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test // установка Макс значений на все ассеты кроме Нео
+  @Test (priority = 21) // установка Макс значений на все ассеты кроме Нео
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_3() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -408,7 +410,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test
+  @Test (priority = 22)
   //проверяем что в Все ассеты кроме Нео НЕ записываюься символы кроме цифр и единой точки,
   // только цифры и цифра с точкой передаются и сохраняются в БД
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_4() throws IOException, SQLException, InterruptedException {
@@ -435,7 +437,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  /*@Test
+  /*@Test (priority = 23)
   //проверяем что в Все ассеты кроме  НЕО кликаем по форме,
   // и это никак не влияет на сохранение.(отправляется пустой массив)
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_5() throws IOException, SQLException, InterruptedException {
@@ -462,7 +464,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   } */
 
-  @Test
+  @Test (priority = 24)
   //проверяем что в Все ассеты кроме Нео записали 0
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_6() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
@@ -488,7 +490,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test  (priority = 26)
+  @Test  (priority = 25)
   //проверяем что в Все ассеты кроме НЕО записали значение больше значения 10000000000,
   // сейчас сервер возвращает 500 ошибку если значение больше 10000000000
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_7() throws IOException, SQLException, InterruptedException {
@@ -515,7 +517,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test
+  @Test (priority = 26)
   //проверяем что в Все ассеты кроме НЕО передется максимальное кол символов+1, но последний символ не записывается,
   // так как есть ограничение на Фронтенде
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_8() throws IOException, SQLException, InterruptedException {
@@ -523,7 +525,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
-    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    //app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -541,7 +543,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
- /* @Test
+ /* @Test (priority = 27)
   //проверяем что в Все ассеты кроме НЕО записали значения, сразу же стерли, в форме путота, в запросе передается 0
   public void checkSetUserLimitsWithoutNeoFromWebAndDb_9() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
@@ -566,10 +568,12 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }*/
+
+
   // =============================================================================================
   // =============================================================================================
 
-  @Test (priority = 20)
+  @Test (priority = 28)
   //проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_1() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
@@ -599,7 +603,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitFromDb, userNeoLimitFromWeb);
   }
 
-  @Test  (priority = 21)
+  @Test  (priority = 29)
   //проверяем что в НЕО записываюься Минимальные значения, передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_2() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
@@ -630,7 +634,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test  (priority = 22)
+  @Test  (priority = 30)
   //проверяем что в НЕО записываюься Максимальные значения, передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_3() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
@@ -661,7 +665,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test  (priority = 23)
+  @Test  (priority = 31)
   //проверяем что в НЕО НЕ записываюься символы кроме цифр и единой точки,
   // только цифры и цифра с точкой передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_4() throws IOException, SQLException, InterruptedException {
@@ -693,7 +697,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test (priority = 24)
+  @Test (priority = 32)
   //проверяем что в НЕО кликаем по форме,
   // и это никак не влияет на сохранение.(отправляется пустой массив)
   public void checkSetNeoValueAtUserLimits_5() throws IOException, SQLException, InterruptedException {
@@ -721,7 +725,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWebAfter);
   }
 
-  @Test  (priority = 25)
+  @Test  (priority = 33)
   //проверяем что в НЕО записали значение "0"
   public void checkSetNeoValueAtUserLimits_6() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
@@ -752,7 +756,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test  (priority = 26)
+  @Test  (priority = 34)
   //проверяем что в НЕО записали значение больше значения 10000000000,
   // сейчас сервер возвращает 500 ошибку если значение больше 10000000000
   public void checkSetNeoValueAtUserLimits_7() throws IOException, SQLException, InterruptedException {
@@ -784,7 +788,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test  (priority = 27)
+  @Test  (priority = 35)
   //проверяем что в НЕО передется максимальное кол символов+1, но последний символ не записывается,
   // так как есть ограничение на Фронтенде
   public void checkSetNeoValueAtUserLimits_8() throws IOException, SQLException, InterruptedException {
@@ -816,7 +820,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test  (priority = 28)
+  @Test  (priority = 36)
   //проверяем что в НЕО записали значения, сразу же стерли, в форме путота, в запросе передается 0
   public void checkSetNeoValueAtUserLimits_9() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
