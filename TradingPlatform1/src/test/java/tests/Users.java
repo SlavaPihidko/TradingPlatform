@@ -11,10 +11,13 @@ import static org.testng.Assert.assertEquals;
 
 public class Users extends TestBase {
 
-  int userId = 262;
+  int userId = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
   String baseAdminPage = "http://209.182.216.247/admin/";
 
-// Тест берет первого юзера с API и этого же юзера с БД и сравнивает эти обьекты по всем полям.
+  public Users() throws SQLException {
+  }
+
+  // Тест берет первого юзера с API и этого же юзера с БД и сравнивает эти обьекты по всем полям.
   @Test(priority = 1)
   public void checkUserAtListFromApiAndDb() throws IOException, ParseException, SQLException {
 
@@ -323,14 +326,18 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(4000);
-    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper().setUserLimits();
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimits("0.001",
+                            "0.002",
+                            "0.003",
+                            "0.004");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test (priority = 19)
+  @Test (priority = 19) //проверяем что в все ассеты вообщем записываются значения, передаются и сохраняются в БД
   public void checkSetUserLimitsWithoutNeoFromWebAndDb() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
@@ -343,12 +350,224 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(4000);
-    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper().setUserLimitsWithoutNeo();
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo("0.004",
+                                    "0.005",
+                                    "0.006",
+                                    "0.007");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
+@Test // Установка Минимальные значения на Все ассеты кроме НЕО
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_2() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo("0.0000000001",
+                    "0.0000000001",
+                    "0.0000000001",
+                    "0.0000000001");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+
+  @Test // установка Макс значений на все ассеты кроме Нео
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_3() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo("10000000000",
+                    "10000000000",
+                    "10000000000",
+                    "10000000000");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+
+  @Test
+  //проверяем что в Все ассеты кроме Нео НЕ записываюься символы кроме цифр и единой точки,
+  // только цифры и цифра с точкой передаются и сохраняются в БД
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_4() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo(
+                    "0.",
+                    "abcd!@#$%^&*()0..0001",
+                    ".0001",
+                    "abcd  -=+0.0001");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+
+  /*@Test
+  //проверяем что в Все ассеты кроме  НЕО кликаем по форме,
+  // и это никак не влияет на сохранение.(отправляется пустой массив)
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_5() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo(
+                    "0.",
+                    "abcd!@#$%^&*()0..0001",
+                    ".0001",
+                    "abcd  -=+0.0001");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  } */
+
+  @Test
+  //проверяем что в Все ассеты кроме Нео записали 0
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_6() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo(
+                    "0",
+                    "0",
+                    "0",
+                    "0");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+
+  @Test  (priority = 26)
+  //проверяем что в Все ассеты кроме НЕО записали значение больше значения 10000000000,
+  // сейчас сервер возвращает 500 ошибку если значение больше 10000000000
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_7() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo(
+                    "123456789012",
+                    "123456789012",
+                    "123456789012",
+                    "123456789012");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+
+  @Test
+  //проверяем что в Все ассеты кроме НЕО передется максимальное кол символов+1, но последний символ не записывается,
+  // так как есть ограничение на Фронтенде
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_8() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo(
+                    "0.00000000001",
+                    "0.00000000001",
+                    "0.00000000001",
+                    "0.00000000001");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }
+ /* @Test
+  //проверяем что в Все ассеты кроме НЕО записали значения, сразу же стерли, в форме путота, в запросе передается 0
+  public void checkSetUserLimitsWithoutNeoFromWebAndDb_9() throws IOException, SQLException, InterruptedException {
+    // подготовка теста, установка personal_fee_active=1
+    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(4000);
+    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
+            .setUserLimitsWithoutNeo(
+                    "0.00000000001",
+                    "0.00000000001",
+                    "0.00000000001",
+                    "0.00000000001");
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
+    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
+  }*/
+  // =============================================================================================
+  // =============================================================================================
 
   @Test (priority = 20)
   //проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД
