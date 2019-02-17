@@ -823,16 +823,25 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     System.out.println("===checkSetNeoValueAtUserLimits_9===\n");
     System.out.println("Проверяем что в НЕО записали значения," +
             " сразу же стерли, в форме путота, в запросе передается 0\n");
+    // подготовка теста
+    UserLimits expectedResult = new UserLimits()
+            .withName("Neo")
+            .withOrder_min(0)
+            .withExchange(0)
+            .withWithdraw_min(0)
+            .withWithdraw_max(0);
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     int idNeo = cm.getSqlUserHelper().getIdNeo("SELECT id FROM coin4coin_db.assets where code='neo'");
-    int personalFeeActive = cm.getSqlUserHelper().getPersonalFeeActiveFromDb(String.format("select personal_fee_active\n" +
-            "from coin4coin_db.users \n" +
-            "where id=%s",userIdMax));
+    int personalFeeActive = cm.getSqlUserHelper()
+            .getPersonalFeeActiveFromDb(String.format("select personal_fee_active\n" +
+                                                      "from coin4coin_db.users \n" +
+                                                      "where id=%s", userIdMax));
     // подготовка теста, установка personal_fee_active=1
     if(personalFeeActive == 0) {
       cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
               "set personal_fee_active=1 where id=%s;", userIdMax));
     }
+    // Тело теста
     //app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
     Thread.sleep(9000);
@@ -848,12 +857,6 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(1000);
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    UserLimits expectedResult = new UserLimits()
-            .withName("Neo")
-            .withOrder_min(0)
-            .withExchange(0)
-            .withWithdraw_min(0)
-            .withWithdraw_max(0);
     UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
             .getUserNeoLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
                     "FROM coin4coin_db.user_fees UF\n" +
