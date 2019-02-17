@@ -20,6 +20,7 @@ public class TestBase  {
   public void setUp() throws IOException {
     app.init();
     am.dealWithApi();
+    cm.getConnection();
   }
 
   @AfterSuite

@@ -40,4 +40,8 @@ return wd.findElement(locator).getText();
       return false;
     }
   }
+
+  public void getBaseAdminPage(String url) {
+    wd.get(url);
+  }
 }

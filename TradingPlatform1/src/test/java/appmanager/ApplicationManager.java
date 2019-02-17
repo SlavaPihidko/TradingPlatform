@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   WebDriver wd;
+  //WebDriverWait wait;
   private  SessionHelper sessionHelper;
   private UserHelper userHelper;
   private NavigationHelper navigationHelper;
@@ -47,7 +49,10 @@ public class ApplicationManager {
     } else if (browser == BrowserType.IE) {
       wd = new InternetExplorerDriver();
     }
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+    // wait = new WebDriverWait(wd, 10);
+
+    wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //    if(browser == BrowserType.CHROME) {
 //      wd.manage().window().setSize(new Dimension(1360, 720)); // устанавливает ширину открывающегося окна
 //    }

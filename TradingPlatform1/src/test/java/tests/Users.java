@@ -12,14 +12,15 @@ import static org.testng.Assert.assertEquals;
 public class Users extends TestBase {
 
   int userId = 262;
+  String baseAdminPage = "http://209.182.216.247/admin/";
 
-// Тест берет первого юзера с API и этого же юзера ID 262 с БД и сравнивает эти обьекты по всем полям.
+// Тест берет первого юзера с API и этого же юзера с БД и сравнивает эти обьекты по всем полям.
   @Test(priority = 1)
   public void checkUserAtListFromApiAndDb() throws IOException, ParseException, SQLException {
 
     Set<UserData> oneUserFromRequest =  am.getApiUserHelper().getOneUserFromApi(true);
 // Устанавливаем коннект с БД
-    cm.getConnection();
+    //cm.getConnection();
     Set<UserData> oneUserFromDb = cm.getSqlUserHelper().getOneUserFromDb("SELECT U.id," +
             " concat(UD.first_name, ' ', UD.last_name) as fullName, U.email, U.last_login," +
             " U.created_at, US.name as kyc, UAS.name as status\n" +
@@ -37,16 +38,16 @@ public class Users extends TestBase {
   public void checkUserAtListFromApiAndWeb() throws InterruptedException, ParseException, IOException {
 
     app.goTo().usersPage();
-    //Thread.sleep(7000);
+    Thread.sleep(7000);
     Set<UserData> oneUserFromWeb = app.getUserHelper().getOneUserFromWeb(false);
     Set<UserData> userOneFromRequest =  am.getApiUserHelper().getOneUserFromApi(false);
 
     assertEquals(oneUserFromWeb, userOneFromRequest);
-
   }
 
   @Test(priority = 3)
   public void checkUserAccountInfoFromApiAndWeb() throws InterruptedException, IOException {
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(7000);
     app.goTo().userInfo();
@@ -75,6 +76,7 @@ public class Users extends TestBase {
 
   @Test(priority = 5)
   public void checkUserAccountFromApiAndWeb() throws InterruptedException, IOException, ParseException {
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -90,11 +92,12 @@ public class Users extends TestBase {
   @Test (priority = 6)
   public void checkApproveButtonAtUserAccount() throws InterruptedException, ParseException, IOException, SQLException {
     // подготовка теста, установка status_id=3
-    cm.getConnection();
+    //cm.getConnection();
     cm.getSqlUserHelper().setIntValue("update coin4coin_db.user_verifications " +
             "set status_id=3 where user_id=262 and verification_id=3;");
 
     // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем approve
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -118,11 +121,12 @@ public class Users extends TestBase {
   @Test (priority = 7)
   public void checkRejectButtonAtUserAccount() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка status_id=3
-    cm.getConnection();
+    //cm.getConnection();
     cm.getSqlUserHelper().setIntValue("update coin4coin_db.user_verifications " +
             "set status_id=3 where user_id=262 and verification_id=3;");
 
     // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем Reject
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -145,11 +149,13 @@ public class Users extends TestBase {
 
   @Test (priority = 8)
   public void checkUserBalancesFromApiAndWeb() throws InterruptedException, IOException {
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userBalances();
+    Thread.sleep(1000);
     Set<UserAssets> userBalancesFromWeb = app.getUserHelper().getUserBalancesFromWeb();
     Set<UserAssets> userBalancesFromApi = am.getApiUserHelper().getUserBalancesFromApi();
     assertEquals(userBalancesFromWeb, userBalancesFromApi);
@@ -157,18 +163,21 @@ public class Users extends TestBase {
 
   @Test (priority = 9)
   public void checkUserTransactionsFromApiAndWeb() throws InterruptedException, IOException {
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userTransactions();
+    Thread.sleep(1000);
     Set<UserTxes> userTxesFromWeb = app.getUserHelper().getUserTxesFromWeb();
     Set<UserTxes> userTxesFromApi = am.getApiUserHelper().getUserTransactionsFromApi();
     assertEquals(userTxesFromWeb, userTxesFromApi);
   }
 
-  @Test (priority = 10)
+  /*@Test (priority = 10) // Наш юзер 262 имеет ордера
   public void checkTextIfUserHasNotOrders() throws InterruptedException {
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -176,22 +185,29 @@ public class Users extends TestBase {
     app.goTo().userOrders();
     assertEquals(app.getUserHelper()
             .text(By.cssSelector("table.table.orders tr:nth-child(2) > th")), "This user has no orders");
-  }
+  } */
 
   @Test (priority = 11)
   public  void checkUserOrdersFromApiAndWeb() throws InterruptedException, IOException {
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userOrders();
+    Thread.sleep(1000);
     Set<UserOrders> userOrdersFromWeb = app.getUserHelper().getUserOrdersFromWeb();
     Set<UserOrders> userOrdersFromApi = am.getApiUserHelper().getUserOrdersFromApi();
     assertEquals(userOrdersFromWeb, userOrdersFromApi);
   }
 
   @Test (priority = 12)
-  public void checkTextIfUsersLimitsOff() throws InterruptedException {
+  public void checkTextIfUsersLimitsOff() throws InterruptedException, IOException, SQLException {
+    // подготовка теста, установка personal_fee_active=0
+    //cm.getConnection();
+    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+            "set personal_fee_active=0 where id=%s;", userId));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -207,9 +223,10 @@ public class Users extends TestBase {
   @Test (priority = 13)
   public void checkStateOfToggleIfToggleOffAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=0
-    cm.getConnection();
+    //cm.getConnection();
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=0 where id=%s;", userId));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -223,10 +240,11 @@ public class Users extends TestBase {
   @Test (priority = 14)
   public void checkStateOfToggleIfToggleOnAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -240,10 +258,11 @@ public class Users extends TestBase {
   @Test (priority = 15)
   public void checkTurnOnToggleAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=0
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=0 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -263,10 +282,11 @@ public class Users extends TestBase {
   @Test (priority = 16)
   public void checkTurnOffToggleAtUserLimits() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -288,16 +308,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   @Test (priority = 17)
   public  void checkUserLimitsFromApiAndWeb() throws InterruptedException, IOException, SQLException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     Set<UserLimits> userLimitsFromWeb = app.getUserHelper().getUserLimitsFromWeb();
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     assertEquals(userLimitsFromWeb, userLimitsFromApi);
@@ -306,10 +327,11 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   @Test (priority = 18)
   public void checkSetUserLimitsFromWebAndDb() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -326,10 +348,11 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   @Test (priority = 19)
   public void checkSetUserLimitsWithoutNeoFromWebAndDb() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -347,10 +370,11 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   //проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_1() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
@@ -377,16 +401,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   //проверяем что в НЕО записываюься Минимальные значения, передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_2() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
                               "0.0000000001",
@@ -408,16 +433,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   //проверяем что в НЕО записываюься Максимальные значения, передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_3() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
                     "10000000000",
@@ -440,16 +466,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   // только цифры и цифра с точкой передаются и сохраняются в БД
   public void checkSetNeoValueAtUserLimits_4() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
                     "0.",
@@ -472,16 +499,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   // и это никак не влияет на сохранение.(отправляется пустой массив)
   public void checkSetNeoValueAtUserLimits_5() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     // здесь просто прокликали поля, значения в плейсхолдере, значения value не имеет
     UserLimits userNeoLimitsFromWebBefore = app.getUserHelper().setUserNeoEmptyLimits();
     Thread.sleep(2000);
@@ -499,16 +527,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   //проверяем что в НЕО записали значение "0"
   public void checkSetNeoValueAtUserLimits_6() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
                     "0",
@@ -531,16 +560,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   // сейчас сервер возвращает 500 ошибку если значение больше 10000000000
   public void checkSetNeoValueAtUserLimits_7() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
                     "123456789012",
@@ -563,16 +593,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   // так как есть ограничение на Фронтенде
   public void checkSetNeoValueAtUserLimits_8() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoLimitsFromWeb = app.getUserHelper()
             .setUserNeoLimits(
                     "0.00000000001",
@@ -594,16 +625,17 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   //проверяем что в НЕО записали значения, сразу же стерли, в форме путота, в запросе передается 0
   public void checkSetNeoValueAtUserLimits_9() throws IOException, SQLException, InterruptedException {
     // подготовка теста, установка personal_fee_active=1
-    cm.getConnection();
+    //cm.getConnection();
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
     cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
             "set personal_fee_active=1 where id=%s;",  userIdMax));
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
     Thread.sleep(9000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     UserLimits userNeoZeroLimits = app.getUserHelper()
             .setUserNeoZeroLimits(
                     "1",

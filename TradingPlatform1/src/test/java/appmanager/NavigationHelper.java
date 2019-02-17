@@ -47,4 +47,5 @@ public class NavigationHelper extends HelperBase {
   public void saveButtonAtUserLimits() {
     wd.findElement(By.cssSelector("button.blue_btn")).click();
   }
+
 }
