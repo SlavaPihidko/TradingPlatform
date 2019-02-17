@@ -500,5 +500,43 @@ public class ApiUserHelper extends ApiHelperBase {
     return userLimits;
   }
 
+  public UserLimits getUserNeoLimitsFromApi() throws IOException {
+    UserLimits userLimits = null;
+
+    String header = String.format(getPrpsApi()
+            .getProperty("api.baseUrl")+"/api/admin/user/%s/account", getPrpsApi().getProperty("api.userID"));
+
+    String json = Request.Get(header)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("authorization", getPrpsApi().getProperty("api.userToken"))
+            .execute().returnContent().asString();
+
+    JsonParser jsonParser = new JsonParser();
+    JsonArray parsed = jsonParser.parse(json)
+            .getAsJsonObject().get("data")
+            .getAsJsonObject().getAsJsonArray("personal_limitations");
+
+    List<UserLimits> userLimitsList = new Gson().fromJson(parsed, new TypeToken<List<UserLimits>>(){}.getType());
+    for (UserLimits userLimits1: userLimitsList) {
+      String name = userLimits1.getAsset().getName();
+      double order_min = userLimits1.getOrder_min();
+      double exchange = userLimits1.getExchange();
+      double withdraw_min = userLimits1.getWithdraw_min();
+      double withdraw_max = userLimits1.getWithdraw_max();
+
+      if ("Neo".equals(userLimits1.getAsset().getName())) {
+        userLimits = new UserLimits()
+                .withName(name)
+                .withOrder_min(order_min)
+                .withExchange(exchange)
+                .withWithdraw_min(withdraw_min)
+                .withWithdraw_max(withdraw_max);
+      }
+
+    }
+    System.out.println("userLimits from API: " + userLimits);
+    return userLimits;
+  }
+
 
 }

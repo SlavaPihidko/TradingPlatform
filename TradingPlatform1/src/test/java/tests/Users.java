@@ -819,7 +819,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   }
 
   @Test  (priority = 36)
-  public void checkSetNeoValueAtUserLimits_9() throws  SQLException, InterruptedException {
+  public void checkSetNeoValueAtUserLimits_9() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_9===\n");
     System.out.println("Проверяем что в НЕО записали значения," +
             " сразу же стерли, в форме путота, в запросе передается 0\n");
@@ -848,12 +848,23 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(1000);
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
+    UserLimits expectedResult = new UserLimits()
+            .withName("Neo")
+            .withOrder_min(0)
+            .withExchange(0)
+            .withWithdraw_min(0)
+            .withWithdraw_max(0);
     UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
             .getUserNeoLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UF.asset_id=%s;", userIdMax, idNeo));
     UserLimits userNeoLimitsFromWebAfter = app.getUserHelper().getUserNeoLimitsFromWeb();
-    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWebAfter);
+    UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
+    System.out.println("expectedResult  " + expectedResult);
+
+    assertEquals(userNeoLimitsFromDb, expectedResult);
+    assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
+    assertEquals(userNeoLimitsFromWebAfter, userNeoLimitsFromApi);
   }
 }
