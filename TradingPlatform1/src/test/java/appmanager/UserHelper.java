@@ -499,7 +499,7 @@ else {
     return userLimits2;
   }
 
-  public UserLimits setUserNeoZeroLimits(String orderMin, String exchange, String withdrawMin, String withdrawMax) {
+  public UserLimits setUserNeoEmptyValueLimits(String orderMin, String exchange, String withdrawMin, String withdrawMax) {
     UserLimits userLimits2 = null;
     String baseLocator = "table_row";
     List<WebElement> elements = wd.findElements(By.className(baseLocator));

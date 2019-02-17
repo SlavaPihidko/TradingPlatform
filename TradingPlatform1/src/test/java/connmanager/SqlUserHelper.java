@@ -108,6 +108,22 @@ public class SqlUserHelper extends SqlHelperBase {
     return userIdMax;
   }
 
+  public int getIdNeo(String query) throws SQLException {
+
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    int idNeo = 3;
+    while (rs.next()) {
+      idNeo = rs.getInt("id");
+      System.out.println("id : " + idNeo);
+    }
+
+    rs.close();
+    st.close();
+    return idNeo;
+  }
+
   public UserLimits getUserNeoLimitsFromDb(String query) throws SQLException {
     Statement st = con.createStatement();
     ResultSet rs = st.executeQuery(query);
