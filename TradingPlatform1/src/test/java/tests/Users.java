@@ -696,13 +696,22 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   }
 
   @Test (priority = 32)
-  //проверяем что в НЕО кликаем по форме,
-  // и это никак не влияет на сохранение.(отправляется пустой массив)
-  public void checkSetNeoValueAtUserLimits_5() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=1
+  public void checkSetNeoValueAtUserLimits_5() throws SQLException, InterruptedException, IOException {
+    System.out.println("===checkSetNeoValueAtUserLimits_5()===");
+    System.out.println("  //проверяем что в НЕО кликаем по форме,\n" +
+            "  // и это никак не влияет на сохранение.(отправляется пустой массив)");
+    // подготовка теста
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
-    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    int idNeo = cm.getSqlUserHelper().getIdNeo("SELECT id FROM coin4coin_db.assets where code='neo'");
+    int personalFeeActive = cm.getSqlUserHelper()
+            .getPersonalFeeActiveFromDb(String.format("select personal_fee_active\n" +
+                    "from coin4coin_db.users where id=%s", userIdMax));
+    // подготовка теста, установка personal_fee_active=1
+    if(personalFeeActive == 0) {
+      cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+              "set personal_fee_active=1 where id=%s;", userIdMax));
+    }
+    // тело теста
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
     Thread.sleep(9000);
@@ -710,17 +719,21 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(2000);
-    // здесь просто прокликали поля, значения в плейсхолдере, значения value не имеет
-    UserLimits userNeoLimitsFromWebBefore = app.getUserHelper().setUserNeoEmptyLimits();
+    UserLimits userNeoLimitsFromWebBefore = app.getUserHelper().getUserNeoLimitsFromWeb();
+    // здесь просто прокликали поля, значения в плейсхолдере, значения атрибут value не имеет
+    app.getUserHelper().setUserNeoEmptyLimits();
     Thread.sleep(2000);
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
     UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
-            .getUserNeoLimitsFromDb("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+            .getUserNeoLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
                     "FROM coin4coin_db.user_fees UF\n" +
-                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=12;");
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax,idNeo));
     UserLimits userNeoLimitsFromWebAfter = app.getUserHelper().getUserNeoLimitsFromWeb();
-    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWebAfter);
+    UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
+    assertEquals(userNeoLimitsFromWebBefore, userNeoLimitsFromWebAfter);
+    assertEquals(userNeoLimitsFromWebAfter, userNeoLimitsFromApi);
+    assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
   }
 
   @Test  (priority = 33)
