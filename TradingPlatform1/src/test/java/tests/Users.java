@@ -664,13 +664,22 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
   }
 
   @Test  (priority = 31)
-  //проверяем что в НЕО НЕ записываюься символы кроме цифр и единой точки,
-  // только цифры и цифра с точкой передаются и сохраняются в БД
-  public void checkSetNeoValueAtUserLimits_4() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=1
+  public void checkSetNeoValueAtUserLimits_4() throws SQLException, InterruptedException, IOException {
+    System.out.println("===checkSetNeoValueAtUserLimits_4===");
+    System.out.println("  //проверяем что в НЕО НЕ записываюься символы кроме цифр и единой точки,\n" +
+            "  // только цифры и цифра с точкой передаются и сохраняются в БД");
+    // подготовка теста
     int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
-    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userIdMax));
+    int idNeo = cm.getSqlUserHelper().getIdNeo("SELECT id FROM coin4coin_db.assets where code='neo'");
+    int personalFeeActive = cm.getSqlUserHelper()
+            .getPersonalFeeActiveFromDb(String.format("select personal_fee_active\n" +
+                    "from coin4coin_db.users where id=%s", userIdMax));
+    // подготовка теста, установка personal_fee_active=1
+    if(personalFeeActive == 0) {
+      cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
+              "set personal_fee_active=1 where id=%s;", userIdMax));
+    }
+    // тело теста
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
     Thread.sleep(9000);
@@ -678,7 +687,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(2000);
-    UserLimits userNeoLimitsFromWeb = app.getUserHelper()
+    UserLimits userNeoLimitsFromWebBeforeSaving = app.getUserHelper()
             .setUserNeoLimits(
                     "0.",
                     "abcd!@#$%^&*()0..0001",
@@ -689,10 +698,14 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
     UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
-            .getUserNeoLimitsFromDb("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+            .getUserNeoLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
                     "FROM coin4coin_db.user_fees UF\n" +
-                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=12;");
-    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax,idNeo));
+    UserLimits userNeoLimitsFromWebAfter = app.getUserHelper().getUserNeoLimitsFromWeb();
+    UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
+    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWebBeforeSaving);
+    assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
+    assertEquals(userNeoLimitsFromWebAfter, userNeoLimitsFromApi);
   }
 
   @Test (priority = 32)
