@@ -11,18 +11,14 @@ import java.sql.SQLException;
 
 public class TestBase  {
 
+  public int userIdMax;
+  public int idNeo;
+  public int personalFeeActive;
 
   public   ApplicationManager app;// = new ApplicationManager(BrowserType.CHROME);
-
   public   ConnectionManager cm;// = new ConnectionManager();
-
   public   ApiManager am;// = new ApiManager();
 
-  public int getUserIdMax() {
-    return userIdMax;
-  }
-
-  public int userIdMax;
 
   public TestBase() {
     this.app = new ApplicationManager(BrowserType.CHROME);
@@ -36,12 +32,24 @@ public class TestBase  {
     am.dealWithApi();
     cm.getConnection();
     userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    idNeo = cm.getSqlUserHelper().getIdNeo("SELECT id FROM coin4coin_db.assets where code='neo'");
+    personalFeeActive = cm.getSqlUserHelper()
+            .getPersonalFeeActiveFromDb(String.format("select personal_fee_active\n" +
+                    "from coin4coin_db.users \n" +
+                    "where id=%s", userIdMax));
   }
 
   @AfterSuite
   public void tearDown() {
     app.stop();
     cm.close();
+  }
+
+  public int getUserIdMax() {
+    return userIdMax;
+  }
+  public int getIdNeo() {
+    return idNeo;
   }
 
 }
