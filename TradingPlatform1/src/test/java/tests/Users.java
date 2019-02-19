@@ -567,40 +567,4 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
-
-  // =============================================================================================
-  // =============================================================================================
-
-  @Test (priority = 28)
-  //проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД
-  public void checkSetNeoValueAtUserLimits_1() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=1
-    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
-    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userIdMax));
-    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
-    app.goTo().usersPage();
-    Thread.sleep(9000);
-    app.goTo().userInfo();
-    Thread.sleep(4000);
-    app.goTo().userLimits();
-    Thread.sleep(4000);
-    UserLimits userNeoLimitFromWeb = app.getUserHelper()
-            .setUserNeoLimits(
-                    "1",
-                    "2",
-                    "3",
-                    "4");
-    Thread.sleep(5000);
-    app.press().saveButtonAtUserLimits();
-    Thread.sleep(5000);
-    UserLimits userNeoLimitFromDb = cm.getSqlUserHelper()
-            .getUserNeoLimitsFromDb("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
-                    "FROM coin4coin_db.user_fees UF\n" +
-                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262 and UF.asset_id=12;");
-    assertEquals(userNeoLimitFromDb, userNeoLimitFromWeb);
-  }
-
-
-
 }
