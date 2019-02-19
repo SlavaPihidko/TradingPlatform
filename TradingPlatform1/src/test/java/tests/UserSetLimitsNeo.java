@@ -18,6 +18,42 @@ public class UserSetLimitsNeo extends TestBase {
     }
   }
 
+  @Test  (priority = 30)
+  public void checkSetNeoValueAtUserLimits_3() throws SQLException, InterruptedException, IOException {
+    System.out.println("===checkSetNeoValueAtUserLimits_3====");
+    System.out.println("//проверяем что в НЕО записываюься Максимальные значения, передаются и сохраняются в БД");
+    UserLimits expectedResult = new UserLimits()
+            .withName("Neo")
+            .withOrder_min(10000000000.0)
+            .withExchange(10000000000.0)
+            .withWithdraw_min(10000000000.0)
+            .withWithdraw_max(10000000000.0);
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(2000);
+    UserLimits userNeoLimitsFromWeb = app.getUserHelper()
+            .setUserNeoLimits(
+                    "10000000000",
+                    "10000000000",
+                    "10000000000",
+                    "10000000000");
+    Thread.sleep(5000);
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
+            .getUserNeoLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+                    "FROM coin4coin_db.user_fees UF\n" +
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax,idNeo));
+    UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
+    assertEquals(userNeoLimitsFromWeb, expectedResult);
+    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
+    assertEquals(userNeoLimitsFromApi,userNeoLimitsFromDb);
+  }
+
   @Test  (priority = 31)
   public void checkSetNeoValueAtUserLimits_4() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_4===");
@@ -36,8 +72,7 @@ public class UserSetLimitsNeo extends TestBase {
                     "0.",
                     "abcd!@#$%^&*()0..0001",
                     ".0001",
-                    "abcd  -=+0.0001"
-            );
+                    "abcd  -=+0.0001");
     Thread.sleep(5000);
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
@@ -225,8 +260,6 @@ public class UserSetLimitsNeo extends TestBase {
                     "where UF.user_id=%s and UF.asset_id=%s;", userIdMax, idNeo));
     UserLimits userNeoLimitsFromWebAfter = app.getUserHelper().getUserNeoLimitsFromWeb();
     UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
-    System.out.println("expectedResult  " + expectedResult);
-
     assertEquals(userNeoLimitsFromDb, expectedResult);
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
     assertEquals(userNeoLimitsFromWebAfter, userNeoLimitsFromApi);
