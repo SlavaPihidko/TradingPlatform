@@ -10,11 +10,18 @@ import java.io.IOException;
 
 public class TestBase  {
 
-  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
-  protected static final ConnectionManager cm = new ConnectionManager();
+  public   ApplicationManager app;// = new ApplicationManager(BrowserType.CHROME);
 
-  protected static final ApiManager am = new ApiManager();
+  public   ConnectionManager cm;// = new ConnectionManager();
+
+  public   ApiManager am;// = new ApiManager();
+
+  public TestBase() {
+    this.app = new ApplicationManager(BrowserType.CHROME);
+    this.cm = new ConnectionManager();
+    this.am = new ApiManager();
+  }
 
   @BeforeSuite
   public void setUp() throws IOException {
