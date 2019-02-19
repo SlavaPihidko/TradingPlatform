@@ -495,7 +495,7 @@ else {
                 .withWithdraw_max(withdraw_max);
       }
     }
-    System.out.println("userLimits2 : " + userLimits2 );
+    System.out.println("userNeoLimits from WEB: " + userLimits2 );
     return userLimits2;
   }
 
