@@ -131,6 +131,12 @@ public class UserSetLimitsNeo extends TestBase {
     System.out.println("===checkSetNeoValueAtUserLimits_4===");
     System.out.println("  //проверяем что в НЕО НЕ записываюься символы кроме цифр и единой точки,\n" +
             "  // только цифры и цифра с точкой передаются и сохраняются в БД");
+    UserLimits expectedResult = new UserLimits()
+            .withName("Neo")
+            .withOrder_min(0)
+            .withExchange(0.0001)
+            .withWithdraw_min(0)
+            .withWithdraw_max(0.0001);
     // тело теста
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
@@ -154,6 +160,8 @@ public class UserSetLimitsNeo extends TestBase {
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax,idNeo));
     UserLimits userNeoLimitsFromWebAfter = app.getUserHelper().getUserNeoLimitsFromWeb();
     UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
+    assertEquals(userNeoLimitsFromDb, expectedResult);
+    assertEquals(userNeoLimitsFromWebBeforeSaving, expectedResult);
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWebBeforeSaving);
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
     assertEquals(userNeoLimitsFromWebAfter, userNeoLimitsFromApi);
