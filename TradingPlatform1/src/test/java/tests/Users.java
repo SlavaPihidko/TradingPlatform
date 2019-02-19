@@ -903,7 +903,8 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
             .withExchange(0)
             .withWithdraw_min(0)
             .withWithdraw_max(0);
-    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    int userIdMax = getUserIdMax();//cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
+    System.out.println("useridMAx " + userIdMax);
     int idNeo = cm.getSqlUserHelper().getIdNeo("SELECT id FROM coin4coin_db.assets where code='neo'");
     int personalFeeActive = cm.getSqlUserHelper()
             .getPersonalFeeActiveFromDb(String.format("select personal_fee_active\n" +
