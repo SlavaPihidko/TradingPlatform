@@ -18,6 +18,42 @@ public class UserSetLimitsNeo extends TestBase {
     }
   }
 
+  @Test  (priority = 28)
+  public void checkSetNeoValueAtUserLimits_1() throws SQLException, InterruptedException, IOException {
+    System.out.println("===checkSetNeoValueAtUserLimits_1====");
+    System.out.println("//проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД");
+    UserLimits expectedResult = new UserLimits()
+            .withName("Neo")
+            .withOrder_min(1)
+            .withExchange(2)
+            .withWithdraw_min(3.1)
+            .withWithdraw_max(4.22);
+    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
+    app.goTo().usersPage();
+    Thread.sleep(9000);
+    app.goTo().userInfo();
+    Thread.sleep(4000);
+    app.goTo().userLimits();
+    Thread.sleep(2000);
+    UserLimits userNeoLimitsFromWeb = app.getUserHelper()
+            .setUserNeoLimits(
+                    "1",
+                    "2",
+                    "3.1",
+                    "4.22");
+    Thread.sleep(5000);
+    app.press().saveButtonAtUserLimits();
+    Thread.sleep(5000);
+    UserLimits userNeoLimitsFromDb = cm.getSqlUserHelper()
+            .getUserNeoLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+                    "FROM coin4coin_db.user_fees UF\n" +
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax,idNeo));
+    UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
+    assertEquals(userNeoLimitsFromWeb, expectedResult);
+    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
+    assertEquals(userNeoLimitsFromApi,userNeoLimitsFromDb);
+  }
+
   @Test  (priority = 29)
   public void checkSetNeoValueAtUserLimits_2() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_2====");
