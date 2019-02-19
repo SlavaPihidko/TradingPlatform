@@ -14,6 +14,7 @@ public class TestBase  {
   public int userIdMax;
   public int idNeo;
   public int personalFeeActive;
+  public String baseAdminPage = "http://209.182.216.247/admin/";
 
   public   ApplicationManager app;// = new ApplicationManager(BrowserType.CHROME);
   public   ConnectionManager cm;// = new ConnectionManager();
