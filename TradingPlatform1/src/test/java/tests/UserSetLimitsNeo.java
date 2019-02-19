@@ -229,9 +229,9 @@ public class UserSetLimitsNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax,idNeo));
     UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
-    assertEquals(userNeoLimitsFromDb, expectedResult);
+    assertEquals(userNeoLimitsFromWeb, expectedResult);
+    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
-    assertEquals(userNeoLimitsFromWeb, userNeoLimitsFromApi);
   }
 
   @Test  (priority = 34)
@@ -299,9 +299,9 @@ public class UserSetLimitsNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=%s and UF.asset_id=%s;",userIdMax, idNeo));
     UserLimits userNeoLimitsFromApi = am.getApiUserHelper().getUserNeoLimitsFromApi();
-    assertEquals(userNeoLimitsFromDb, expectedResult);
+    assertEquals(userNeoLimitsFromWeb, expectedResult);
+    assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
-    assertEquals(userNeoLimitsFromWeb, userNeoLimitsFromApi);
   }
 
   @Test  (priority = 36)
