@@ -29,7 +29,8 @@ public class SetUserLimitsWithoutNeo extends TestBase {
     System.out.println("//проверяем что в Все ассеты кроме НЕО записали значения, " +
             "сразу же стерли, в форме путота, в запросе передается 0");
     Set<UserLimits> userLimitsExpected = new HashSet<>();
-    List<String> listNameAssets =  cm.getSqlUserHelper().getListNameAssetsFromDb("SELECT name FROM coin4coin_db.assets where active=1;");
+    // этот список будет без НЕО
+    List<String> listNameAssets =  cm.getSqlUserHelper().getListNameAssetsFromDb("SELECT name FROM coin4coin_db.assets where active=1 and name!='Neo';;");
     for(int i=0; i< listNameAssets.size(); i++) {
       UserLimits expectedResult = new UserLimits()
               .withName(listNameAssets.get(i))
@@ -56,13 +57,13 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "1");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
-    Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsFromWeb();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsFromWebWithoutNeo();
     Set<UserLimits> userLimitsFromDb = cm.getSqlUserHelper()
-            .getUserLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+            .getUserLimitsFromDbWithoutNeo(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
             "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
-                    "where UF.user_id=%s and UA.active=1",userIdMax));
+                    "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
     assertEquals(userLimitsFromDb, userLimitsExpected);
     assertEquals(userLimitsFromApi,userLimitsFromDb);
     assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);

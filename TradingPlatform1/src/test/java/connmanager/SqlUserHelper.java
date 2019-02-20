@@ -162,7 +162,7 @@ public class SqlUserHelper extends SqlHelperBase {
     return listNameAssets;
   }
 
-  public Set<UserLimits> getUserLimitsFromDb(String query) throws SQLException {
+  public Set<UserLimits> getUserLimitsFromDbWithoutNeo(String query) throws SQLException {
     Statement st = con.createStatement();
     ResultSet rs = st.executeQuery(query);
 

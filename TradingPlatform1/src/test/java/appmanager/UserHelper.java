@@ -282,7 +282,7 @@ else {
     wd.findElement(By.cssSelector("button.btn")).click();
   }
 
-  public Set<UserLimits> getUserLimitsFromWeb() {
+  public Set<UserLimits> getUserLimitsFromWebWithoutNeo() {
     Set<UserLimits> userLimits = new HashSet<>();
     String baseLocator = "table_row";
     List<WebElement> elements = wd.findElements(By.className(baseLocator));
@@ -290,22 +290,25 @@ else {
     System.out.println("elements.size() " + elements.size());
 
     for(WebElement element: elements) {
-      String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
-      //System.out.println("code :" + code);
-      double order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("placeholder"));
-      //System.out.println("order_min :" + order_min);
-      double exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("placeholder"));
-      double withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("placeholder"));
-      double withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("placeholder"));
+      // делаем обьект без НЕО
+      if(!element.findElement(By.cssSelector("th:nth-child(1)")).getText().equals("Neo")) {
+        String name = element.findElement(By.cssSelector("th:nth-child(1)")).getText();
+        //System.out.println("code :" + code);
+        double order_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='order_min']")).getAttribute("placeholder"));
+        //System.out.println("order_min :" + order_min);
+        double exchange = Double.parseDouble(element.findElement(By.cssSelector("input[name='exchange']")).getAttribute("placeholder"));
+        double withdraw_min = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_min']")).getAttribute("placeholder"));
+        double withdraw_max = Double.parseDouble(element.findElement(By.cssSelector("input[name='withdraw_max']")).getAttribute("placeholder"));
 
-      UserLimits userLimits1 = new UserLimits()
-                                .withName(name)
-                                .withOrder_min(order_min)
-                                .withExchange(exchange)
-                                .withWithdraw_min(withdraw_min)
-                                .withWithdraw_max(withdraw_max);
+        UserLimits userLimits1 = new UserLimits()
+                .withName(name)
+                .withOrder_min(order_min)
+                .withExchange(exchange)
+                .withWithdraw_min(withdraw_min)
+                .withWithdraw_max(withdraw_max);
 
-      userLimits.add(userLimits1);
+        userLimits.add(userLimits1);
+      }
     }
     System.out.println("userLimits from WEB :" + userLimits);
     return userLimits;
