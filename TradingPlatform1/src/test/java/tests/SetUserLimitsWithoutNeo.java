@@ -58,7 +58,13 @@ public class SetUserLimitsWithoutNeo extends TestBase {
     Thread.sleep(5000);
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApi();
     Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsFromWeb();
+    Set<UserLimits> userLimitsFromDb = cm.getSqlUserHelper()
+            .getUserLimitsFromDb(String.format("SELECT UA.code, UA.name, UF.order_min, UF.exchange, UF.withdraw_min, UF.withdraw_max \n" +
+            "FROM coin4coin_db.user_fees UF\n" +
+                    "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
+                    "where UF.user_id=%s and UA.active=1",userIdMax));
     assertEquals(userLimitsFromDb, userLimitsExpected);
+    assertEquals(userLimitsFromApi,userLimitsFromDb);
     assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 }

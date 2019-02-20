@@ -161,4 +161,21 @@ public class SqlUserHelper extends SqlHelperBase {
     System.out.println("listNameAssets " + listNameAssets);
     return listNameAssets;
   }
+
+  public Set<UserLimits> getUserLimitsFromDb(String query) throws SQLException {
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    Set<UserLimits> userLimits = new HashSet<>();
+    while (rs.next()){
+      UserLimits userLimits1 = new UserLimits()
+              .withName(rs.getString("UA.name"))
+              .withExchange(Double.parseDouble(rs.getString("UF.exchange")))
+              .withWithdraw_min(Double.parseDouble(rs.getString("UF.withdraw_min")))
+              .withWithdraw_max(Double.parseDouble(rs.getString("UF.withdraw_max")));
+      userLimits.add(userLimits1);
+    }
+    System.out.println("userLimits from DB: " + userLimits);
+    return userLimits;
+  }
 }
