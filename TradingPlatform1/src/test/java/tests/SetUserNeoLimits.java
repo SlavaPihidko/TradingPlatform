@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import static org.testng.Assert.assertEquals;
 
-public class UserSetLimitsNeo extends TestBase {
+public class SetUserNeoLimits extends TestBase {
 
   @BeforeMethod
   public void beforeUserSetLimitsNeo() throws SQLException {
@@ -18,7 +18,7 @@ public class UserSetLimitsNeo extends TestBase {
     }
   }
 
-  @Test  (priority = 28)
+  @Test  (priority = 1)
   public void checkSetNeoValueAtUserLimits_1() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_1====");
     System.out.println("//проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД");
@@ -54,7 +54,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromApi,userNeoLimitsFromDb);
   }
 
-  @Test  (priority = 29)
+  @Test  (priority = 2)
   public void checkSetNeoValueAtUserLimits_2() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_2====");
     System.out.println("//проверяем что в НЕО записываюься Минимальные значения, передаются и сохраняются в БД");
@@ -90,7 +90,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromApi,userNeoLimitsFromDb);
   }
 
-  @Test  (priority = 30)
+  @Test  (priority = 3)
   public void checkSetNeoValueAtUserLimits_3() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_3====");
     System.out.println("//проверяем что в НЕО записываюься Максимальные значения, передаются и сохраняются в БД");
@@ -126,7 +126,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromApi,userNeoLimitsFromDb);
   }
 
-  @Test  (priority = 31)
+  @Test  (priority = 4)
   public void checkSetNeoValueAtUserLimits_4() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_4===");
     System.out.println("  //проверяем что в НЕО НЕ записываюься символы кроме цифр и единой точки,\n" +
@@ -167,7 +167,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromWebAfter, userNeoLimitsFromApi);
   }
 
-  @Test (priority = 32)
+  @Test (priority = 5)
   public void checkSetNeoValueAtUserLimits_5() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_5()===");
     System.out.println("  //проверяем что в НЕО кликаем по форме,\n" +
@@ -197,7 +197,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
   }
 
-  @Test  (priority = 33)
+  @Test  (priority = 6)
   public void checkSetNeoValueAtUserLimits_6() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_6===");
     System.out.println(" проверяем что в НЕО записали значение 0\n");
@@ -234,7 +234,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
   }
 
-  @Test  (priority = 34)
+  @Test  (priority = 7)
   public void checkSetNeoValueAtUserLimits_7() throws SQLException, InterruptedException {
     System.out.println("====checkSetNeoValueAtUserLimits_7===");
     System.out.println("проверяем что в НЕО записали значение больше значения 10000000000," +
@@ -264,7 +264,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromDb, userNeoLimitsFromWeb);
   }
 
-  @Test  (priority = 35)
+  @Test  (priority = 8)
   public void checkSetNeoValueAtUserLimits_8() throws SQLException, InterruptedException, IOException {
     System.out.println(" ===checkSetNeoValueAtUserLimits_8===");
     System.out.println("  //проверяем что в НЕО передется максимальное кол символов+1, но последний символ не записывается,\n" +
@@ -304,7 +304,7 @@ public class UserSetLimitsNeo extends TestBase {
     assertEquals(userNeoLimitsFromApi, userNeoLimitsFromDb);
   }
 
-  @Test  (priority = 36)
+  @Test  (priority = 9)
   public void checkSetNeoValueAtUserLimits_9() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_9===\n");
     System.out.println("Проверяем что в НЕО записали значения," +
