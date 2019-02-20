@@ -7,7 +7,9 @@ import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SqlUserHelper extends SqlHelperBase {
@@ -144,5 +146,19 @@ public class SqlUserHelper extends SqlHelperBase {
     st.close();
 
     return userBtcLimit;
+  }
+
+  public List<String> getListNameAssetsFromDb(String query) throws SQLException {
+    Statement st = con.createStatement();
+    ResultSet rs = st.executeQuery(query);
+
+    List<String> listNameAssets = new ArrayList<>() ;
+    while (rs.next()){
+      String nameAsset = rs.getString("name");
+      listNameAssets.add(nameAsset);
+    }
+
+    System.out.println("listNameAssets " + listNameAssets);
+    return listNameAssets;
   }
 }
