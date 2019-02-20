@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,8 +14,8 @@ import java.util.*;
 
 public class UserHelper extends HelperBase {
 
-  public UserHelper(WebDriver wd) {
-    super(wd);
+  public UserHelper(WebDriver wd, WebDriverWait wait) {
+    super(wd, wait);
 
   }
 

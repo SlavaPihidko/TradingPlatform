@@ -4,13 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
 public class HelperBase {
   protected WebDriver wd;
+  protected WebDriverWait wait;
 
-  public HelperBase(WebDriver wd) {
+  public HelperBase(WebDriver wd, WebDriverWait wait) {
     this.wd = wd;
+    this.wait = wait;
   }
+//public HelperBase(WebDriver wd) {
+//  this.wd = wd;
+//}
+//
+//  public HelperBase(WebDriverWait wait) {
+//    this.wait = wait;
+//  }
 
   protected void click(By locator) {
     wd.findElement(locator).click();
@@ -43,5 +54,9 @@ return wd.findElement(locator).getText();
 
   public void getBaseAdminPage(String url) {
     wd.get(url);
+  }
+
+  public void isElementPresent(By locator, String st) {
+      wait.until(textToBe(locator,st));
   }
 }

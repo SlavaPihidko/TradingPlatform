@@ -1,6 +1,7 @@
 package tests;
 
 import model.UserLimits;
+import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -10,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 import static org.testng.Assert.assertEquals;
 
 public class SetUserLimitsWithoutNeo extends TestBase {
@@ -44,11 +46,14 @@ public class SetUserLimitsWithoutNeo extends TestBase {
     System.out.println("userLimitsWithoutNeoExpected " + userLimitsWithoutNeoExpected);
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(9000);
+    //Thread.sleep(9000);
+    app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row > th:nth-child(3)"), "bgzglrqcc@emltmp.com");
     app.goTo().userInfo();
-    Thread.sleep(4000);
+    app.getSessionHelper().isElementPresent(By.cssSelector("div.information > p.user_info:nth-child(5)"), "Email: bgzglrqcc@emltmp.com");
+    //Thread.sleep(4000);
     app.goTo().userLimits();
-    Thread.sleep(4000);
+    app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row th:nth-child(1)"), "Bitcoin Test");
+    //Thread.sleep(4000);
     Set<UserLimits> userLimitsSetFromWebBefore = app.getUserHelper()
             .setUserZeroLimitsWithoutNeo(
                     "1",

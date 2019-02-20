@@ -20,12 +20,12 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   WebDriver wd;
-  //WebDriverWait wait;
-  private  SessionHelper sessionHelper;
+  WebDriverWait wait;
+  private SessionHelper sessionHelper;
   private UserHelper userHelper;
   private NavigationHelper navigationHelper;
   private String browser;
-  private  Properties properties;
+  private Properties properties;
 
   public ApplicationManager(String browser) {
     this.browser=browser;
@@ -50,16 +50,16 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
 
-    // wait = new WebDriverWait(wd, 10);
+    wait = new WebDriverWait(wd, 10);
 
     wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //    if(browser == BrowserType.CHROME) {
 //      wd.manage().window().setSize(new Dimension(1360, 720)); // устанавливает ширину открывающегося окна
 //    }
     wd.get(properties.getProperty("web.BaseUrl"));
-    userHelper = new UserHelper(wd);
-    navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
+    userHelper = new UserHelper(wd, wait);
+    navigationHelper = new NavigationHelper(wd, wait);
+    sessionHelper = new SessionHelper(wd,wait);
     //tel.0931513382@gmail.com
     sessionHelper.loginToAdminPanel(properties.getProperty("web.login"), properties.getProperty("web.password"));
   }
