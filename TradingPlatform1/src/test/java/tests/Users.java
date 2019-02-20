@@ -310,8 +310,8 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Thread.sleep(4000);
     app.goTo().userLimits();
     Thread.sleep(2000);
-    Set<UserLimits> userLimitsFromWeb = app.getUserHelper().getUserLimitsFromWebWithoutNeo();
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromWeb = app.getUserHelper().getUserLimitsWithoutNeoFromWeb();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsFromWeb, userLimitsFromApi);
   }
 
@@ -335,7 +335,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                             "0.004");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
@@ -359,7 +359,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                                     "0.007");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 @Test (priority = 20)// Установка Минимальные значения на Все ассеты кроме НЕО
@@ -382,7 +382,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "0.0000000001");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
@@ -406,7 +406,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "10000000000");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
@@ -433,7 +433,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "abcd  -=+0.0001");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
@@ -456,8 +456,8 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
             .setUserEmptyLimitsWithoutNeo();
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
-    Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsFromWebWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
+    Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsWithoutNeoFromWeb();
     assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
@@ -483,7 +483,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "0");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
@@ -510,7 +510,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "123456789012");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
@@ -537,7 +537,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
                     "0.00000000001");
     app.press().saveButtonAtUserLimits();
     Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsFromApiWithoutNeo();
+    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 

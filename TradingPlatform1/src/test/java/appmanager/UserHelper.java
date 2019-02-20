@@ -282,7 +282,7 @@ else {
     wd.findElement(By.cssSelector("button.btn")).click();
   }
 
-  public Set<UserLimits> getUserLimitsFromWebWithoutNeo() {
+  public Set<UserLimits> getUserLimitsWithoutNeoFromWeb() {
     Set<UserLimits> userLimits = new HashSet<>();
     String baseLocator = "table_row";
     List<WebElement> elements = wd.findElements(By.className(baseLocator));

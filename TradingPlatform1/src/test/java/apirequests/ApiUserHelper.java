@@ -463,7 +463,7 @@ public class ApiUserHelper extends ApiHelperBase {
     return userOrders;
   }
 
-  public Set<UserLimits> getUserLimitsFromApiWithoutNeo() throws IOException {
+  public Set<UserLimits> getUserLimitsWithoutNeoFromApi() throws IOException {
     Set<UserLimits> userLimits = new HashSet<>();
 
     String header = String.format(getPrpsApi()
