@@ -11,13 +11,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 import static org.testng.Assert.assertEquals;
 
 public class SetUserLimitsWithoutNeo extends TestBase {
 
   @BeforeMethod
-  public void beforeUserSetLimitsNeo() throws SQLException {
+  public void setPersonalFeeActiveForUser() throws SQLException {
     // подготовка теста, установка personal_fee_active=1
     if(personalFeeActive == 0) {
       cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
@@ -46,14 +45,11 @@ public class SetUserLimitsWithoutNeo extends TestBase {
     System.out.println("userLimitsWithoutNeoExpected " + userLimitsWithoutNeoExpected);
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    //Thread.sleep(9000);
-    app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row > th:nth-child(3)"), "bgzglrqcc@emltmp.com");
+    app.getSessionHelper().isElementPresent(By.cssSelector(String.format("a[href='/users/%s']", userIdMax)));
     app.goTo().userInfo();
-    app.getSessionHelper().isElementPresent(By.cssSelector("div.information > p.user_info:nth-child(5)"), "Email: bgzglrqcc@emltmp.com");
-    //Thread.sleep(4000);
+    app.getSessionHelper().isElementPresentTextToBe(By.cssSelector("div.information > p.user_info:nth-child(1)"),  String.format("ID: %s", userIdMax));
     app.goTo().userLimits();
-    app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row th:nth-child(1)"), "Bitcoin Test");
-    //Thread.sleep(4000);
+    app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row th:nth-child(1)"));
     Set<UserLimits> userLimitsSetFromWebBefore = app.getUserHelper()
             .setUserZeroLimitsWithoutNeo(
                     "1",

@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class SetUserNeoLimits extends TestBase {
 
   @BeforeMethod
-  public void beforeUserSetLimitsNeo() throws SQLException {
+  public void setPersonalFeeActiveForUser() throws SQLException {
     // подготовка теста, установка personal_fee_active=1
     if(personalFeeActive == 0) {
       cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +

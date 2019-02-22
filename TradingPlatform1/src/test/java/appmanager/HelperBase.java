@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
+import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class HelperBase {
   protected WebDriver wd;
@@ -56,7 +57,12 @@ return wd.findElement(locator).getText();
     wd.get(url);
   }
 
-  public void isElementPresent(By locator, String st) {
+  public void isElementPresentTextToBe(By locator, String st) {
       wait.until(textToBe(locator,st));
+  }
+
+  public boolean isElementPresent(By locator) {
+    wait.until(presenceOfElementLocated(locator));
+    return true;
   }
 }
