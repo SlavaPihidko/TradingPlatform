@@ -385,5 +385,5 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
-  
+
 }
