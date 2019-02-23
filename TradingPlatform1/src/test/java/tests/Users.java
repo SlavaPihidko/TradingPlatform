@@ -437,28 +437,4 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test (priority = 23)
-  //проверяем что в Все ассеты кроме  НЕО кликаем по форме,
-  // и это никак не влияет на сохранение.(отправляется пустой массив)
-  public void checkSetUserLimitsWithoutNeoFromWebAndDb_5() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=1
-    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
-    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userIdMax));
-    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
-    app.goTo().usersPage();
-    Thread.sleep(9000);
-    app.goTo().userInfo();
-    Thread.sleep(4000);
-    app.goTo().userLimits();
-    Thread.sleep(4000);
-    Set<UserLimits> userLimitsSetFromWebBefore = app.getUserHelper()
-            .setUserEmptyLimitsWithoutNeo();
-    app.press().saveButtonAtUserLimits();
-    Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
-    Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsWithoutNeoFromWeb();
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
-  }
-
 }
