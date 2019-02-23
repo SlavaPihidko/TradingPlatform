@@ -170,6 +170,7 @@ public class SqlUserHelper extends SqlHelperBase {
     while (rs.next()){
       UserLimits userLimits1 = new UserLimits()
               .withName(rs.getString("UA.name"))
+              .withOrder_min(Double.parseDouble(rs.getString("UF.order_min")))
               .withExchange(Double.parseDouble(rs.getString("UF.exchange")))
               .withWithdraw_min(Double.parseDouble(rs.getString("UF.withdraw_min")))
               .withWithdraw_max(Double.parseDouble(rs.getString("UF.withdraw_max")));
