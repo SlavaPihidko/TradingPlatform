@@ -339,51 +339,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
     assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
   }
 
-  @Test (priority = 19) //проверяем что в все ассеты кроме НЕО вообщем записываются значения, передаются и сохраняются в БД
-  public void checkSetUserLimitsWithoutNeoFromWebAndDb() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=1
-    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
-    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userIdMax));
-    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
-    app.goTo().usersPage();
-    Thread.sleep(9000);
-    app.goTo().userInfo();
-    Thread.sleep(4000);
-    app.goTo().userLimits();
-    Thread.sleep(4000);
-    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
-            .setUserLimitsWithoutNeo("0.004",
-                                    "0.005",
-                                    "0.006",
-                                    "0.007");
-    app.press().saveButtonAtUserLimits();
-    Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
-    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
-  }
-@Test (priority = 20)// Установка Минимальные значения на Все ассеты кроме НЕО
-  public void checkSetUserLimitsWithoutNeoFromWebAndDb_2() throws IOException, SQLException, InterruptedException {
-    // подготовка теста, установка personal_fee_active=1
-    int userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
-    cm.getSqlUserHelper().setIntValue(String.format("update coin4coin_db.users " +
-            "set personal_fee_active=1 where id=%s;",  userIdMax));
-    app.getSessionHelper().getBaseAdminPage(baseAdminPage);
-    app.goTo().usersPage();
-    Thread.sleep(9000);
-    app.goTo().userInfo();
-    Thread.sleep(4000);
-    app.goTo().userLimits();
-    Thread.sleep(4000);
-    Set<UserLimits> userLimitsSetFromWeb = app.getUserHelper()
-            .setUserLimitsWithoutNeo("0.0000000001",
-                    "0.0000000001",
-                    "0.0000000001",
-                    "0.0000000001");
-    app.press().saveButtonAtUserLimits();
-    Thread.sleep(5000);
-    Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
-    assertEquals(userLimitsSetFromWeb, userLimitsFromApi);
-  }
+
+
 
 }
