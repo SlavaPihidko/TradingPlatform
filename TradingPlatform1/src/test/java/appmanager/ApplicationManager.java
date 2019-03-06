@@ -50,7 +50,7 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
 
-    wait = new WebDriverWait(wd, 10);
+    wait = new WebDriverWait(wd, 20);
 
     wd.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //    if(browser == BrowserType.CHROME) {

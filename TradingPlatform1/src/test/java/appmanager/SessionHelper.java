@@ -19,5 +19,4 @@ public class SessionHelper extends HelperBase {
     click(By.className("blue_btn"));
   }
 
-
 }

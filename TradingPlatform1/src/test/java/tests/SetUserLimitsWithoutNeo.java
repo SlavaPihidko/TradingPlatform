@@ -2,6 +2,7 @@ package tests;
 
 import model.UserLimits;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.io.IOException;
@@ -43,9 +44,17 @@ public class SetUserLimitsWithoutNeo extends TestBase {
     System.out.println("userLimitsWithoutNeoExpected " + userLimitsWithoutNeoExpected);
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    app.getSessionHelper().isElementPresent(By.cssSelector(String.format("a[href='/users/%s']", userIdMax)));
+    // проверяем что есть спиннер в usersPage и пропадает, когда данные загружены
+    app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row.with_spiner img.spiner"));
+    WebElement spinnerAtUserPage = app.getSessionHelper().isElementPresent2(By.cssSelector("tr.table_row.with_spiner img.spiner"));
+    app.getSessionHelper().notElementPresent(spinnerAtUserPage);
+    //app.getSessionHelper().isElementPresent(By.cssSelector(String.format("a[href='/users/%s']", userIdMax)));
     app.goTo().userInfo();
-    app.getSessionHelper().isElementPresentTextToBe(By.cssSelector("div.information > p.user_info:nth-child(1)"),  String.format("ID: %s", userIdMax));
+    // Проверка спинера в userInfo и пропадает, когда данные загружены
+    app.getSessionHelper().isElementPresent(By.cssSelector("div.acc_spiner"));
+    WebElement spinnerAtUserInfo = app.getSessionHelper().isElementPresent2(By.cssSelector("div.acc_spiner"));
+    app.getSessionHelper().notElementPresent(spinnerAtUserInfo);
+    //app.getSessionHelper().isElementPresentTextToBe(By.cssSelector("div.information > p.user_info:nth-child(1)"),  String.format("ID: %s", userIdMax));
     app.goTo().userLimits();
     app.getSessionHelper().isElementPresent(By.cssSelector("tr.table_row th:nth-child(1)"));
     Set<UserLimits> userLimitsSetFromWebBefore = app.getUserHelper()
@@ -55,7 +64,9 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "0.04",
                     "0.005");
     app.press().saveButtonAtUserLimits();
-    Thread.sleep(5000);
+    // Ждем появление и пропажу спинера на странице userLimits
+    app.getSessionHelper().isElementPresent(By.cssSelector("div.acc_spiner"));
+    app.getSessionHelper().notElementPresent(spinnerAtUserInfo);
     Set<UserLimits> userLimitsFromApi = am.getApiUserHelper().getUserLimitsWithoutNeoFromApi();
     Set<UserLimits> userLimitsSetFromWebAfter = app.getUserHelper().getUserLimitsWithoutNeoFromWeb();
     Set<UserLimits> userLimitsFromDb = cm.getSqlUserHelper()

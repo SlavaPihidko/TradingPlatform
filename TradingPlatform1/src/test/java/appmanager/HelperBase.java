@@ -3,10 +3,11 @@ package appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class HelperBase {
   protected WebDriver wd;
@@ -63,6 +64,15 @@ return wd.findElement(locator).getText();
 
   public boolean isElementPresent(By locator) {
     wait.until(presenceOfElementLocated(locator));
+    return true;
+  }
+
+  public WebElement isElementPresent2(By locator) {
+    return wait.until(presenceOfElementLocated(locator));
+  }
+
+  public boolean notElementPresent(WebElement sp) {
+    wait.until(stalenessOf(sp));
     return true;
   }
 }
