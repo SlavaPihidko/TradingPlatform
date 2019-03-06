@@ -71,7 +71,7 @@ return wd.findElement(locator).getText();
     return wait.until(presenceOfElementLocated(locator));
   }
 
-  public boolean notElementPresent(WebElement sp) {
+  public boolean isElementNotPresent(WebElement sp) {
     wait.until(stalenessOf(sp));
     return true;
   }
