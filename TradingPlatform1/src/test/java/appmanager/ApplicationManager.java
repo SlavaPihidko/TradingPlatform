@@ -37,16 +37,19 @@ public class ApplicationManager {
     String targetWeb = System.getProperty("targetWeb", "localWeb");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", targetWeb))));
 
-    if (browser == BrowserType.FIREFOX) {
+    if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
-    } else if (browser == BrowserType.CHROME) {
+      System.out.println("I am " + BrowserType.FIREFOX);
+      System.out.println("I am from system property " + System.getProperty("browser"));
+    } else if (browser.equals(BrowserType.CHROME)) {
+      System.out.println("I am " + BrowserType.CHROME);
       ChromeOptions options = new ChromeOptions();
       options.addArguments("start-fullscreen");
 //      DesiredCapabilities caps = new DesiredCapabilities();
 //      caps.setCapability(ChromeOptions.CAPABILITY, options);
       wd = new ChromeDriver(options);
       System.out.println( "Свойства браузера: \n" + ((ChromeDriver) wd).getCapabilities());
-    } else if (browser == BrowserType.IE) {
+    } else if (browser.equals(BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
 

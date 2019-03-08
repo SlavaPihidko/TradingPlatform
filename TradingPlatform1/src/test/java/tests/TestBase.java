@@ -22,7 +22,7 @@ public class TestBase  {
 
 
   public TestBase() {
-    this.app = new ApplicationManager(BrowserType.CHROME);
+    this.app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
     this.cm = new ConnectionManager();
     this.am = new ApiManager();
   }
