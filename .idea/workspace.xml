@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/production/classes/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/TradingPlatform1/.gradle/" />
     <ignored path="$PROJECT_DIR$/TradingPlatform1/build/" />
@@ -42,6 +39,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../Program Files (x86)/Jenkins/secrets/initialAdminPassword">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -53,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+            <state relative-caret-position="714">
+              <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
               <folding>
                 <element signature="e#3676#3677#0" expanded="true" />
                 <element signature="e#3706#3707#0" expanded="true" />
@@ -96,7 +102,6 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/build.gradle" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiRequests.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiManager.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserData.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/model/UserDataForApi.java" />
@@ -125,10 +130,11 @@
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties" />
         <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/SetUserLimitsWithoutNeo.java" />
+        <option value="$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1366" />
     <option name="height" value="728" />
   </component>
@@ -233,13 +239,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552078853806" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552080705778" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="F:/javaQuickAppium" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -374,9 +380,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SetUserLimitsWithoutNeo_checkSetUserLimitsWithoutNeo_1 - 2019.03.06 at 17h 44m 08s.xml">
-      <configuration name="SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_1" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="SetUserLimitsWithoutNeo_checkSetUserLimitsWithoutNeo_1 - 2019.03.06 at 17h 45m 22s.xml">
       <configuration name="SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_1" configurationId="TestNG" />
     </history-entry>
@@ -404,6 +407,9 @@
     <history-entry file="SetUserLimitsWithoutNeo_checkSetUserLimitsWithoutNeo_1 - 2019.03.06 at 18h 26m 17s.xml">
       <configuration name="SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_1" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="Users_checkUserAtListFromApiAndDb - 2019.03.08 at 23h 24m 47s.xml">
+      <configuration name="Users.checkUserAtListFromApiAndDb" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -415,7 +421,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34493193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -426,7 +433,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32843137" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35457516" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35457516" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34477124" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -478,13 +485,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.14.3/bfd2538501a129a142fe8366169c48b91609dc0b/testng-6.14.3-sources.jar!/org/testng/internal/MethodInvocationHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/3.141.59/8950c1557ead2cdba4fdb9ba6f107dce3b5f1520/selenium-remote-driver-3.141.59-sources.jar!/org/openqa/selenium/remote/RemoteWebDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -889,10 +889,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+        <state relative-caret-position="714">
+          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
           <folding>
             <element signature="e#3676#3677#0" expanded="true" />
             <element signature="e#3706#3707#0" expanded="true" />
@@ -907,10 +914,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
+    <entry file="file://$PROJECT_DIR$/../Program Files (x86)/Jenkins/secrets/initialAdminPassword">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state>
+          <caret selection-end-column="32" />
         </state>
       </provider>
     </entry>

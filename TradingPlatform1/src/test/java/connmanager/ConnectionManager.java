@@ -34,8 +34,8 @@ public class ConnectionManager {
     String sqlIp = "127.0.0.1";
     int sqlPort = 3306;
     int lPort = 4321;
-    var user = propertiesForDb.getProperty("Db.user");
-    var password = propertiesForDb.getProperty("Db.password");
+    String user = propertiesForDb.getProperty("Db.user");
+    String password = propertiesForDb.getProperty("Db.password");
 
 
       JSch jSch = new JSch();
@@ -51,7 +51,7 @@ public class ConnectionManager {
         e.printStackTrace();
       }
 
-    var connectionString = String.format("jdbc:mysql://localhost:4321?autoReconnect=true&useSSL=false");
+    String connectionString = String.format("jdbc:mysql://localhost:4321?autoReconnect=true&useSSL=false");
 
     try {
       Class.forName("com.mysql.jdbc.Driver");
