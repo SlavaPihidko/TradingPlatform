@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4eaa13f-5ed7-40fb-8660-ca81a9002076" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/TradingPlatform1.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/SetUserLimitsWithoutNeo.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/SetUserLimitsWithoutNeo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradingPlatform1/out/production/classes/Hello.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/TradingPlatform1/.gradle/" />
     <ignored path="$PROJECT_DIR$/TradingPlatform1/build/" />
@@ -32,111 +32,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/SetUserLimitsWithoutNeo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="60" column="37" lean-forward="true" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiUserHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="474" selection-start-line="474" selection-end-line="474" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/SessionHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localApi.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="275" selection-start-column="275" selection-end-column="275" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/UserHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="398" column="25" selection-start-line="398" selection-start-column="25" selection-end-line="398" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5678">
-              <caret line="341" selection-start-line="341" selection-end-line="341" />
+            <state relative-caret-position="187">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/HelperBase.java">
+        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="64" column="17" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="17" />
+            <state relative-caret-position="102">
+              <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1516#1517#0" expanded="true" />
-                <element signature="e#1560#1561#0" expanded="true" />
-                <element signature="e#1677#1678#0" expanded="true" />
-                <element signature="e#1739#1740#0" expanded="true" />
+                <element signature="e#3676#3677#0" expanded="true" />
+                <element signature="e#3706#3707#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/TestBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="31" column="10" lean-forward="true" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/appmanager/ApplicationManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/3.141.59/7e42f1c3e43d22f2c299b74356137dc6f2f455ec/selenium-support-3.141.59-sources.jar!/org/openqa/selenium/support/ui/FluentWait.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="242" column="15" selection-start-line="242" selection-start-column="15" selection-end-line="242" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -206,7 +128,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="1366" />
     <option name="height" value="728" />
   </component>
@@ -216,6 +138,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,18 +229,17 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551890121068" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552078853806" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="F:/javaQuickAppium" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -337,7 +259,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_1">
+  <component name="RunManager" selected="TestNG.Users.checkUserAtListFromApiAndDb">
     <configuration name="SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_1" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="TradingPlatform1.test" />
       <extension name="coverage">
@@ -410,7 +332,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_5" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="Users.checkUserAtListFromApiAndDb" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="TradingPlatform1.test" />
       <extension name="coverage">
         <pattern>
@@ -419,8 +341,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.SetUserLimitsWithoutNeo" />
-      <option name="METHOD_NAME" value="checkSetUserLimitsWithoutNeo_5" />
+      <option name="MAIN_CLASS_NAME" value="tests.Users" />
+      <option name="METHOD_NAME" value="checkUserAtListFromApiAndDb" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -430,11 +352,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.Users.checkUserAtListFromApiAndDb" />
         <item itemvalue="TestNG.SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_1" />
         <item itemvalue="TestNG.SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_2" />
         <item itemvalue="TestNG.SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_3" />
         <item itemvalue="TestNG.SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_4" />
-        <item itemvalue="TestNG.SetUserLimitsWithoutNeo.checkSetUserLimitsWithoutNeo_5" />
       </list>
     </recent_temporary>
   </component>
@@ -493,10 +415,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30030257" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34493193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -734,13 +655,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/math/BigDecimal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-674">
-          <caret line="3290" column="18" selection-start-line="3290" selection-start-column="18" selection-end-line="3290" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/math/BigDecimal.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.141.59/8e9423038552821844ba5f7713cc4c1e6d9835b7/selenium-api-3.141.59-sources.jar!/org/openqa/selenium/By.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -764,18 +679,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/AbstractMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="779" selection-start-line="779" selection-end-line="779" />
-          <folding>
-            <element signature="e#25821#25822#0" expanded="true" />
-            <element signature="e#25855#25856#0" expanded="true" />
-            <element signature="e#26072#26073#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/AbstractMap.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/25.0-jre/30ade485699e7782cc2369b0e5d3d8e0bfc317c/guava-25.0-jre-sources.jar!/com/google/common/collect/RegularImmutableMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -841,17 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="132" column="23" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
-          <folding>
-            <element signature="e#3676#3677#0" expanded="true" />
-            <element signature="e#3706#3707#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/apirequests/ApiHelperBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -872,24 +765,11 @@
     <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/resources/localDb.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="326" column="22" selection-start-line="326" selection-start-column="22" selection-end-line="326" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/Object.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/3.141.59/7e42f1c3e43d22f2c299b74356137dc6f2f455ec/selenium-support-3.141.59-sources.jar!/org/openqa/selenium/support/ui/ExpectedConditions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="56" column="43" selection-start-line="56" selection-start-column="43" selection-end-line="56" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="34" column="46" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -924,13 +804,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5678">
-          <caret line="341" selection-start-line="341" selection-end-line="341" />
         </state>
       </provider>
     </entry>
@@ -1016,6 +889,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/connmanager/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+          <folding>
+            <element signature="e#3676#3677#0" expanded="true" />
+            <element signature="e#3706#3707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/src/test/java/tests/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TradingPlatform1/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1056,7 +954,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>10</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1068,11 +966,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>TradingPlatform1</last-edited>
+          <last-edited>test|TradingPlatform1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1080,6 +979,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Gradle: com.beust:jcommander:1.72</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
