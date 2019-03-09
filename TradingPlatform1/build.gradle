@@ -35,6 +35,10 @@ task testUsers(type: Test) {
 		systemProperty 'browser', "${browser}"
 	}
 
+	if(project.hasProperty('platform')) {
+		systemProperty 'platform', "${platform}"
+	}
+
 
    if(project.hasProperty('targetWeb')) {
 		systemProperty 'targetWeb', "${targetWeb}"
