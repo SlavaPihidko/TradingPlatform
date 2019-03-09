@@ -36,7 +36,7 @@ public class ApplicationManager {
 
   public void init() throws IOException {
 
-    String targetWeb = System.getProperty("targetWeb", "localWeb");
+    String targetWeb = System.getProperty("targetWeb", "remoteWeb");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", targetWeb))));
 
     if("".equals(properties.getProperty("selenium.server"))) {
