@@ -20,7 +20,6 @@ public class Users extends TestBase {
   // Тест берет первого юзера с API и этого же юзера с БД и сравнивает эти обьекты по всем полям.
   @Test(priority = 1)
   public void checkUserAtListFromApiAndDb() throws IOException, ParseException, SQLException {
-
     Set<UserData> oneUserFromRequest =  am.getApiUserHelper().getOneUserFromApi(true);
     Set<UserData> oneUserFromDb = cm.getSqlUserHelper().getOneUserFromDb("SELECT U.id," +
             " concat(UD.first_name, ' ', UD.last_name) as fullName, U.email, U.last_login," +
