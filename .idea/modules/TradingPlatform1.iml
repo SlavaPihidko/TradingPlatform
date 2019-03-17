@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../TradingPlatform1">
       <excludeFolder url="file://$MODULE_DIR$/../../TradingPlatform1/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TradingPlatform1/allure-report" />
       <excludeFolder url="file://$MODULE_DIR$/../../TradingPlatform1/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../TradingPlatform1/out" />
     </content>

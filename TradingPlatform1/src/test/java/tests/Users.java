@@ -48,7 +48,7 @@ public class Users extends TestBase {
   public void checkUserAccountInfoFromApiAndWeb() throws InterruptedException, IOException {
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(7000);
+    Thread.sleep(12000);
     app.goTo().userInfo();
     Thread.sleep(5000);
     Set<UserData> userAccountInfoFromWeb = app.getUserHelper().getUserAccountInfoFromWeb();
@@ -75,7 +75,7 @@ public class Users extends TestBase {
   public void checkUserAccountFromApiAndWeb() throws InterruptedException, IOException, ParseException {
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(12000);
     app.goTo().userInfo();
     Thread.sleep(5000);
     Set<UserAccount> userAccountFromApi = am.getApiUserHelper().getUserAccountFromApi();
@@ -96,7 +96,7 @@ public class Users extends TestBase {
     // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем approve
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     System.out.println("Before:\n");
@@ -124,7 +124,7 @@ public class Users extends TestBase {
     // тест когда, status_id=3 Waiting и появляются кнопки, нажимаем Reject
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно перехрдить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     System.out.println("Before:\n");
@@ -147,7 +147,7 @@ public class Users extends TestBase {
   public void checkUserBalancesFromApiAndWeb() throws InterruptedException, IOException {
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userBalances();
@@ -161,7 +161,7 @@ public class Users extends TestBase {
   public void checkUserTransactionsFromApiAndWeb() throws InterruptedException, IOException {
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userTransactions();
@@ -187,7 +187,7 @@ public class Users extends TestBase {
   public  void checkUserOrdersFromApiAndWeb() throws InterruptedException, IOException {
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userOrders();
@@ -205,7 +205,7 @@ public class Users extends TestBase {
             "set personal_fee_active=0 where id=%s;", userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
@@ -222,7 +222,7 @@ public class Users extends TestBase {
             "set personal_fee_active=0 where id=%s;", userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
@@ -239,7 +239,7 @@ public class Users extends TestBase {
             "set personal_fee_active=1 where id=%s;",  userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
@@ -257,7 +257,7 @@ public class Users extends TestBase {
             "set personal_fee_active=0 where id=%s;",  userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
@@ -280,7 +280,7 @@ public class Users extends TestBase {
             "set personal_fee_active=1 where id=%s;",  userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
@@ -305,7 +305,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
             "set personal_fee_active=1 where id=%s;",  userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();
@@ -323,7 +323,7 @@ join coin4coin_db.assets UA on UF.asset_id=UA.id where UF.user_id=262;*/
             "set personal_fee_active=1 where id=%s;",  userIdMax));
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage();
-    Thread.sleep(9000);
+    Thread.sleep(13000);
     app.goTo().userInfo();
     Thread.sleep(4000);
     app.goTo().userLimits();

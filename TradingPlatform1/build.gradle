@@ -7,6 +7,10 @@ repositories{
 	mavenCentral()
 }
 
+configurations {
+	agent
+}
+
 
 dependencies{
 	compile 'org.testng:testng:6.14.3'
@@ -19,11 +23,8 @@ dependencies{
 	implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
 	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
-
-}
-
-test {
-	useTestNG()
+	agent "org.aspectj:aspectjweaver:1.8.0"
+	testCompile "ru.yandex.qatools.allure:allure-testng-adaptor:1.4.0.RC4"
 }
 
 task testUsers(type: Test) {
@@ -47,6 +48,14 @@ task testUsers(type: Test) {
 	if(project.hasProperty('targetDb')) {
 		systemProperty 'targetDb', "${targetDb}"
 	}
+}
+
+testUsers.doFirst {
+	jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+test {
+	useTestNG()
 }
 
 tasks.withType(JavaCompile) {
