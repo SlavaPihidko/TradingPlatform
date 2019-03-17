@@ -4,11 +4,16 @@ import apirequests.ApiManager;
 import appmanager.ApplicationManager;
 import connmanager.ConnectionManager;
 import org.openqa.selenium.remote.BrowserType;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
+@Listeners(TestListener.class)
 public class TestBase  {
 
   public int userIdMax;
@@ -28,8 +33,9 @@ public class TestBase  {
   }
 
   @BeforeSuite
-  public void setUp() throws IOException, SQLException {
+  public void setUp(ITestContext context) throws IOException, SQLException {
     app.init();
+    context.setAttribute("app", app);
     am.dealWithApi();
     cm.getConnection();
     userIdMax = cm.getSqlUserHelper().getMaxUserId("select Max(id) from coin4coin_db.users");
