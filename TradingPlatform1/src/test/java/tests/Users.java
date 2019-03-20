@@ -3,6 +3,8 @@ package tests;
 import model.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -130,7 +132,9 @@ public class Users extends TestBase {
     UserAccount statusFromWebBefore = app.getUserHelper().getStatusAtUserAccountFromWeb();
     UserAccount statusFromApiBefore = am.getApiUserHelper().getStatusAtUserAccountFromApi();
 
-    assertEquals(statusFromWebBefore, statusFromApiBefore);
+    SoftAssert s = new SoftAssert();
+
+    s.assertEquals(statusFromWebBefore, statusFromApiBefore, "WebApiBefore");
 
     app.press().rejectButton();
 
@@ -139,7 +143,7 @@ public class Users extends TestBase {
     UserAccount statusFromWebAfter = app.getUserHelper().getStatusAtUserAccountFromWeb();
     UserAccount statusFromApiAfter = am.getApiUserHelper().getStatusAtUserAccountFromApi();
 
-    assertEquals(statusFromWebAfter,statusFromApiAfter);
+    s.assertEquals(statusFromWebAfter,statusFromApiAfter, "WebApiAfter");
   }
 
   @Test (priority = 8)
@@ -170,7 +174,7 @@ public class Users extends TestBase {
     assertEquals(userTxesFromWeb, userTxesFromApi);
   }
 
-  /*@Test (priority = 10) // Наш юзер 262 имеет ордера
+  @Test (priority = 10, enabled = false) // Наш юзер 262 имеет ордера
   public void checkTextIfUserHasNotOrders() throws InterruptedException {
     app.getSessionHelper().getBaseAdminPage(baseAdminPage);
     app.goTo().usersPage(); // если используем тест в Suite, то не нужно переходить на страничку и засыпать
@@ -180,7 +184,7 @@ public class Users extends TestBase {
     app.goTo().userOrders();
     assertEquals(app.getUserHelper()
             .text(By.cssSelector("table.table.orders tr:nth-child(2) > th")), "This user has no orders");
-  } */
+  }
 
   @Test (priority = 11)
   public  void checkUserOrdersFromApiAndWeb() throws InterruptedException, IOException {
