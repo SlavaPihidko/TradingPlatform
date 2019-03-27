@@ -21,7 +21,7 @@ public class SetUserNeoLimits extends TestBase {
   @Test  (priority = 1)
   public void checkSetNeoValueAtUserLimits_1() throws SQLException, InterruptedException, IOException {
     System.out.println("===checkSetNeoValueAtUserLimits_1====");
-    System.out.println("//проверяем что в НЕО вообщем записываюься значения, передаются и сохраняются в БД");
+    System.out.println("//проверяем что в НЕО вообщем записываються значения, передаются и сохраняются в БД");
     UserLimits expectedResult = new UserLimits()
             .withName("Neo")
             .withOrder_min(1)

@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -24,7 +26,7 @@ public class SetUserLimitsWithoutNeo extends TestBase {
   }
 
 
-  @Test(priority = 19)
+  @Test(priority = 1)
   public void checkSetUserLimitsWithoutNeo_1() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_1===");
     System.out.println(" //проверяем что в все ассеты кроме НЕО вообщем записываются значения, передаются и сохраняются в БД");
@@ -74,13 +76,15 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
 
-  @Test(priority = 20)
+  @Test(priority = 2)
   public void checkSetUserLimitsWithoutNeo_2() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_2===");
     System.out.println(" Установка Минимальные значения на Все ассеты кроме НЕО");
@@ -128,12 +132,14 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
-  @Test(priority = 21)
+  @Test(priority = 3)
   public void checkSetUserLimitsWithoutNeo_3() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_3===");
     System.out.println(" установка Макс значений на все ассеты кроме Нео");
@@ -180,13 +186,15 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
 
-  @Test(priority = 22)
+  @Test(priority = 4)
   public void checkSetUserLimitsWithoutNeo_4() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_4===");
     System.out.println("  //проверяем что в Все ассеты кроме Нео НЕ записываюься символы кроме цифр и единой точки,\n" +
@@ -235,13 +243,15 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
 
-  @Test(priority = 23)
+  @Test(priority = 5)
   public void checkSetUserLimitsWithoutNeo_5() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_5===");
     System.out.println("проверяем что в Все ассеты кроме  НЕО кликаем по форме,\n" +
@@ -272,13 +282,15 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsSetFromWebBefore);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsSetFromWebBefore);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
 
-  @Test(priority = 24)
+  @Test(priority = 6)
   public void checkSetUserLimitsWithoutNeo_6() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_6===");
     System.out.println("//проверяем что в Все ассеты кроме Нео записали 0");
@@ -326,12 +338,14 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
-  /*@Test(priority = 25)
+  @Test(priority = 7, enabled = false)
   public void checkSetUserLimitsWithoutNeo_7() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_7===");
     System.out.println("//проверяем что в Все ассеты кроме НЕО записали значение больше значения 10000000000,\n" +
@@ -380,13 +394,15 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
-  }*/
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+  }
 
 
-  @Test(priority = 26)
+  @Test(priority = 8)
   public void checkSetUserLimitsWithoutNeo_8() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_8===");
     System.out.println("  //проверяем что в Все ассеты кроме НЕО передется максимальное кол символов+1, " +
@@ -436,13 +452,15 @@ public class SetUserLimitsWithoutNeo extends TestBase {
                     "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 
 
-  @Test(priority = 27)
+  @Test(priority = 9)
   public void checkSetUserLimitsWithoutNeo_9() throws IOException, SQLException, InterruptedException {
     System.out.println("===checkSetUserLimitsWithoutNeo_9===");
     System.out.println("//проверяем что в Все ассеты кроме НЕО записали значения, " +
@@ -491,8 +509,10 @@ public class SetUserLimitsWithoutNeo extends TestBase {
             "FROM coin4coin_db.user_fees UF\n" +
                     "join coin4coin_db.assets UA on UF.asset_id=UA.id " +
                     "where UF.user_id=%s and UA.active=1 and UA.name!='Neo'", userIdMax));
-    assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
-    assertEquals(userLimitsFromApi,userLimitsFromDb);
-    assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
+
+    SoftAssert s = new SoftAssert();
+    s.assertEquals(userLimitsFromDb, userLimitsWithoutNeoExpected);
+    s.assertEquals(userLimitsFromApi,userLimitsFromDb);
+    s.assertEquals(userLimitsSetFromWebAfter, userLimitsFromApi);
   }
 }
