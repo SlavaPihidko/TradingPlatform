@@ -50,6 +50,29 @@ task testUsers(type: Test) {
 	}
 }
 
+task testSetUserNeoLimits(type: Test) {
+	useTestNG{
+		suites 'src/test/resources/testng-Neo.xml'
+	}
+
+	if(project.hasProperty('browser')) {
+		systemProperty 'browser', "${browser}"
+	}
+
+	if(project.hasProperty('platform')) {
+		systemProperty 'platform', "${platform}"
+	}
+
+
+	if(project.hasProperty('targetWeb')) {
+		systemProperty 'targetWeb', "${targetWeb}"
+	}
+
+	if(project.hasProperty('targetDb')) {
+		systemProperty 'targetDb', "${targetDb}"
+	}
+}
+
 testUsers.doFirst {
 	jvmArgs "-javaagent:${configurations.agent.singleFile}"
 }
