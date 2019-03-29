@@ -51,17 +51,18 @@ public class ApiUserHelper extends ApiHelperBase {
     Set<UserData> usersList = new HashSet<>();
 
     for(UserDataForApi a: usersList0) {
-      System.out.println("a.getUserStatus().getName() " + a.getUserStatus().getName());
+      System.out.println("kyc " + a.getStatus().getName());
       UserData usersList1 = new UserData()
               .withId(a.getId())
               .withFullName(a.getUsername())
               .withEmail(a.getEmail())
               .withLastLogin(a.getLast_login())
               .withCreated(a.getCreated_at())
-              .withStatus(a.getUserStatus().getName());
+              .withStatus(a.getUserStatus().getName())
+              .withKyc(a.getStatus().getName());
       usersList.add(usersList1);
     }
-    
+
     return usersList;
   }
 

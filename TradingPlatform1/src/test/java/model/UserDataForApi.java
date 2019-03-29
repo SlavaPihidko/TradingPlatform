@@ -11,6 +11,15 @@ public class UserDataForApi {
   private String username;
   private String phone;
   private UserAccountStatusesForApi user_account_statuses;
+  private UserStatusForApi status;
+
+  public UserStatusForApi getStatus() {
+    return status;
+  }
+
+  public void setStatus(UserStatusForApi status) {
+    this.status = status;
+  }
 
   public UserAccountStatusesForApi getUserStatus() {
     return user_account_statuses;
@@ -114,7 +123,8 @@ public class UserDataForApi {
             ", email='" + email + '\'' +
             ", username='" + username + '\'' +
             ", phone='" + phone + '\'' +
-            ", userStatus=" + user_account_statuses +
+            ", user_account_statuses=" + user_account_statuses +
+            ", status=" + status +
             '}';
   }
 
@@ -136,7 +146,9 @@ public class UserDataForApi {
     if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
     if (getUsername() != null ? !getUsername().equals(that.getUsername()) : that.getUsername() != null) return false;
     if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) return false;
-    return getUserStatus() != null ? getUserStatus().equals(that.getUserStatus()) : that.getUserStatus() == null;
+    if (user_account_statuses != null ? !user_account_statuses.equals(that.user_account_statuses) : that.user_account_statuses != null)
+      return false;
+    return getStatus() != null ? getStatus().equals(that.getStatus()) : that.getStatus() == null;
   }
 
   @Override
@@ -149,7 +161,8 @@ public class UserDataForApi {
     result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
     result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
     result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
-    result = 31 * result + (getUserStatus() != null ? getUserStatus().hashCode() : 0);
+    result = 31 * result + (user_account_statuses != null ? user_account_statuses.hashCode() : 0);
+    result = 31 * result + (getStatus() != null ? getStatus().hashCode() : 0);
     return result;
   }
 }
