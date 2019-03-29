@@ -4,16 +4,14 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import model.*;
 import org.apache.http.client.fluent.Request;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 public class ApiUserHelper extends ApiHelperBase {
@@ -23,18 +21,18 @@ public class ApiUserHelper extends ApiHelperBase {
   public ApiUserHelper() throws IOException {
   }
 
-  @Test
-  public void testUsersSetFromApi() throws IOException {
-    Set<UserDataForApi> usersSetFromRequest =  getUsersFromApi();
-    System.out.println("many users from API" +usersSetFromRequest);
-    for(UserDataForApi n: usersSetFromRequest) {
-      System.out.println("n :" +n);
-    }
-  }
+//  @Test
+//  public void testUsersSetFromApi() throws IOException {
+//    Set<UserDataForApi> usersSetFromRequest =  getUsersFromApi();
+//    System.out.println("many users from API" +usersSetFromRequest);
+//    for(UserDataForApi n: usersSetFromRequest) {
+//      System.out.println("n :" +n);
+//    }
+//  }
 
 
 
-  public Set<UserDataForApi> getUsersFromApi() throws IOException {
+  public Set<UserData> getUsersFromApi() throws IOException {
     String header = getPrpsApi().getProperty("api.baseUrl")+"/api/admin/users";
     String json = Request.Get(header)
                           .addHeader("Content-Type", "application/json")
@@ -47,7 +45,42 @@ public class ApiUserHelper extends ApiHelperBase {
             .getAsJsonObject().getAsJsonArray("users");
 
     //System.out.println("Массив обьектов wallets представлен строкой "+ parsed);
-    return new Gson().fromJson(parsed, new TypeToken<Set<UserDataForApi>>(){}.getType());
+    List<UserDataForApi> usersList0 =
+            new Gson().fromJson(parsed, new TypeToken<List<UserDataForApi>>(){}.getType());
+
+    Set<UserData> usersList = new HashSet<>();
+
+    for(UserDataForApi a: usersList0) {
+      UserData usersList1 = new UserData()
+              .withId(a.getId())
+              .withFullName(a.getUsername())
+              .withEmail(a.getEmail())
+              .withLastLogin(a.getLast_login())
+              .withCreated(a.getCreated_at());
+      usersList.add(usersList1);
+    }
+
+    //==============================================================================================
+    JsonElement usersAccountStatuses  = jsonParser.parse(json)
+            .getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users")
+            .getAsJsonObject().get("user_account_statuses");
+    System.out.println("usersAccountStatuses" + usersAccountStatuses);
+//получаем обьект OneUserFromRequestSecondPart, который пропарсили согласно модели UserAccountStatusesForApi
+    List<UserAccountStatusesForApi> users2
+            = new Gson().fromJson(usersAccountStatuses, new TypeToken<List<UserAccountStatusesForApi>>(){}.getType());
+    System.out.println("users2" + users2);
+
+    List<UserAccountStatusesForApi> users3 = new ArrayList<>();
+    for(UserAccountStatusesForApi b: users2) {
+         UserAccountStatusesForApi uas = new UserAccountStatusesForApi().withName(b.getName());
+      users3.add(uas);
+    }
+    System.out.println("users3 "+ users3);
+    //System.out.println("OneUserFromRequestSecondPart " + OneUserFromRequestSecondPart);
+
+    //=============================================================================================
+
+    return usersList;
   }
 
 // метод для создания обьекта одного юзера с АПИ. Берем первого юзера с АПИ
