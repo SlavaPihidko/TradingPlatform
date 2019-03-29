@@ -51,35 +51,17 @@ public class ApiUserHelper extends ApiHelperBase {
     Set<UserData> usersList = new HashSet<>();
 
     for(UserDataForApi a: usersList0) {
+      System.out.println("a.getUserStatus().getName() " + a.getUserStatus().getName());
       UserData usersList1 = new UserData()
               .withId(a.getId())
               .withFullName(a.getUsername())
               .withEmail(a.getEmail())
               .withLastLogin(a.getLast_login())
-              .withCreated(a.getCreated_at());
+              .withCreated(a.getCreated_at())
+              .withStatus(a.getUserStatus().getName());
       usersList.add(usersList1);
     }
-
-    //==============================================================================================
-    JsonElement usersAccountStatuses  = jsonParser.parse(json)
-            .getAsJsonObject().get("data").getAsJsonObject().getAsJsonArray("users")
-            .getAsJsonObject().get("user_account_statuses");
-    System.out.println("usersAccountStatuses" + usersAccountStatuses);
-//получаем обьект OneUserFromRequestSecondPart, который пропарсили согласно модели UserAccountStatusesForApi
-    List<UserAccountStatusesForApi> users2
-            = new Gson().fromJson(usersAccountStatuses, new TypeToken<List<UserAccountStatusesForApi>>(){}.getType());
-    System.out.println("users2" + users2);
-
-    List<UserAccountStatusesForApi> users3 = new ArrayList<>();
-    for(UserAccountStatusesForApi b: users2) {
-         UserAccountStatusesForApi uas = new UserAccountStatusesForApi().withName(b.getName());
-      users3.add(uas);
-    }
-    System.out.println("users3 "+ users3);
-    //System.out.println("OneUserFromRequestSecondPart " + OneUserFromRequestSecondPart);
-
-    //=============================================================================================
-
+    
     return usersList;
   }
 

@@ -10,7 +10,15 @@ public class UserDataForApi {
   private String email;
   private String username;
   private String phone;
+  private UserAccountStatusesForApi user_account_statuses;
 
+  public UserAccountStatusesForApi getUserStatus() {
+    return user_account_statuses;
+  }
+
+  public void setUserStatus(UserAccountStatusesForApi userStatus) {
+    this.user_account_statuses = userStatus;
+  }
 
 //  public UserDataForApi(String id, String type_id, String status_id,
 //                        String last_login, String created_at, String email, String username) {
@@ -95,7 +103,6 @@ public class UserDataForApi {
     return this;
   }
 
-
   @Override
   public String toString() {
     return "UserDataForApi{" +
@@ -107,6 +114,7 @@ public class UserDataForApi {
             ", email='" + email + '\'' +
             ", username='" + username + '\'' +
             ", phone='" + phone + '\'' +
+            ", userStatus=" + user_account_statuses +
             '}';
   }
 
@@ -127,7 +135,8 @@ public class UserDataForApi {
       return false;
     if (getEmail() != null ? !getEmail().equals(that.getEmail()) : that.getEmail() != null) return false;
     if (getUsername() != null ? !getUsername().equals(that.getUsername()) : that.getUsername() != null) return false;
-    return getPhone() != null ? getPhone().equals(that.getPhone()) : that.getPhone() == null;
+    if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) return false;
+    return getUserStatus() != null ? getUserStatus().equals(that.getUserStatus()) : that.getUserStatus() == null;
   }
 
   @Override
@@ -140,6 +149,7 @@ public class UserDataForApi {
     result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
     result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
     result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
+    result = 31 * result + (getUserStatus() != null ? getUserStatus().hashCode() : 0);
     return result;
   }
 }
